@@ -1,0 +1,9 @@
+0.1: 
+- PUs no longer transfer subject when made, instead all their vassals are set free
+- Added 
+estate
+dependency
+ward
+autonomous_vassal 
+protectorate
+
