@@ -760,3 +760,26 @@ cancel_protectorate =  {
 		always = no
 	}
 }
+
+become_independent = {
+	category = influence
+	require_acceptance = no
+	is_visible = {
+		THIS = {
+			AND = {
+				is_subject_of = FROM
+				OR = {
+					is_subject_of_type = protectorate
+					is_subject_of_type = autonomous_vassal
+				}
+			}
+		}
+	}
+	is_allowed = { always = yes}
+	on_accept = {
+		THIS = {
+			grant_independence = yes
+		}
+	}
+	ai_will_do = { always = no }
+}
