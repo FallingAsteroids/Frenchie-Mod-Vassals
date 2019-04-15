@@ -765,11 +765,12 @@ become_independent = {
 	category = influence
 	require_acceptance = no
 	is_visible = {
+		is_subject_of = FROM
 		OR = {
 			is_subject_of_type = protectorate
 			is_subject_of_type = autonomous_vassal
 		}
-	}
+    }
 	is_allowed = { always = yes}
 	on_accept = {
 		grant_independence = yes
