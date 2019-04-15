@@ -8,3 +8,4 @@ autonomous_vassal
 protectorate
 0.1.1:
 - Added ability for prrocectorates and autonomous vassals to become independent at will
+- Added minor restrictions to demanding countries to become your subject
