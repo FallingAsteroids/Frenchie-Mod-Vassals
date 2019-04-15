@@ -205,7 +205,11 @@ demand_estate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = yes
+		NOT = {
+			is_subject_of = FROM
+			is_subject_of = THIS
+			is_subject_of_type = estate
+		}
 	}
 	is_allowed = {
 		always = yes
@@ -318,7 +322,12 @@ demand_dependency = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = yes
+		NOT = {
+			is_subject_of = FROM
+			is_subject_of = THIS
+			is_subject_of_type = dependency
+			is_subject_of_type = estate
+		}
 	}
 	is_allowed = {
 		always = yes
@@ -431,7 +440,13 @@ demand_ward = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = yes
+		NOT = {
+			is_subject_of = FROM
+			is_subject_of = THIS
+			is_subject_of_type = ward
+			is_subject_of_type = dependency
+			is_subject_of_type = estate
+		}
 	}
 	is_allowed = {
 		always = yes
@@ -544,7 +559,14 @@ demand_autonomous_vassal = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = yes
+		NOT = {
+			is_subject_of = FROM
+			is_subject_of = THIS
+			is_subject_of_type = autonomous_vassal
+			is_subject_of_type = ward
+			is_subject_of_type = dependency
+			is_subject_of_type = estate
+		}
 	}
 	is_allowed = {
 		always = yes
@@ -657,7 +679,15 @@ demand_protectorate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = yes
+		NOT = {
+			is_subject_of = FROM
+			is_subject_of = THIS
+			is_subject_of_type = protectorate
+			is_subject_of_type = autonomous_vassal
+			is_subject_of_type = ward
+			is_subject_of_type = dependency
+			is_subject_of_type = estate
+		}
 	}
 	is_allowed = {
 		always = yes
