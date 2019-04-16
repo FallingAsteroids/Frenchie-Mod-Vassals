@@ -1,0 +1,66 @@
+country_decisions = {
+    increase_autonomy = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+            OR = {
+		    	is_subject_of_type = autonomous_vassal
+			    is_subject_of_type = ward
+    			is_subject_of_type = dependency
+                is_subject_of_type = estate
+            }
+        }
+        allow = {
+            liberty_desire = 100
+        }
+        effect = {
+            if = {
+                limit = {
+                    is_subject_of_type = autonomous_vassal
+                }
+                overlord = {
+                     create_subject = {
+                        subject_type = protectorate
+                        subject = ROOT
+                  }
+                }
+            }
+            if = {
+                limit = {
+                    is_subject_of_type = ward
+                }
+                overlord = {
+                     create_subject = {
+                        subject_type = autonomous_vassal
+                        subject = ROOT
+                  }
+                }
+            }
+            if = {
+                limit = {
+                    is_subject_of_type = dependency
+                }
+                overlord = {
+                     create_subject = {
+                        subject_type = ward
+                        subject = ROOT
+                  }
+                }
+            }
+            if = {
+                limit = {
+                    is_subject_of_type = estate
+                }
+                overlord = {
+                     create_subject = {
+                        subject_type = dependency
+                        subject = ROOT
+                  }
+                }
+            }
+            add_liberty_desire = -60
+        }
+        ai_will_do = {
+            factor = 1
+        }
+    }
+}

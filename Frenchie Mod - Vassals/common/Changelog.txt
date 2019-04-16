@@ -10,3 +10,4 @@ protectorate
 - Added ability for prrocectorates and autonomous vassals to become independent at will
 - Added minor restrictions to demanding countries to become your subject
 - Added basic localization
+- Added ability to go up in subject ranks
