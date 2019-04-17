@@ -682,6 +682,7 @@ dependency = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 	}
 	can_rival = {
@@ -689,6 +690,7 @@ dependency = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 	}
 	can_ally = {
@@ -696,6 +698,7 @@ dependency = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 	}
 	can_marry = {
@@ -703,6 +706,7 @@ dependency = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 	}
 
@@ -750,6 +754,7 @@ ward = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -758,6 +763,7 @@ ward = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -766,6 +772,7 @@ ward = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -774,6 +781,7 @@ ward = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -819,11 +827,15 @@ autonomous_vassal = {
 	overlord_protects_external = yes						# Whether overlord always gets called (declinable) against countries without the same overlord. When this is 'no' overlord will only join if the defender would have been blocked (by its subject type) from attacking the attacker.
 	uses_tariffs = yes
 
+	has_colonial_parent = yes							# Regulates most rules that should hold only for colonies
+
+
 	can_fight = {
 		same_overlord = estate
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -832,6 +844,7 @@ autonomous_vassal = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -840,6 +853,7 @@ autonomous_vassal = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -848,6 +862,7 @@ autonomous_vassal = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -899,6 +914,7 @@ protectorate = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -907,6 +923,7 @@ protectorate = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -915,6 +932,7 @@ protectorate = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
@@ -923,6 +941,7 @@ protectorate = {
 		same_overlord = dependency
 		same_overlord = ward
 		same_overlord = autonomous_vassal
+		same_overlord = protectorate
 		other_overlord = all
 		independent_nations = yes
 	}
