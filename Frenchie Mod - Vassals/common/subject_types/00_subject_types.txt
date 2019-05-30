@@ -618,6 +618,7 @@ estate = {
 	can_marry = {
 		same_overlord = all
 		other_overlord = all
+		independent_nations = yes
 	}
 
 
