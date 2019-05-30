@@ -609,6 +609,8 @@ estate = {
 	overlord_protects_external = no						# Whether overlord always gets called (declinable) against countries without the same overlord. When this is 'no' overlord will only join if the defender would have been blocked (by its subject type) from attacking the attacker.
 	uses_tariffs = yes
 
+	has_colonial_parent = yes							# Regulates most rules that should hold only for colonies
+
 	can_fight = {
 	}
 	can_rival = {
@@ -724,9 +726,6 @@ autonomous_vassal = {
 
 	overlord_protects_external = no						# Whether overlord always gets called (declinable) against countries without the same overlord. When this is 'no' overlord will only join if the defender would have been blocked (by its subject type) from attacking the attacker.
 	uses_tariffs = yes
-
-	has_colonial_parent = no							# Regulates most rules that should hold only for colonies
-
 
 	can_fight = {
 	same_overlord = ward
