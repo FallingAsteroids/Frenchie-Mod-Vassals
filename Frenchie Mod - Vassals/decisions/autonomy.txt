@@ -5,8 +5,7 @@ country_decisions = {
             OR = {
 		    	is_subject_of_type = autonomous_vassal
 			    is_subject_of_type = ward
-    			is_subject_of_type = dependency
-                is_subject_of_type = estate
+          is_subject_of_type = estate
             }
         }
         allow = {
@@ -37,22 +36,11 @@ country_decisions = {
             }
             if = {
                 limit = {
-                    is_subject_of_type = dependency
-                }
-                overlord = {
-                     create_subject = {
-                        subject_type = ward
-                        subject = ROOT
-                  }
-                }
-            }
-            if = {
-                limit = {
                     is_subject_of_type = estate
                 }
                 overlord = {
                      create_subject = {
-                        subject_type = dependency
+                        subject_type = ward
                         subject = ROOT
                   }
                 }
