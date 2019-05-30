@@ -11,3 +11,6 @@ protectorate
 - Added minor restrictions to demanding countries to become your subject
 - Added basic localization
 - Added ability to go up in subject ranks
+0.1.2:
+- Removed dependencies
+- Set up rules of fighting, rivalling, allying and marrying for every type of subject.
