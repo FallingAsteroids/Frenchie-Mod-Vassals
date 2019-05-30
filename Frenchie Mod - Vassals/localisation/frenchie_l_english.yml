@@ -1,4 +1,5 @@
-﻿l_english: demand_estate_title:0 "Demand Estatination"
+﻿l_english:
+  demand_estate_title:0 "Demand Estatination"
   demand_ward_title:0 "Demand Ward"
   demand_autonomous_vassal_title:0 "Demand Autonomous Vassal"
   demand_protectorate_title:0 "Demand Protecterate"
