@@ -594,7 +594,7 @@ demand_protectorate = {
 			name = Base
 			export_to_variable = {
 				variable_name = ai_value
-				value = 50
+				value = -50
 				who = FROM
 				with = THIS
 			}
@@ -619,6 +619,14 @@ demand_protectorate = {
 				value = trust
 				who = FROM
 				with = ROOT
+			}
+			multiply_variable = {
+				which = ai_value
+				value = 2
+			}
+			subtract_variable = {
+				which = ai_value
+				value = 100
 			}
 		}
 		add_entry = {
@@ -670,24 +678,20 @@ demand_protectorate = {
 		  	modifier = declined_protectorate_status
 			}
 		}
-		any_country = {
-			limit = {
-				military_strength = {
-					WHO = FROM
-					value = 3
-				}
-			}
-		}
 		OR = {
 			is_neighbor_of = FROM
 			ai_attitude = {
 				WHO = FROM
 				attitude = attitude_threatened
 			}
+			ai_attitude = {
+				WHO = ROOT
+				attitude = attitude_domineering
+			}
 		}
 		has_opinion = {
-			who = FROM
-			value = 50
+			who = ROOT
+			value = 1
 		}
 		NOT = { is_rival = ROOT }
 		NOT = { is_rival = FROM }
