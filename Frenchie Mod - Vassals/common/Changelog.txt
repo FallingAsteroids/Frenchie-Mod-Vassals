@@ -14,3 +14,5 @@ protectorate
 0.1.2:
 - Removed dependencies
 - Set up rules of fighting, rivaling, allying and marrying for every type of subject.
+0.1.3:
+- Made the AI do stuff
