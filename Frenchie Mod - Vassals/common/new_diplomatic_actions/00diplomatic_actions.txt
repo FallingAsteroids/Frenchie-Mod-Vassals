@@ -582,51 +582,117 @@ demand_protectorate = {
 			subject = FROM
 		}
 	}
-	on_decline =	{	}
+	on_decline =	{	add_opinion = {
+		who = FROM
+		with = ROOT
+		modifier = declined_protectorate_status
+									}
+	}
 
 	ai_acceptance = { # This works similarly to variable_arithmetic_trigger, but does not support triggers generally. Instead, "limit" will be evaluated first and the rest ignored if it isn't passed.
 		add_entry = {
-			name = Frenchie_DEMANDS
+			name = Base
 			export_to_variable = {
 				variable_name = ai_value
-				value = 0
+				value = 50
 				who = FROM
 				with = THIS
-			}
-			change_variable = {
-				which = ai_value
-				value = 50
 			}
 		}
 		add_entry = {
-			name = OPINION
+			name = Opinion
 			export_to_variable = {
 				variable_name = ai_value
-				value = 0
-				who = FROM
-				with = THIS
-			}
-			export_to_variable = {
-				variable_name = op
 				value = opinion
 				who = FROM
+				with = ROOT
 			}
+			multiply_variable = {
+				which = ai_value
+				value = 0.5
+			}
+		}
+		add_entry = {
+			name = Trust
 			export_to_variable = {
 				variable_name = ai_value
-				value = op
+				value = trust
 				who = FROM
-				with = THIS
+				with = ROOT
 			}
-			change_variable = {
+		}
+		add_entry = {
+			name = Distance
+			export_to_variable = {
+				variable_name = ai_value
+				value = border_distance
+				who = FROM
+			}
+			multiply_variable = {
 				which = ai_value
-				value = 1
+				value = -1
 			}
+			divide_variable = { which = ai_value value = 5 }
+		}
+#		add_entry = {
+#			name = Distance_Between_Capitals
+#			export_to_variable = {
+#				variable = ai_value
+#				value = capital_distance
+#				who = ROOT
+#			}
+#			multiply_variable = { which = ai_value value = -1 }
+#			divide_variable = {
+#				which = ai_value
+#				value = 10
+#			}
+#		}
+		add_entry = {
+			name = Relative_Economies
+			export_to_variable = {
+				variable = ai_value
+				value = total_development
+				who = FROM
+			}
+			export_to_variable = {
+				variable = EcoOfSender
+				value = total_development
+				who = ROOT
+			}
+			subtract_variable = { which = ai_value value = EcoOfSender }
+			multiply_variable = { which = ai_value value = 0.1 }
 		}
 	}
 	ai_will_do = { # this is a trigger
-		has_opinion_modifier = {
-			modifier = insulted
+		NOT = {
+			has_opinion_modifier = {
+				who = FROM
+		  	modifier = declined_protectorate_status
+			}
+		}
+		any_country = {
+			limit = {
+				military_strength = {
+					WHO = FROM
+					value = 3
+				}
+			}
+		}
+		OR = {
+			is_neighbor_of = FROM
+			ai_attitude = {
+				WHO = FROM
+				attitude = attitude_threatened
+			}
+		}
+		has_opinion = {
 			who = FROM
+			value = 50
+		}
+		NOT = { is_rival = ROOT }
+		NOT = { is_rival = FROM }
+		any_rival_country = {
+			has_casus_belli_against = FROM
 		}
 	}
 }
