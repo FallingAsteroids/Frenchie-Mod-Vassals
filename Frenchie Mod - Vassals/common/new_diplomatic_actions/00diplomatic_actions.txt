@@ -591,6 +591,7 @@ demand_protectorate = {
 
 	ai_acceptance = { # This works similarly to variable_arithmetic_trigger, but does not support triggers generally. Instead, "limit" will be evaluated first and the rest ignored if it isn't passed.
 		add_entry = {
+			name = Base
 			export_to_variable = {
 				variable_name = ai_value
 				value = 50
