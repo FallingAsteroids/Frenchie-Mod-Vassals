@@ -724,32 +724,19 @@ demand_protectorate = {
 			multiply_variable = { which = ai_value value = 5 }
 		}
 	}
-	ai_will_do = { # this is a trigger
+	ai_will_do = {
 		NOT = { #stops spam
 			OR = {
 				has_opinion_modifier = {
 					who = FROM
-		  		modifier = declined_protectorate_status
-				}
-				has_opinion_modifier = {
-					who = ROOT
-					with = FROM
 					modifier = declined_protectorate_status
 				}
 			}
 		}
-		has_opinion = { #dont do it to people you hate
-			who = ROOT
-			value = 1
-		}
-		OR = { #ai plays grand strategy
-			any_rival_country = { #only do it against who your rivals will eat
-				has_casus_belli_against = FROM
+		OR = {
+			any_rival_country = {
+				has_casus_belli_against = FROM}
 			}
-			NOT = { #rich
-				monthly_income = FROM
-			}
-		}
 	}
 }
 
@@ -763,9 +750,10 @@ cancel_protectorate =  {
 		}
 	}
 	is_allowed = {
-		reverse_has_opinion_modifier = {
-			modifier = insulted
-			who = FROM
+#		reverse_has_opinion_modifier = {
+#			modifier = insulted
+#			who = FROM
+		always = yes
 		}
 	}
 	on_accept = {
@@ -809,6 +797,7 @@ become_independent = {
 		grant_independence = yes
 	}
 	ai_will_do = {
-		liberty_desire = 50
+#		liberty_desire = 50
+		always = no
 	}
 }
