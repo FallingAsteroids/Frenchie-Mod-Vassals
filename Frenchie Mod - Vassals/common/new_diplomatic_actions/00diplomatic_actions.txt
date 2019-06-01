@@ -569,12 +569,20 @@ demand_protectorate = {
 		}
 	}
 	is_allowed = {
-		always = yes
+		FROM = {
+			NOT = {
+				is_subject = yes
+				is_rival = ROOT
+			}
+		}
+		NOT = {
+			is_rival = FROM
+		}
 	}
 	on_accept = {
 		add_trust = {
 			who = FROM
-			value = 20
+			value = 5
 			mutual = yes
 		}
 		create_subject = {
@@ -582,38 +590,57 @@ demand_protectorate = {
 			subject = FROM
 		}
 	}
-	on_decline =	{	add_opinion = {
+	on_decline =	{
+		add_opinion = {
 		who = FROM
-		with = ROOT
 		modifier = declined_protectorate_status
-									}
+		}
 	}
 
 	ai_acceptance = { # This works similarly to variable_arithmetic_trigger, but does not support triggers generally. Instead, "limit" will be evaluated first and the rest ignored if it isn't passed.
-		add_entry = {
-			name = Base
+		add_entry = { name = Base
 			export_to_variable = {
 				variable_name = ai_value
-				value = -50
+				value = -25
 				who = FROM
 				with = THIS
 			}
 		}
-		add_entry = {
-			name = Opinion
+		add_entry = { name = Married
+			limit = {
+				FROM = { marriage_with = ROOT }
+			}
 			export_to_variable = {
 				variable_name = ai_value
-				value = opinion
-				who = FROM
-				with = ROOT
-			}
-			multiply_variable = {
-				which = ai_value
-				value = 0.5
+				value = 10
 			}
 		}
-		add_entry = {
-			name = Trust
+		add_entry = { name = Alliance
+			limit = {
+				FROM = { alliance_with = ROOT }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+		}
+		add_entry = { name = Is_Emperor
+			limit = {
+				FROM = { is_emperor = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -1000
+			}
+		}
+#		add_entry = {	name = MYLEGITIMACY_TT
+#			export_to_variable = {
+#				which = ai_value
+#				value = trigger_value:legitimacy
+#			}
+#			divide_variable = { which = ai_value value = 2 }
+#		}
+		add_entry = { name = Trust
 			export_to_variable = {
 				variable_name = ai_value
 				value = trust
@@ -629,8 +656,20 @@ demand_protectorate = {
 				value = 100
 			}
 		}
-		add_entry = {
-			name = Distance
+		add_entry = { name = Relative_Armies
+			export_to_variable = {
+				variable_name = ai_value
+				value = army_size
+				who = FROM
+			}
+			export_to_variable = {
+				variable_name = ai_value_army
+				value = army_size
+			}
+			subtract_variable = { which = ai_value which = ai_value_army }
+			multiply_variable = {	which = ai_value value = -1	}
+		}
+		add_entry = { name = Distance_Between_Borders
 			export_to_variable = {
 				variable_name = ai_value
 				value = border_distance
@@ -642,60 +681,66 @@ demand_protectorate = {
 			}
 			divide_variable = { which = ai_value value = 5 }
 		}
-#		add_entry = {
-#			name = Distance_Between_Capitals
-#			export_to_variable = {
-#				variable = ai_value
-#				value = capital_distance
-#				who = ROOT
-#			}
-#			multiply_variable = { which = ai_value value = -1 }
-#			divide_variable = {
-#				which = ai_value
-#				value = 10
-#			}
-#		}
-		add_entry = {
-			name = Relative_Economies
+		add_entry = { name = Realitive_Economy
 			export_to_variable = {
-				variable = ai_value
-				value = total_development
+				variable_name = ai_value
+				value = monthly_income
 				who = FROM
 			}
 			export_to_variable = {
-				variable = EcoOfSender
-				value = total_development
-				who = ROOT
+				variable_name = ai_value_econ
+				value = monthly_income
 			}
-			subtract_variable = { which = ai_value value = EcoOfSender }
-			multiply_variable = { which = ai_value value = 0.1 }
+			subtract_variable = {	which = ai_value which = ai_value_econ }
+			multiply_variable = {	which = ai_value value = -1	}
+		}
+		add_entry = { name = Opinion
+			export_to_variable = {
+				variable_name = ai_value
+				value = opinion
+				who = FROM
+				with = ROOT
+			}
+			multiply_variable = {
+				which = ai_value
+				value = 0.25
+			}
+		}
+		add_entry = { name = Relative_Diplomatic_Reputation
+			export_to_variable = {
+				variable_name = ai_value
+				value = modifier:diplomatic_reputation
+			}
+			export_to_variable ={
+			variable_name = ai_value_diprep
+			value = modifier:diplomatic_reputation
+			who = FROM
+			}
+			subtract_variable = {
+				which = ai_value
+				which = ai_value_diprep
+			}
+			multiply_variable = { which = ai_value value = 5 }
 		}
 	}
 	ai_will_do = { # this is a trigger
-		NOT = {
-			has_opinion_modifier = {
-				who = FROM
-		  	modifier = declined_protectorate_status
+		NOT = { #stops spam
+			OR = {
+				has_opinion_modifier = {
+					who = FROM
+		  		modifier = declined_protectorate_status
+				}
+				has_opinion_modifier = {
+					who = ROOT
+					modifier = declined_protectorate_status
+				}
 			}
 		}
-		OR = {
-			is_neighbor_of = FROM
-			ai_attitude = {
-				WHO = FROM
-				attitude = attitude_threatened
-			}
-			ai_attitude = {
-				WHO = ROOT
-				attitude = attitude_domineering
-			}
-		}
-		has_opinion = {
+		has_opinion = { #dont do it to people you hate
 			who = ROOT
 			value = 1
 		}
-		NOT = { is_rival = ROOT }
-		NOT = { is_rival = FROM }
-		any_rival_country = {
+		any_rival_country = { #only do it against who your rivals will eat
 			has_casus_belli_against = FROM
 		}
 	}
@@ -740,10 +785,22 @@ become_independent = {
 			is_subject_of_type = protectorate
 			is_subject_of_type = autonomous_vassal
 		}
-    }
-	is_allowed = { always = yes}
+  }
+	is_allowed = {
+		is_subject_of = FROM
+		OR = {
+			is_subject_of_type = protectorate
+			is_subject_of_type = autonomous_vassal
+		}
+	}
 	on_accept = {
+		add_opinion = {
+			who = FROM
+			modifier = declined_protectorate_status
+		}
 		grant_independence = yes
 	}
-	ai_will_do = { always = no }
+	ai_will_do = {
+		liberty_desire = 50
+	}
 }
