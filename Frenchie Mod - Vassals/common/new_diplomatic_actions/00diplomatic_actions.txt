@@ -715,6 +715,76 @@ demand_protectorate = {
 			}
 			multiply_variable = { which = ai_value value = 5 }
 		}
+		add_entry = { name = Has_Subjects_of_its_own
+			export_to_variable = {
+				variable_name = ai_value
+				which = 0
+			}
+			if = {
+				limit = { FROM = { all_subject_country = { is_subject_of_type = protectorate } } }
+				subtract_variable = { which = ai_value value = 30 }
+			}
+		}
+		add_entry = { name = Culture
+			export_to_variable = {
+				variable_name = ai_value
+				value = -10
+			}
+			export_to_variable = {
+				variable_name = YourCulture
+				value = primary_culture
+				who = ROOT
+			}
+			export_to_variable = {
+				variable_name = TheirCulture
+				value = primary_culture
+				who = FROM
+			}
+			if = {
+				limit = {
+					AND = {
+						check_variable = {
+							which = YourCulture
+							value = TheirCulture
+						}
+						check_variable = {
+							which = TheirCulture
+							value = YourCulture
+						}
+					}
+				}
+				multiply_variable = { which = ai_value value = -1 }
+			}
+		}
+		add_entry = { name = Religion
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+			export_to_variable = {
+				variable_name = YourReligion
+				value = religion
+				who = ROOT
+			}
+			export_to_variable = {
+				variable_name = TheirReligion
+				value = religion
+				who = FROM
+			}
+			if = {
+				limit = {
+						#check_variable = {
+						#	which = YourReligion
+						#	which = TheirReligion
+						#}
+						check_variable = {
+							which = TheirReligion
+							which = YourReligion
+						}
+				}
+				change_variable = { which = ai_value value = 40 }
+			}
+		}
 	}
 
 	ai_will_do = { # this is a trigger
@@ -807,13 +877,6 @@ make_protec_free_asasantana = {
 				value = 1000
 			}
 		}
-		#add_entry = {	name = MYLEGITIMACY_TT
-			#export_to_variable = {
-				#which = ai_value
-				#value = trigger_value:legitimacy
-			#}
-			#divide_variable = { which = ai_value value = 2 }
-			#}
 		add_entry = { name = Trust
 			export_to_variable = {
 				variable_name = ai_value
@@ -895,6 +958,47 @@ make_protec_free_asasantana = {
 				which = ai_value_diprep
 			}
 			multiply_variable = { which = ai_value value = -5 }
+		}
+		add_entry = { name = Has_Subjects_of_its_own
+			export_to_variable = {
+				variable_name = ai_value
+				which = 0
+			}
+			if = {
+				limit = { FROM = { any_subject_country = { is_subject_of_type = protectorate } } }
+				subtract_variable = { which = ai_value value = 30 }
+			}
+		}
+		add_entry = { name = Culture
+			export_to_variable = {
+				variable_name = ai_value
+				value = 10
+			}
+			export_to_variable = {
+				variable_name = YourCulture
+				value = trigger_value:culture_group
+				who = ROOT
+			}
+			export_to_variable = {
+				variable_name = TheirCulture
+				value = trigger_value:culture_group
+				who = FROM
+			}
+			if = {
+				limit = {
+					AND = {
+						check_variable = {
+							which = YourCulture
+							value = TheirCulture
+						}
+						check_variable = {
+							which = TheirCulture
+							value = YourCulture
+						}
+					}
+				}
+				multiply_variable = { which = ai_value value = -1 }
+			}
 		}
 	}
 
