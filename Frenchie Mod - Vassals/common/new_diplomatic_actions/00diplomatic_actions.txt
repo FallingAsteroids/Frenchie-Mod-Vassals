@@ -745,45 +745,25 @@ demand_protectorate = {
 					AND = {
 						check_variable = {
 							which = YourCulture
-							value = TheirCulture
+							which = TheirCulture
 						}
 						check_variable = {
 							which = TheirCulture
-							value = YourCulture
+							which = YourCulture
 						}
 					}
 				}
 				multiply_variable = { which = ai_value value = -1 }
 			}
 		}
-		add_entry = { name = Religion
+		add_entry = { name = Same_Religion
 			export_to_variable = {
 				variable_name = ai_value
-				value = -30
-			}
-			export_to_variable = {
-				variable_name = YourReligion
-				value = religion
-				who = ROOT
-			}
-			export_to_variable = {
-				variable_name = TheirReligion
-				value = religion
+				value = trigger_value:has_matching_religion
 				who = FROM
+				with = ROOT
 			}
-			if = {
-				limit = {
-						#check_variable = {
-						#	which = YourReligion
-						#	which = TheirReligion
-						#}
-						check_variable = {
-							which = TheirReligion
-							which = YourReligion
-						}
-				}
-				change_variable = { which = ai_value value = 40 }
-			}
+			multiply_variable = { which = ai_value value = 10 }
 		}
 	}
 
