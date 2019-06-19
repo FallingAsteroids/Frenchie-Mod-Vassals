@@ -573,6 +573,8 @@ demand_protectorate = {
 			NOT = {
 				is_subject = yes
 				is_rival = ROOT
+				is_emperor = yes
+				is_great_power = yes
 			}
 		}
 		NOT = {
@@ -624,15 +626,15 @@ demand_protectorate = {
 				value = -30
 			}
 		}
-		add_entry = { name = Is_Emperor
-			limit = {
-				FROM = { is_emperor = yes }
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -1000
-			}
-		}
+#		add_entry = { name = Is_Emperor
+#			limit = {
+#				FROM = { is_emperor = yes }
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -1000
+#			}
+#		}
 		add_entry = { name = Trust
 			export_to_variable = {
 				variable_name = ai_value
@@ -715,57 +717,79 @@ demand_protectorate = {
 			}
 			multiply_variable = { which = ai_value value = 5 }
 		}
-		add_entry = { name = Has_Subjects_of_its_own
+		add_entry = { name = Has_Subjects_of_its_own #todo
 			export_to_variable = {
 				variable_name = ai_value
-				which = 0
+				value = num_of_subjects
 			}
-			if = {
-				limit = { FROM = { all_subject_country = { is_subject_of_type = protectorate } } }
-				subtract_variable = { which = ai_value value = 30 }
-			}
-		}
-		add_entry = { name = Culture
-			export_to_variable = {
-				variable_name = ai_value
-				value = -10
-			}
-			export_to_variable = {
-				variable_name = YourCulture
-				value = primary_culture
-				who = ROOT
-			}
-			export_to_variable = {
-				variable_name = TheirCulture
-				value = primary_culture
-				who = FROM
-			}
-			if = {
-				limit = {
-					AND = {
-						check_variable = {
-							which = YourCulture
-							which = TheirCulture
-						}
-						check_variable = {
-							which = TheirCulture
-							which = YourCulture
-						}
-					}
-				}
-				multiply_variable = { which = ai_value value = -1 }
-			}
+			multiply_variable = { which = ai_value value = 20 }
 		}
 		add_entry = { name = Same_Religion
 			LIMIT = {
-				FROM = {
-						religion = catholic
-				}
+					FROM = { has_matching_religion = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 30
+			}
+		}
+		add_entry = { name = Different_Religion
+			LIMIT = {
+				NOT = {
+					has_matching_religion = FROM
+					}
 			}
 
 			export_to_variable = {
 				variable_name = ai_value
-				value = 30
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Borders_Unfaithful
+			LIMIT = {
+					AND = {
+							has_matching_religion = FROM
+							FROM = {has_border_with_religious_enemy	= yes}
+					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = 15
+				who = FROM
+			}
+		}
+		add_entry = { name = Impressed_by_your_generals
+			LIMIT = {
+					FROM = {
+					has_commanding_three_star = yes
+					}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 10
+				who = FROM
+			}
+		}
+#		add_entry = { name = Is_Great_Power
+#			limit = {
+#				FROM = { is_great_power = yes }
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -1000
+#			}
+#		}
+		add_entry = { name = Development
+			export_to_variable = {
+				variable_name = ai_value
+				value = total_development
+				who = FROM
+			}
+			multiply_variable = {
+				which = ai_value
+				value = -0.2
 			}
 		}
 	}
@@ -787,8 +811,14 @@ demand_protectorate = {
 			who = ROOT
 			value = 1
 		}
+#		any_rival_country = { #only do it against who your rivals will eat
+#				has_casus_belli = {
+#					type = cb_conquest
+#					target = FROM
+#				}
+#		}
 		any_rival_country = { #only do it against who your rivals will eat
-			has_casus_belli_against = FROM
+				has_casus_belli_against = FROM
 		}
 	}
 }
