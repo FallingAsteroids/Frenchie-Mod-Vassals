@@ -826,24 +826,32 @@ demand_protectorate = {
 	}
 
 	ai_will_do = { # this is a trigger
-		NOT = { #stops spam
-			OR = {
-				has_opinion_modifier = {
-					who = FROM
-		  		modifier = declined_protectorate_status
-				}
-				has_opinion_modifier = {
-					who = ROOT
-					modifier = declined_protectorate_status
+		AND = {
+			NOT = { #stops spam
+				OR = {
+					has_opinion_modifier = {
+						who = FROM
+			  		modifier = declined_protectorate_status
+					}
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = declined_protectorate_status
+					}
 				}
 			}
-		}
-		has_opinion = { #dont do it to people you hate
-			who = ROOT
-			value = 1
-		}
-		any_rival_country = { #only do it against who your rivals will eat
-				has_casus_belli_against = FROM
+			has_opinion = { #dont do it to people you hate
+				who = ROOT
+				value = 1
+			}
+			any_rival_country = { #only do it against who your rivals will eat
+					has_casus_belli_against = FROM
+			}
+			any_subject_country = {
+				AND = {
+				NOT = { liberty_desire = 50 }
+				is_subject_of_type = protectorate
+				}
+			}
 		}
 	}
 }
@@ -857,23 +865,11 @@ make_protec_free_asasantana = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		NOT = {
-			is_subject_of = FROM
-			is_subject_of_type = protectorate
-			is_subject_of_type = autonomous_vassal
-			is_subject_of_type = ward
-			is_subject_of_type = estate
-		}
+		FROM = { is_subject_of_type = protectorate }
 		overlord_of = FROM
 	}
 	is_allowed = {
-	NOT = {
-		is_subject_of = FROM
-		is_subject_of_type = protectorate
-		is_subject_of_type = autonomous_vassal
-		is_subject_of_type = ward
-		is_subject_of_type = estate
-	}
+	FROM = { is_subject_of_type = protectorate }
 	overlord_of = FROM
 	NOT = { ROOT = { ai = yes} }
 	}
@@ -1133,23 +1129,11 @@ Abandon_Protectorate = {
 	require_acceptance = no # Whether the recipient gets an option to decline
 
 	is_visible = {
-		NOT = {
-			is_subject_of = FROM
-			is_subject_of_type = protectorate
-			is_subject_of_type = autonomous_vassal
-			is_subject_of_type = ward
-			is_subject_of_type = estate
-		}
+		FROM = { is_subject_of_type = protectorate }
 		overlord_of = FROM
 	}
 	is_allowed = {
-	NOT = {
-		is_subject_of = FROM
-		is_subject_of_type = protectorate
-		is_subject_of_type = autonomous_vassal
-		is_subject_of_type = ward
-		is_subject_of_type = estate
-	}
+	FROM = { is_subject_of_type = protectorate }
 	overlord_of = FROM
 	}
 	on_accept = {
