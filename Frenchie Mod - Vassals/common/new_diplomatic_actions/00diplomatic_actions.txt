@@ -1146,9 +1146,14 @@ Abandon_Protectorate = {
 	}
 
 	ai_will_do = { # this is a trigger
-		NOT = {
-			any_rival_country = { #only do it against who your rivals will eat
-					has_casus_belli_against = FROM
+		AND = {
+			NOT = {
+				any_rival_country = { #only do it against who your rivals will eat
+						has_casus_belli_against = FROM
+				}
+			}
+			NOT = {
+				FROM = { liberty_desire = 26 }
 			}
 		}
 	}

@@ -774,6 +774,7 @@ protectorate = {
 	}
 
 	relative_power_class = 3
+	base_liberty_desire = -35.0
 
  	can_be_established = { always = yes }
 	overlord_can_be_subject = no
