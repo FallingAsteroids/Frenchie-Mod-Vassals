@@ -1154,9 +1154,7 @@ Abandon_Protectorate = {
 						has_casus_belli_against = FROM
 				}
 			}
-			NOT = {
-				FROM = { liberty_desire = 26 }
-			}
+			FROM = { liberty_desire = 26 }
 		}
 	}
 }
