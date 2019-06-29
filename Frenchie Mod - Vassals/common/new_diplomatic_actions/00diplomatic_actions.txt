@@ -846,10 +846,12 @@ demand_protectorate = {
 			any_rival_country = { #only do it against who your rivals will eat
 					has_casus_belli_against = FROM
 			}
-			any_subject_country = {
-				AND = {
-				NOT = { liberty_desire = 50 }
-				is_subject_of_type = protectorate
+			NOT = {
+				any_subject_country = {
+					AND = {
+						liberty_desire = 50
+						is_subject_of_type = protectorate
+					}
 				}
 			}
 		}
