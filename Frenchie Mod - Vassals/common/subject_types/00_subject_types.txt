@@ -772,6 +772,9 @@ protectorate = {
 			is_subject_of_type = colony
 		}
 	}
+
+	relative_power_class = 3
+
  	can_be_established = { always = yes }
 	overlord_can_be_subject = no
  	can_have_subjects_of_other_types = yes
