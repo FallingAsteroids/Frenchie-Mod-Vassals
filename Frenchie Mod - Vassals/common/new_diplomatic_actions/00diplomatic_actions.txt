@@ -626,15 +626,25 @@ demand_protectorate = {
 				value = -30
 			}
 		}
-#		add_entry = { name = Is_Emperor
-#			limit = {
-#				FROM = { is_emperor = yes }
-#			}
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = -1000
-#			}
-#		}
+		add_entry = { name = Is_Emperor
+			limit = {
+				ROOT = { is_emperor = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 20
+			}
+		}
+		add_entry = { name = Is_Elector
+			limit = {
+				FROM = { is_elector = yes}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+				who = FROM
+			}
+		}
 		add_entry = { name = Trust
 			export_to_variable = {
 				variable_name = ai_value
@@ -717,20 +727,13 @@ demand_protectorate = {
 			}
 			multiply_variable = { which = ai_value value = 5 }
 		}
-		add_entry = { name = Has_Subjects_of_its_own #todo
-			export_to_variable = {
-				variable_name = ai_value
-				value = num_of_subjects
-			}
-			multiply_variable = { which = ai_value value = 20 }
-		}
 		add_entry = { name = Same_Religion
 			LIMIT = {
-					FROM = { has_matching_religion = yes }
+					has_matching_religion = FROM
 			}
 			export_to_variable = {
 				variable_name = ai_value
-				value = 30
+				value = 15
 			}
 		}
 		add_entry = { name = Different_Religion
@@ -760,6 +763,20 @@ demand_protectorate = {
 				who = FROM
 			}
 		}
+		add_entry = { name = root_excommunicated
+			LIMIT = {
+					AND = {
+							has_matching_religion = FROM
+							ROOT = {is_excommunicated = yes}
+					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+				who = FROM
+			}
+		}
 		add_entry = { name = Impressed_by_your_generals
 			LIMIT = {
 					FROM = {
@@ -772,15 +789,6 @@ demand_protectorate = {
 				who = FROM
 			}
 		}
-#		add_entry = { name = Is_Great_Power
-#			limit = {
-#				FROM = { is_great_power = yes }
-#			}
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = -1000
-#			}
-#		}
 		add_entry = { name = Development
 			export_to_variable = {
 				variable_name = ai_value
@@ -792,33 +800,59 @@ demand_protectorate = {
 				value = -0.2
 			}
 		}
+		add_entry = { name = Bankruptcy
+			limit = {
+				ROOT = {
+				is_bankrupt = yes
+				}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -100
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_Prots_It_Would_Abandon
+			limit = {
+				FROM = { protectorate = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -20
+				who = FROM
+			}
+		}
+
 	}
 
 	ai_will_do = { # this is a trigger
 		NOT = { #stops spam
-			OR = {
-				has_opinion_modifier = {
-					who = FROM
-		  		modifier = declined_protectorate_status
+				OR = {
+					has_opinion_modifier = {
+						who = FROM
+			  		modifier = declined_protectorate_status
+					}
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = declined_protectorate_status
+					}
 				}
-				has_opinion_modifier = {
-					who = ROOT
-					modifier = declined_protectorate_status
+		}
+		has_opinion = { #dont do it to people you hate
+				who = ROOT
+				value = 1
+		}
+		NOT = {
+			any_subject_country = {
+				AND = {
+					liberty_desire = 50
+					is_subject_of_type = protectorate
 				}
 			}
 		}
-		has_opinion = { #dont do it to people you hate
-			who = ROOT
-			value = 1
-		}
-#		any_rival_country = { #only do it against who your rivals will eat
-#				has_casus_belli = {
-#					type = cb_conquest
-#					target = FROM
-#				}
-#		}
-		any_rival_country = { #only do it against who your rivals will eat
-				has_casus_belli_against = FROM
+		any_known_country = {
+			frenchie_enemy_of_FROM = yes
+			frenchie_enemy_of_ROOT = yes
 		}
 	}
 }
@@ -832,17 +866,13 @@ make_protec_free_asasantana = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		NOT = {
-			is_subject_of = FROM
-			is_subject_of = THIS
-			is_subject_of_type = protectorate
-			is_subject_of_type = autonomous_vassal
-			is_subject_of_type = ward
-			is_subject_of_type = estate
-		}
+		FROM = { is_subject_of_type = protectorate }
 		overlord_of = FROM
 	}
 	is_allowed = {
+	FROM = { is_subject_of_type = protectorate }
+	overlord_of = FROM
+	NOT = { ROOT = { ai = yes} }
 	}
 	on_accept = {
 		FROM = { grant_independence = yes }
@@ -854,7 +884,7 @@ make_protec_free_asasantana = {
 		}
 	}
 
-	ai_acceptance = { # This works similarly to variable_arithmetic_trigger, but does not support triggers generally. Instead, "limit" will be evaluated first and the rest ignored if it isn't passed.
+	ai_acceptance = {
 		add_entry = { name = Base
 			export_to_variable = {
 				variable_name = ai_value
@@ -883,11 +913,21 @@ make_protec_free_asasantana = {
 		}
 		add_entry = { name = Is_Emperor
 			limit = {
-				FROM = { is_emperor = yes }
+				ROOT = { is_emperor = yes }
 			}
 			export_to_variable = {
 				variable_name = ai_value
-				value = 1000
+				value = -20
+			}
+		}
+		add_entry = { name = Is_Elector
+			limit = {
+				FROM = { is_elector = yes}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 50
+				who = FROM
 			}
 		}
 		add_entry = { name = Trust
@@ -972,45 +1012,99 @@ make_protec_free_asasantana = {
 			}
 			multiply_variable = { which = ai_value value = -5 }
 		}
-		add_entry = { name = Has_Subjects_of_its_own
+		add_entry = { name = Same_Religion
+			LIMIT = {
+					has_matching_religion = FROM
+			}
 			export_to_variable = {
 				variable_name = ai_value
-				which = 0
-			}
-			if = {
-				limit = { FROM = { any_subject_country = { is_subject_of_type = protectorate } } }
-				subtract_variable = { which = ai_value value = 30 }
+				value = -15
 			}
 		}
-		add_entry = { name = Culture
+		add_entry = { name = Different_Religion
+			LIMIT = {
+				NOT = {
+					has_matching_religion = FROM
+					}
+			}
+
 			export_to_variable = {
 				variable_name = ai_value
-				value = 10
-			}
-			export_to_variable = {
-				variable_name = YourCulture
-				value = trigger_value:culture_group
-				who = ROOT
-			}
-			export_to_variable = {
-				variable_name = TheirCulture
-				value = trigger_value:culture_group
+				value = 30
 				who = FROM
 			}
-			if = {
-				limit = {
+		}
+		add_entry = { name = Borders_Unfaithful
+			LIMIT = {
 					AND = {
-						check_variable = {
-							which = YourCulture
-							value = TheirCulture
-						}
-						check_variable = {
-							which = TheirCulture
-							value = YourCulture
-						}
+							has_matching_religion = FROM
+							FROM = {has_border_with_religious_enemy	= yes}
 					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = -15
+				who = FROM
+			}
+		}
+		add_entry = { name = root_excommunicated
+			LIMIT = {
+					AND = {
+							has_matching_religion = FROM
+							ROOT = {is_excommunicated = yes}
+					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = 50
+				who = FROM
+			}
+		}
+		add_entry = { name = Impressed_by_your_generals
+			LIMIT = {
+					FROM = {
+					has_commanding_three_star = yes
+					}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -10
+				who = FROM
+			}
+		}
+		add_entry = { name = Development
+			export_to_variable = {
+				variable_name = ai_value
+				value = total_development
+				who = FROM
+			}
+			multiply_variable = {
+				which = ai_value
+				value = 0.2
+			}
+		}
+		add_entry = { name = Bankruptcy
+			limit = {
+				ROOT = {
+				is_bankrupt = yes
 				}
-				multiply_variable = { which = ai_value value = -1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 100
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_Prots_It_Would_Abandon
+			limit = {
+				FROM = { protectorate = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 20
+				who = FROM
 			}
 		}
 	}
@@ -1022,14 +1116,98 @@ make_protec_free_asasantana = {
 					who = FROM
 		  		modifier = declined_protectorate_status
 				}
-				has_opinion_modifier = {
-					who = ROOT
-					modifier = declined_protectorate_status
+			}
+		}
+	}
+}
+
+Abandon_Protectorate = {
+	category = influence
+
+	alert_index = 40
+	alert_tooltip = demand_dummy_alert_tooltip
+
+	require_acceptance = no # Whether the recipient gets an option to decline
+
+	is_visible = {
+		FROM = { is_subject_of_type = protectorate }
+		overlord_of = FROM
+	}
+	is_allowed = {
+	FROM = { is_subject_of_type = protectorate }
+	overlord_of = FROM
+	}
+	on_accept = {
+		FROM = { grant_independence = yes }
+	}
+	on_decline =	{
+	}
+
+	ai_acceptance = {
+	}
+
+	ai_will_do = { # this is a trigger
+		AND = {
+			NOT = {
+				any_known_country = {
+					frenchie_enemy_of_FROM = yes
+					frenchie_enemy_of_ROOT = yes
+				}
+			}
+			FROM = { liberty_desire = 26 }
+		}
+	}
+}
+
+stop_being_protectorate = {
+	category = influence
+
+	alert_index = 40
+	alert_tooltip = demand_dummy_alert_tooltip
+
+	require_acceptance = no # Whether the recipient gets an option to decline
+
+	is_visible = {
+		AND = {
+			ROOT = { is_subject_of_type = protectorate }
+			ROOT = { is_subject_of = FROM }
+			#FROM = { ai = yes }
+		}
+	}
+	is_allowed = {
+		AND = {
+			ROOT = { is_subject_of_type = protectorate }
+			ROOT = { is_subject_of = FROM }
+			#FROM = { ai = yes }
+		}
+	}
+	on_accept = {
+		ROOT = { grant_independence = yes }
+		add_opinion = {
+		who = ROOT
+		modifier = declined_protectorate_status
+		}
+	}
+	on_decline =	{
+	}
+
+	ai_acceptance = {
+	}
+
+	ai_will_do = { # this is a trigger
+		ROOT = {
+			liberty_desire = 75
+			any_neighbor_country = {
+				frenchie_enemy_of_ROOT = yes
+				NOT = {
+					frenchie_enemy_of_FROM = yes
 				}
 			}
 		}
 	}
 }
+
+
 
 #cancel_protectorate =  {
 #	category = influence

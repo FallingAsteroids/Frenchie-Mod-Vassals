@@ -1,0 +1,83 @@
+frenchie_enemy_of_PREV = {
+  OR = {
+    is_rival = PREV
+    ai_attitude = {
+      who = PREV
+      attitude = attitude_hostile
+    }
+    ai_attitude = {
+      who = PREV
+      attitude = attitude_rivalry
+    }
+    ai_attitude = {
+      who = PREV
+      attitude = attitude_outraged
+    }
+    ai_attitude = {
+      who = PREV
+      attitude = attitude_rivalry
+    }
+    NOT = {
+      has_opinion = {
+       who = PREV
+       value = -100
+      }
+    }
+  }
+}
+
+frenchie_enemy_of_ROOT = {
+  OR = {
+    is_rival = ROOT
+    ai_attitude = {
+      who = ROOT
+      attitude = attitude_hostile
+    }
+    ai_attitude = {
+      who = ROOT
+      attitude = attitude_rivalry
+    }
+    ai_attitude = {
+      who = ROOT
+      attitude = attitude_outraged
+    }
+    ai_attitude = {
+      who = ROOT
+      attitude = attitude_rivalry
+    }
+    NOT = {
+      has_opinion = {
+       who = ROOT
+       value = -100
+      }
+    }
+  }
+}
+
+frenchie_enemy_of_FROM = {
+  OR = {
+    is_rival = FROM
+    ai_attitude = {
+      who = FROM
+      attitude = attitude_hostile
+    }
+    ai_attitude = {
+      who = FROM
+      attitude = attitude_rivalry
+    }
+    ai_attitude = {
+      who = FROM
+      attitude = attitude_outraged
+    }
+    ai_attitude = {
+      who = FROM
+      attitude = attitude_rivalry
+    }
+    NOT = {
+      has_opinion = {
+       who = FROM
+       value = -100
+      }
+    }
+  }
+}
