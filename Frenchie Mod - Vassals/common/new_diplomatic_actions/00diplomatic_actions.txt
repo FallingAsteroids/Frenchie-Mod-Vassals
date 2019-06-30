@@ -1193,7 +1193,6 @@ stop_being_protectorate = {
 
 	ai_acceptance = {
 	}
-
 	ai_will_do = { # this is a trigger
 		ROOT = {
 			liberty_desire = 75
