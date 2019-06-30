@@ -1,21 +1,14 @@
 frenchie_enemy_of_PREV = {
   OR = {
     is_rival = PREV
+    PREV = { is_rival = PREV }
     ai_attitude = {
       who = PREV
       attitude = attitude_hostile
     }
     ai_attitude = {
       who = PREV
-      attitude = attitude_rivalry
-    }
-    ai_attitude = {
-      who = PREV
       attitude = attitude_outraged
-    }
-    ai_attitude = {
-      who = PREV
-      attitude = attitude_rivalry
     }
     NOT = {
       has_opinion = {
@@ -29,21 +22,14 @@ frenchie_enemy_of_PREV = {
 frenchie_enemy_of_ROOT = {
   OR = {
     is_rival = ROOT
+    ROOT = { is_rival = PREV }
     ai_attitude = {
       who = ROOT
       attitude = attitude_hostile
     }
     ai_attitude = {
       who = ROOT
-      attitude = attitude_rivalry
-    }
-    ai_attitude = {
-      who = ROOT
       attitude = attitude_outraged
-    }
-    ai_attitude = {
-      who = ROOT
-      attitude = attitude_rivalry
     }
     NOT = {
       has_opinion = {
@@ -57,21 +43,14 @@ frenchie_enemy_of_ROOT = {
 frenchie_enemy_of_FROM = {
   OR = {
     is_rival = FROM
+    FROM = { is_rival = PREV }
     ai_attitude = {
       who = FROM
       attitude = attitude_hostile
     }
     ai_attitude = {
       who = FROM
-      attitude = attitude_rivalry
-    }
-    ai_attitude = {
-      who = FROM
       attitude = attitude_outraged
-    }
-    ai_attitude = {
-      who = FROM
-      attitude = attitude_rivalry
     }
     NOT = {
       has_opinion = {
