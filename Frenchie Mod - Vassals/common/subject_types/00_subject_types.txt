@@ -776,6 +776,9 @@ protectorate = {
 	overlord_can_be_subject = no
  	can_have_subjects_of_other_types = yes
 
+	relative_power_class = 3
+	base_liberty_desire = -50.0
+
 	has_overlords_ruler = no
 
 	can_be_integrated = no
