@@ -57,3 +57,36 @@ frenchie_enemy_of_FROM = {
     }
   }
 }
+
+frenchie_same_religious_group_as_FROM = {
+  OR = {
+    AND = {
+      religious_group = christian
+      FROM = { religious_group = christian }
+    }
+    AND = {
+      religious_group = muslim
+      FROM = { religious_group = muslim }
+    }
+    AND = {
+      religious_group = eastern
+      FROM = { religious_group = eastern }
+    }
+    AND = {
+      religious_group = dharmic
+      FROM = { religious_group = dharmic }
+    }
+    AND = {
+      religious_group = pagan
+      FROM = { religious_group = pagan }
+    }
+    AND = {
+      religious_group = jewish
+      FROM = { religious_group = jewish }
+    }
+    AND = {
+      religious_group = zoroastrian
+      FROM = { religious_group = zoroastrian }
+    }
+  }
+}

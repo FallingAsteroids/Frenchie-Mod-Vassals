@@ -838,9 +838,8 @@ demand_protectorate = {
 					}
 				}
 		}
-		has_opinion = { #dont do it to people you hate
-				who = ROOT
-				value = 1
+		NOT = {
+			frenchie_enemy_of_FROM = yes
 		}
 		NOT = {
 			any_subject_country = {
