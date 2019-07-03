@@ -727,42 +727,42 @@ demand_protectorate = {
 			}
 			multiply_variable = { which = ai_value value = 5 }
 		}
-#		add_entry = { name = Same_Religion
-#			LIMIT = {
-#					has_matching_religion = FROM
-#			}
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = 15
-#			}
-#		}
-#		add_entry = { name = Different_Religion
-#			LIMIT = {
-#				NOT = {
-#					has_matching_religion = FROM
-#					}
-#			}
-#
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = -30
-#				who = FROM
-#			}
-#		}
-#		add_entry = { name = Borders_Unfaithful
-#			LIMIT = {
-#					AND = {
-#							has_matching_religion = FROM
-#							FROM = {has_border_with_religious_enemy	= yes}
-#					}
-#			}
-#
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = 15
-#				who = FROM
-#			}
-#		}
+		add_entry = { name = Same_Religion_group
+			LIMIT = {
+					frenchie_same_religion_group_as_FROM = yes
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 30
+			}
+		}
+		add_entry = { name = Different_Religion_group
+			LIMIT = {
+				NOT = {
+					frenchie_same_religion_group_as_FROM = yes
+				}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Borders_Unfaithful
+			LIMIT = {
+					AND = {
+							frenchie_same_religion_group_as_FROM = yes
+							FROM = {has_border_with_religious_enemy	= yes}
+					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = 15
+				who = FROM
+			}
+		}
 		add_entry = { name = root_excommunicated
 			LIMIT = {
 					AND = {
@@ -1009,42 +1009,42 @@ make_protec_free_asasantana = {
 			}
 			multiply_variable = { which = ai_value value = -5 }
 		}
-#		add_entry = { name = Same_Religion
-#			LIMIT = {
-#					has_matching_religion = FROM
-#			}
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = -15
-#			}
-#		}
-#		add_entry = { name = Different_Religion
-#			LIMIT = {
-#				NOT = {
-#					has_matching_religion = FROM
-#					}
-#			}
-#
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = 30
-#				who = FROM
-#			}
-#		}
-#		add_entry = { name = Borders_Unfaithful
-#			LIMIT = {
-#					AND = {
-#							has_matching_religion = FROM
-#							FROM = {has_border_with_religious_enemy	= yes}
-#					}
-#			}
-#
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = -15
-#				who = FROM
-#			}
-#		}
+		add_entry = { name = Same_Religion_group
+			LIMIT = {
+				frenchie_same_religion_group_as_FROM = yes
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+		}
+		add_entry = { name = Different_Religion_group
+			LIMIT = {
+				NOT = {
+					frenchie_same_religion_group_as_FROM = yes
+				}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = 30
+				who = FROM
+			}
+		}
+		add_entry = { name = Borders_Unfaithful
+			LIMIT = {
+					AND = {
+							frenchie_same_religion_group_as_FROM = yes
+							FROM = {has_border_with_religious_enemy	= yes}
+					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = -15
+				who = FROM
+			}
+		}
 		add_entry = { name = root_excommunicated
 			LIMIT = {
 					AND = {

@@ -58,35 +58,68 @@ frenchie_enemy_of_FROM = {
   }
 }
 
-frenchie_same_religious_group_as_FROM = {
+frenchie_same_religion_group_as_FROM = {
   OR = {
     AND = {
-      religious_group = christian
-      FROM = { religious_group = christian }
+      religion_group = christian
+      FROM = { religion_group = christian }
     }
     AND = {
-      religious_group = muslim
-      FROM = { religious_group = muslim }
+      religion_group = muslim
+      FROM = { religion_group = muslim }
     }
     AND = {
-      religious_group = eastern
-      FROM = { religious_group = eastern }
+      religion_group = eastern
+      FROM = { religion_group = eastern }
     }
     AND = {
-      religious_group = dharmic
-      FROM = { religious_group = dharmic }
+      religion_group = dharmic
+      FROM = { religion_group = dharmic }
     }
     AND = {
-      religious_group = pagan
-      FROM = { religious_group = pagan }
+      religion_group = pagan
+      FROM = { religion_group = pagan }
     }
     AND = {
-      religious_group = jewish
-      FROM = { religious_group = jewish }
+      religion_group = jewish
+      FROM = { religion_group = jewish }
     }
     AND = {
-      religious_group = zoroastrian
-      FROM = { religious_group = zoroastrian }
+      religion_group = zoroastrian
+      FROM = { religion_group = zoroastrian }
+    }
+  }
+}
+
+frenchie_same_religion_group_as_ROOT = {
+  OR = {
+    AND = {
+      religion_group = christian
+      ROOT = { religion_group = christian }
+    }
+    AND = {
+      religion_group = muslim
+      ROOT = { religion_group = muslim }
+    }
+    AND = {
+      religion_group = eastern
+      ROOT = { religion_group = eastern }
+    }
+    AND = {
+      religion_group = dharmic
+      ROOT = { religion_group = dharmic }
+    }
+    AND = {
+      religion_group = pagan
+      ROOT = { religion_group = pagan }
+    }
+    AND = {
+      religion_group = jewish
+      ROOT = { religion_group = jewish }
+    }
+    AND = {
+      religion_group = zoroastrian
+      ROOT = { religion_group = zoroastrian }
     }
   }
 }
