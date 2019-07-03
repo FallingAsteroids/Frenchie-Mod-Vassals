@@ -763,32 +763,30 @@ demand_protectorate = {
 #				who = FROM
 #			}
 #		}
-#		add_entry = { name = root_excommunicated
-#			LIMIT = {
-#					AND = {
-#							has_matching_religion = FROM
-#							ROOT = {is_excommunicated = yes}
-#					}
-#			}
-#
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = -50
-#				who = FROM
-#			}
-#		}
-#		add_entry = { name = Impressed_by_your_generals
-#			LIMIT = {
-#					FROM = {
-#					has_commanding_three_star = yes
-#					}
-#			}
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = 10
-#				who = FROM
-#			}
-#		}
+		add_entry = { name = root_excommunicated
+			LIMIT = {
+					AND = {
+							has_matching_religion = FROM
+							ROOT = {is_excommunicated = yes}
+					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+				who = FROM
+			}
+		}
+		add_entry = { name = Impressed_by_your_generals
+			LIMIT = {
+					has_commanding_three_star = yes
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 10
+				who = FROM
+			}
+		}
 		add_entry = { name = Development
 			export_to_variable = {
 				variable_name = ai_value
@@ -1047,25 +1045,23 @@ make_protec_free_asasantana = {
 #				who = FROM
 #			}
 #		}
-#		add_entry = { name = root_excommunicated
-#			LIMIT = {
-#					AND = {
-#							has_matching_religion = FROM
-#							ROOT = {is_excommunicated = yes}
-#					}
-#			}
-#
-#			export_to_variable = {
-#				variable_name = ai_value
-#				value = 50
-#				who = FROM
-#			}
-#		}
+		add_entry = { name = root_excommunicated
+			LIMIT = {
+					AND = {
+							has_matching_religion = FROM
+							ROOT = {is_excommunicated = yes}
+					}
+			}
+
+			export_to_variable = {
+				variable_name = ai_value
+				value = 50
+				who = FROM
+			}
+		}
 		add_entry = { name = Impressed_by_your_generals
 			LIMIT = {
-					FROM = {
 					has_commanding_three_star = yes
-					}
 			}
 			export_to_variable = {
 				variable_name = ai_value
