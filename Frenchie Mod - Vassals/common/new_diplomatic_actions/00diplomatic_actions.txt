@@ -753,7 +753,7 @@ demand_protectorate = {
 			LIMIT = {
 					AND = {
 							frenchie_same_religion_group_as_FROM = yes
-							FROM = {has_border_with_religious_enemy	= yes}
+							FROM = { has_border_with_religious_enemy = yes }
 					}
 			}
 
@@ -1035,7 +1035,7 @@ make_protec_free_asasantana = {
 			LIMIT = {
 					AND = {
 							frenchie_same_religion_group_as_FROM = yes
-							FROM = {has_border_with_religious_enemy	= yes}
+							FROM = { has_border_with_religious_enemy = yes }
 					}
 			}
 
@@ -1049,7 +1049,8 @@ make_protec_free_asasantana = {
 			LIMIT = {
 					AND = {
 							has_matching_religion = FROM
-							ROOT = {is_excommunicated = yes}
+							religion = catholic
+							ROOT = { is_excommunicated = yes }
 					}
 			}
 
