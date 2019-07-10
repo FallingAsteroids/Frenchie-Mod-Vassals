@@ -742,7 +742,6 @@ demand_protectorate = {
 					frenchie_same_religion_group_as_FROM = yes
 				}
 			}
-
 			export_to_variable = {
 				variable_name = ai_value
 				value = -30
@@ -756,7 +755,6 @@ demand_protectorate = {
 							FROM = { has_border_with_religious_enemy = yes }
 					}
 			}
-
 			export_to_variable = {
 				variable_name = ai_value
 				value = 15
@@ -1024,7 +1022,6 @@ make_protec_free_asasantana = {
 					frenchie_same_religion_group_as_FROM = yes
 				}
 			}
-
 			export_to_variable = {
 				variable_name = ai_value
 				value = 30
@@ -1038,7 +1035,6 @@ make_protec_free_asasantana = {
 							FROM = { has_border_with_religious_enemy = yes }
 					}
 			}
-
 			export_to_variable = {
 				variable_name = ai_value
 				value = -15
@@ -1053,7 +1049,6 @@ make_protec_free_asasantana = {
 							ROOT = { is_excommunicated = yes }
 					}
 			}
-
 			export_to_variable = {
 				variable_name = ai_value
 				value = 50
