@@ -1,4 +1,5 @@
-﻿l_english: demand_estate_title:0 "Demand Estatination"
+﻿l_english:
+  demand_estate_title:0 "Demand Estatination"
   demand_estate_desc:0 "Do you wish to demand that $COUNTRY$ becomes your estate? If they accept, they will become your subject."
   demand_estate_tooltip:0 "Demand that they become your estate."
   demand_estate_dialog:0 "[This.GetName] demands that you become their estate!"
