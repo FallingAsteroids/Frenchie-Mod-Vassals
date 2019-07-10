@@ -562,10 +562,9 @@ demand_protectorate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		is_subject = no
 		NOT = {
-			is_subject_of = FROM
-			is_subject_of = THIS
-			is_subject_of_type = protectorate
+			FROM = { is_subject_of = ROOT }
 			is_subject_of_type = autonomous_vassal
 			is_subject_of_type = ward
 			is_subject_of_type = estate
@@ -868,6 +867,7 @@ make_protec_free_asasantana = {
 	is_visible = {
 		FROM = { is_subject_of_type = protectorate }
 		overlord_of = FROM
+		ai = yes
 	}
 	is_allowed = {
 		FROM = { is_subject_of_type = protectorate }
@@ -1167,6 +1167,7 @@ stop_being_protectorate = {
 	require_acceptance = no # Whether the recipient gets an option to decline
 
 	is_visible = {
+		always = no ############################ Remove this line to unleash the magic ########################################
 		AND = {
 			ROOT = { is_subject_of_type = protectorate }
 			ROOT = { is_subject_of = FROM }
@@ -1238,31 +1239,31 @@ stop_being_protectorate = {
 #	}
 #}
 
-#become_independent = {
-#	category = influence
-#	require_acceptance = no
-#	is_visible = {
-#		is_subject_of = FROM
-#		OR = {
-#			is_subject_of_type = protectorate
-#			is_subject_of_type = autonomous_vassal
-#		}
-#  }
-#	is_allowed = {
-#		is_subject_of = FROM
-#		OR = {
-#			is_subject_of_type = protectorate
-#			is_subject_of_type = autonomous_vassal
-#		}
-#	}
-#	on_accept = {
-#		add_opinion = {
-#			who = FROM
-#			modifier = declined_protectorate_status
-#		}
-#		grant_independence = yes
-#	}
-#	ai_will_do = {
-#		liberty_desire = 50
-#	}
-#}
+become_independent = {
+	category = influence
+	require_acceptance = no
+	is_visible = {
+		is_subject_of = FROM
+		OR = {
+			is_subject_of_type = protectorate
+			is_subject_of_type = autonomous_vassal
+		}
+  }
+	is_allowed = {
+		is_subject_of = FROM
+		OR = {
+			is_subject_of_type = protectorate
+			is_subject_of_type = autonomous_vassal
+		}
+	}
+	on_accept = {
+		add_opinion = {
+			who = FROM
+			modifier = declined_protectorate_status
+		}
+		grant_independence = yes
+	}
+	ai_will_do = {
+		liberty_desire = 50
+	}
+}
