@@ -205,6 +205,7 @@ demand_estate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		always = no ############################ Remove this line to unleash the magic ########################################
 		NOT = {
 			is_subject_of = FROM
 			is_subject_of = THIS
@@ -322,6 +323,7 @@ demand_ward = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		always = no ############################ Remove this line to unleash the magic ########################################
 		NOT = {
 			is_subject_of = FROM
 			is_subject_of = THIS
@@ -440,6 +442,7 @@ demand_autonomous_vassal = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		always = no ############################ Remove this line to unleash the magic ########################################
 		NOT = {
 			is_subject_of = FROM
 			is_subject_of = THIS
