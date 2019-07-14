@@ -562,22 +562,37 @@ demand_protectorate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		is_subject = no
 		NOT = {
-			FROM = { is_subject_of = ROOT }
-			is_subject_of_type = autonomous_vassal
-			is_subject_of_type = ward
-			is_subject_of_type = estate
+			OR = {
+				FROM = { is_subject_of = ROOT }
+				is_subject_of_type = autonomous_vassal
+				is_subject_of_type = ward
+				is_subject_of_type = estate
+				is_subject_of_type = tributary_state
+				is_subject_of_type = vassal
+				is_subject_of_type = march
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = personal_union
+				is_subject_of_type = client_vassal
+				is_subject_of_type = client_march
+				is_subject_of_type = colony
+			}
 		}
 	}
 	is_allowed = {
 		FROM = {
 			NOT = {
-				is_subject = yes
-				is_rival = ROOT
-				is_emperor = yes
-				is_great_power = yes
+				OR = {
+					is_subject = yes
+					is_rival = ROOT
+					is_emperor = yes
+					is_great_power = yes
+					is_at_war = yes
+				}
 			}
+		}
+		NOT = {
+			is_at_war = yes
 		}
 		NOT = {
 			is_rival = FROM
