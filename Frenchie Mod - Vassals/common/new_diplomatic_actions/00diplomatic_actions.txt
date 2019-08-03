@@ -609,6 +609,33 @@ demand_protectorate = {
 				with = THIS
 			}
 		}
+		add_entry = { name = Free_City
+			limit = {
+				FROM = { has_reform = free_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+		}
+		add_entry = { name = Trading_City
+			limit = {
+				FROM = { has_reform = trading_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+		}
+		add_entry = { name = In_Trade_League
+			limit = {
+				FROM = { is_in_trade_league = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+		}
 		add_entry = { name = Married
 			limit = {
 				FROM = { marriage_with = ROOT }
