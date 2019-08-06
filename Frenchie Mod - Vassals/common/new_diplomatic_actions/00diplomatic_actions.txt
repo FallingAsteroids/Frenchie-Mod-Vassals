@@ -1091,7 +1091,7 @@ stop_being_protectorate = {
 	require_acceptance = no # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = no ############################ Remove this line to unleash the magic ########################################
+		ai = yes
 		AND = {
 			ROOT = { is_subject_of_type = protectorate }
 			ROOT = { is_subject_of = FROM }
@@ -1153,9 +1153,6 @@ become_independent = {
 			modifier = declined_protectorate_status
 		}
 		grant_independence = yes
-	}
-	ai_will_do = {
-		liberty_desire = 50
 	}
 }
 
