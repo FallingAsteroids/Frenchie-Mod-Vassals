@@ -847,7 +847,7 @@ make_protec_free_asasantana = {
 	is_allowed = {
 		FROM = { is_subject_of_type = protectorate }
 		overlord_of = FROM
-		NOT = { ROOT = { ai = yes} }
+		FROM = { ai = yes}
 	}
 	on_accept = {
 		FROM = { grant_independence = yes }
