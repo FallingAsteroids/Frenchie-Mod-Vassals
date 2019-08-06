@@ -52,7 +52,7 @@ static_actions = # static_actions is a reserved token.
 
 # Create new diplomatic actions like this. AI will currently never send them.
 demand_dummy = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -167,7 +167,7 @@ demand_dummy = {
 }
 
 cancel_dummy =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -197,7 +197,7 @@ cancel_dummy =  {
 }
 
 demand_estate = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -285,7 +285,7 @@ demand_estate = {
 }
 
 cancel_estate =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -315,7 +315,7 @@ cancel_estate =  {
 }
 
 demand_ward = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -404,7 +404,7 @@ demand_ward = {
 }
 
 cancel_ward =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -434,7 +434,7 @@ cancel_ward =  {
 }
 
 demand_autonomous_vassal = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -524,7 +524,7 @@ demand_autonomous_vassal = {
 }
 
 cancel_autonomous_vassal =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -832,7 +832,7 @@ demand_protectorate = {
 }
 
 make_protec_free_asasantana = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -1083,7 +1083,7 @@ abandon_Protectorate = {
 }
 
 stop_being_protectorate = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip

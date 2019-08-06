@@ -42,8 +42,8 @@
   Development:0 "Their development"
   Bankruptcy:0 "We are bankrupt"
   Has_Prots_It_Would_Abandon:0 "[From.GetName] has protectorates they would abandon"
-  cancel_protectorate_vassal_title:0 "Abandon Protectorate"
-  cancel_protectorate_vassal_tooltip:0 "Abandon the protectorate, making them independant."
+  abandon_protectorate_vassal_title:0 "Abandon Protectorate"
+  abandon_protectorate_vassal_tooltip:0 "Abandon the protectorate, making them independant."
 
 
   become_independent_title:0 "Become Independant"
@@ -52,3 +52,5 @@
 
   increase_autonomy_title:0 "Increase autonomy"
   increase_autonomy_desc:0 "Increase autonomy, allowing you to get closer to becoming independant."
+
+  DIPLOMACYACTION_CATEGORY_french:0 "French actions"
