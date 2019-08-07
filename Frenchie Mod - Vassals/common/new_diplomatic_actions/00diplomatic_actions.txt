@@ -1404,10 +1404,12 @@ ask_to_become_protectorate = {
                         who = FROM
                     modifier = declined_protectorate_status
                     }
-                    has_opinion_modifier = {
-                        who = ROOT
-                        modifier = declined_protectorate_status
-                    }
+										ROOT = {
+											has_opinion_modifier = {
+													who = ROOT
+													modifier = declined_protectorate_status
+											}
+										}
                 }
         }
         NOT = { # Don't do it if your army is about as big as FROM or bigger
