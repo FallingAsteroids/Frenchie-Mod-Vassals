@@ -1069,18 +1069,17 @@ abandon_Protectorate = {
 	ai_acceptance = {
 	}
 
-	ai_will_do = { # this is a trigger
-		AND = {
-			NOT = {
-				any_known_country = {
-					frenchie_enemy_of_FROM = yes
-					frenchie_enemy_of_ROOT = yes
-				}
+	ai_will_do = {
+			AND = {
+					NOT = { # Don't tell them to leave if they will feed your enemies
+							any_known_country = {
+									frenchie_enemy_of_FROM = yes
+									frenchie_enemy_of_ROOT = yes
+							}
+					}
+					FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
 			}
-			FROM = { liberty_desire = 26 }
-		}
 	}
-}
 
 stop_being_protectorate = {
 	category = french
@@ -1117,16 +1116,30 @@ stop_being_protectorate = {
 
 	ai_acceptance = {
 	}
-	ai_will_do = { # this is a trigger
-		ROOT = {
-			liberty_desire = 75
-			any_known_country = {
-				frenchie_enemy_of_ROOT = yes
-				NOT = {
-					frenchie_enemy_of_FROM = yes
-				}
+	ai_will_do = {
+			ROOT = {
+					OR = {
+							liberty_desire = 90 #Leave at 90 whatever happens
+							AND = {
+									overlord = { # Don't get away if you have an enemy neighbour in the prot network
+											any_subject_country = {
+													NOT = {
+															is_subject_of_type = protectorate
+															is_neighbor_of = ROOT
+															is_enemy_of = ROOT
+													}
+											}
+									}
+									liberty_desire = 75 # Leave if you have 75 lib and other conditions
+									any_known_country = { # Leave if you no longer have any enemies outside that your overlord will protect you from
+											frenchie_enemy_of_ROOT = yes
+											NOT = {
+													frenchie_enemy_of_FROM = yes
+											}
+									}
+							}
+					}
 			}
-		}
 	}
 }
 
