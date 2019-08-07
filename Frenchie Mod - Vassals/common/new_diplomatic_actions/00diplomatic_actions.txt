@@ -1168,6 +1168,7 @@ become_independent = {
 		grant_independence = yes
 	}
 }
+
 ask_to_become_protectorate = {
     category = influence
 
@@ -1177,8 +1178,10 @@ ask_to_become_protectorate = {
     require_acceptance = yes # Whether the recipient gets an option to decline
 
     is_visible = {
-        NOT = {
-            FROM = { is_subject_of = ROOT }
+        FROM = {
+            NOT = {
+							is_subject = yes
+						}
         }
     }
     is_allowed = {
