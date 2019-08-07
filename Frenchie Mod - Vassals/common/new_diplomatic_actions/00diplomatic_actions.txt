@@ -1080,6 +1080,7 @@ abandon_Protectorate = {
 					FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
 			}
 	}
+}
 
 stop_being_protectorate = {
 	category = french
