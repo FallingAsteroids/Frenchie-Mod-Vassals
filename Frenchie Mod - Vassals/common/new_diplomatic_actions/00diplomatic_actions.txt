@@ -1066,15 +1066,15 @@ abandon_Protectorate = {
 	}
 
 	ai_will_do = {
-			AND = {
-					NOT = { # Don't tell them to leave if they will feed your enemies
-							any_known_country = {
-									frenchie_enemy_of_FROM = yes
-									frenchie_enemy_of_ROOT = yes
-							}
-					}
-					FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
+		AND = {
+			NOT = { # Don't tell them to leave if they will feed your enemies
+				any_known_country = {
+						frenchie_enemy_of_FROM = yes
+						frenchie_enemy_of_ROOT = yes
+				}
 			}
+			FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
+		}
 	}
 }
 
