@@ -1187,11 +1187,15 @@ ask_to_become_protectorate = {
     }
     is_allowed = {
         NOT = {
+						is_subject_of = FROM
             is_at_war = yes
             is_rival = FROM
             is_emperor = yes
             is_great_power = yes
             protectorate = 1
+						has_reform = free_city
+						has_reform = trading_city
+						is_in_trade_league = yes
         }
         FROM = {
             NOT = {
@@ -1200,11 +1204,6 @@ ask_to_become_protectorate = {
                 is_rival = ROOT
             }
         }
-				NOT = {
-					has_reform = free_city
-					has_reform = trading_city
-					is_in_trade_league = yes
-				}
     }
     on_accept = {
         add_trust = {
@@ -1222,8 +1221,8 @@ ask_to_become_protectorate = {
     on_decline =    {
         FROM = {
             add_opinion = {
-            who = ROOT
-            modifier = declined_protectorate_status
+            	who = ROOT
+            	modifier = declined_protectorate_status
             }
         }
     }
@@ -1399,18 +1398,18 @@ ask_to_become_protectorate = {
 
     ai_will_do = {
         NOT = { #stops spam
-                OR = {
-                    has_opinion_modifier = {
-                        who = FROM
-                    modifier = declined_protectorate_status
-                    }
-										ROOT = {
-											has_opinion_modifier = {
-													who = ROOT
-													modifier = declined_protectorate_status
-											}
-										}
-                }
+          OR = {
+            has_opinion_modifier = {
+              who = FROM
+              modifier = declined_protectorate_status
+              }
+						FROM = {
+							has_opinion_modifier = {
+							who = ROOT
+							modifier = declined_protectorate_status
+							}
+						}
+        	}
         }
         NOT = { # Don't do it if your army is about as big as FROM or bigger
             ROOT = {
