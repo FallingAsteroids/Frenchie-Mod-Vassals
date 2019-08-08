@@ -801,28 +801,26 @@ demand_protectorate = {
 	}
 
 	ai_will_do = { # this is a trigger
-		AND = {
-			NOT = { #stops spam
-				has_opinion_modifier = {
-					who = FROM
-					modifier = declined_protectorate_status
+		NOT = { #stops spam
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_protectorate_status
+			}
+		}
+		NOT = {
+			frenchie_enemy_of_FROM = yes
+		}
+		NOT = {
+			any_subject_country = {
+				AND = {
+					liberty_desire = 50
+					is_subject_of_type = protectorate
 				}
 			}
-			NOT = {
-				frenchie_enemy_of_FROM = yes
-			}
-			NOT = {
-				any_subject_country = {
-					AND = {
-						liberty_desire = 50
-						is_subject_of_type = protectorate
-					}
-				}
-			}
-			any_known_country = {
-				frenchie_enemy_of_FROM = yes
-				frenchie_enemy_of_ROOT = yes
-			}
+		}
+		any_known_country = {
+			frenchie_enemy_of_FROM = yes
+			frenchie_enemy_of_ROOT = yes
 		}
 	}
 }
@@ -1391,36 +1389,36 @@ ask_to_become_protectorate = {
 
 
   ai_ill_do = {
-		AND = {
-			NOT = { #stops spam
-				has_opinion_modifier = {
-					who = FROM
-					modifier = declined_protectorate_status
-				}
+		NOT = { #stops spam
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_protectorate_status
 			}
-			NOT = { # Don't do it if your army is about as big as FROM or bigger
-						ROOT = {
-								army_strength = {
-										who = FROM
-										value = 0.7
-								}
-						}
-			}
-			OR = {
-				FROM = { # Do it if you wanna eat any of FROM's protectorates
-					any_subject_country = {
-						is_subject_of_type = protectorate
-						ROOT = {
+		}
+		NOT = { # Don't do it if your army is about as big as FROM or bigger
+					ROOT = {
 							army_strength = {
-								who = PREV
-								value = 1
+									who = FROM
+									value = 0.7
 							}
-						}
-						ROOT = {
-							frenchie_enemy_of_PREV = yes
+					}
+		}
+		OR = {
+			FROM = { # Do it if you wanna eat any of FROM's protectorates
+				any_subject_country = {
+					is_subject_of_type = protectorate
+					ROOT = {
+						army_strength = {
+							who = PREV
+							value = 1
 						}
 					}
+					ROOT = {
+						frenchie_enemy_of_PREV = yes
+					}
 				}
+			}
+			FROM = {
 				any_neighbor_country = { # Do it if you feel menaced, and if you already have an overlord, if the next guy is stronger
 					frenchie_enemy_of_ROOT = yes
 					army_strength = {
@@ -1443,6 +1441,9 @@ ask_to_become_protectorate = {
 					}
 				}
 			}
+		}
+		any_known_country = {
+			always = yes
 		}
   }
 }
