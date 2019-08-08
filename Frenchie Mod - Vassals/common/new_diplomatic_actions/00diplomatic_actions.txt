@@ -802,16 +802,10 @@ demand_protectorate = {
 
 	ai_will_do = { # this is a trigger
 		NOT = { #stops spam
-				OR = {
-					has_opinion_modifier = {
-						who = FROM
-			  		modifier = declined_protectorate_status
-					}
-					has_opinion_modifier = {
-						who = ROOT
-						modifier = declined_protectorate_status
-					}
-				}
+			has_opinion_modifier = {
+				who = FROM
+	  		modifier = declined_protectorate_status
+			}
 		}
 		NOT = {
 			frenchie_enemy_of_FROM = yes
@@ -854,8 +848,8 @@ make_protec_free_asasantana = {
 	}
 	on_decline =	{
 		add_opinion = {
-		who = FROM
-		modifier = declined_protectorate_status
+			who = FROM
+			modifier = declined_protectorate_status
 		}
 	}
 
@@ -1219,12 +1213,10 @@ ask_to_become_protectorate = {
         }
     }
     on_decline =    {
-        FROM = {
-            add_opinion = {
-            	who = ROOT
-            	modifier = declined_protectorate_status
-            }
-        }
+      add_opinion = {
+      	who = FROM
+        modifier = declined_protectorate_status
+      }
     }
     ai_acceptance = {
         add_entry = { name = Base
@@ -1398,18 +1390,10 @@ ask_to_become_protectorate = {
 
     ai_will_do = {
         NOT = { #stops spam
-          OR = {
-            has_opinion_modifier = {
-              who = FROM
-              modifier = declined_protectorate_status
-              }
-						FROM = {
-							has_opinion_modifier = {
-							who = ROOT
-							modifier = declined_protectorate_status
-							}
-						}
-        	}
+        	has_opinion_modifier = {
+          	who = FROM
+            modifier = declined_protectorate_status
+          }
         }
         NOT = { # Don't do it if your army is about as big as FROM or bigger
             ROOT = {
