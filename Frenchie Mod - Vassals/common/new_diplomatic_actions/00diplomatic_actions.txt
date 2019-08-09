@@ -1388,7 +1388,7 @@ ask_to_become_protectorate = {
     }
 
 
-  ai_ill_do = {
+  ai_will_do = {
 		NOT = { #stops spam
 			has_opinion_modifier = {
 				who = FROM
@@ -1404,20 +1404,6 @@ ask_to_become_protectorate = {
 					}
 		}
 		OR = {
-			FROM = { # Do it if you wanna eat any of FROM's protectorates
-				any_subject_country = {
-					is_subject_of_type = protectorate
-					ROOT = {
-						army_strength = {
-							who = PREV
-							value = 1
-						}
-					}
-					ROOT = {
-						frenchie_enemy_of_PREV = yes
-					}
-				}
-			}
 			FROM = {
 				any_neighbor_country = { # Do it if you feel menaced, and if you already have an overlord, if the next guy is stronger
 					frenchie_enemy_of_ROOT = yes
@@ -1441,9 +1427,20 @@ ask_to_become_protectorate = {
 					}
 				}
 			}
-		}
-		any_known_country = {
-			always = yes
+			FROM = { # Do it if you wanna eat any of FROM's protectorates
+				any_subject_country = {
+					is_subject_of_type = protectorate
+					ROOT = {
+						army_strength = {
+							who = PREV
+							value = 1
+						}
+					}
+					ROOT = {
+						frenchie_enemy_of_PREV = yes
+					}
+				}
+			}
 		}
   }
 }
