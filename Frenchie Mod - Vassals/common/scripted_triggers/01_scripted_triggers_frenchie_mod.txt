@@ -135,13 +135,15 @@ frenchie_would_accept_becoming_protec = {
       limit = {
         ROOT = { has_reform = trading_city }
       }
-      change_variable = {
+      subtract_variable = {
         which = acceptance
-        value = -30
+        value = 30
       }
     }
     if = {
-      ROOT = { is_in_trade_league = yes }
+      limit = {
+        ROOT = { is_in_trade_league = yes }
+      }
       change_variable = {
         which = acceptance
         value = -30
