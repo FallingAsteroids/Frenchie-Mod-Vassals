@@ -124,10 +124,6 @@ frenchie_same_religion_group_as_ROOT = {
   }
 }
 
-frenchie_bigger_army_than_other_overlord = {
-  FROM =
-}
-
 
 frenchie_would_accept_becoming_protec = {
   variable_arithmetic_trigger = {
