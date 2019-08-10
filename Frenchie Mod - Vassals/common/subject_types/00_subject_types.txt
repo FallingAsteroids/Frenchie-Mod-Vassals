@@ -707,7 +707,7 @@ autonomous_vassal = {
  	can_be_established = { always = yes }
 	overlord_can_be_subject = yes
  	can_have_subjects_of_other_types = yes
-
+	can_fight_independence_war = no
 	has_overlords_ruler = no
 
 	can_be_integrated = no
@@ -731,7 +731,7 @@ autonomous_vassal = {
 	same_overlord = ward
 	same_overlord = autonomous_vassal
 	same_overlord = protectorate
-	other_overlord = autonomous_vassal
+	other_overlord = all
 	}
 	can_rival = {
 	other_overlord = ward
@@ -779,6 +779,9 @@ protectorate = {
  	can_be_established = { always = yes }
 	overlord_can_be_subject = no
  	can_have_subjects_of_other_types = yes
+	can_fight_independence_war = no
+	relative_power_class = 3
+	base_liberty_desire = -50.0
 
 	has_overlords_ruler = no
 
@@ -800,9 +803,7 @@ protectorate = {
 	uses_tariffs = yes
 
 	can_fight = {
-		other_overlord = ward
-		other_overlord = autonomous_vassal
-		other_overlord = protectorate
+		other_overlord = all
 		same_overlord = ward
 		same_overlord = autonomous_vassal
 		same_overlord = protectorate

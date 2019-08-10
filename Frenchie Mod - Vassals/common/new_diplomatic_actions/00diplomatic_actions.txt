@@ -52,7 +52,7 @@ static_actions = # static_actions is a reserved token.
 
 # Create new diplomatic actions like this. AI will currently never send them.
 demand_dummy = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -167,7 +167,7 @@ demand_dummy = {
 }
 
 cancel_dummy =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -197,7 +197,7 @@ cancel_dummy =  {
 }
 
 demand_estate = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -205,6 +205,7 @@ demand_estate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		always = no ############################ Remove this line to unleash the magic ########################################
 		NOT = {
 			is_subject_of = FROM
 			is_subject_of = THIS
@@ -284,7 +285,7 @@ demand_estate = {
 }
 
 cancel_estate =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -314,7 +315,7 @@ cancel_estate =  {
 }
 
 demand_ward = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -322,6 +323,7 @@ demand_ward = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		always = no ############################ Remove this line to unleash the magic ########################################
 		NOT = {
 			is_subject_of = FROM
 			is_subject_of = THIS
@@ -402,7 +404,7 @@ demand_ward = {
 }
 
 cancel_ward =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -432,7 +434,7 @@ cancel_ward =  {
 }
 
 demand_autonomous_vassal = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -440,6 +442,7 @@ demand_autonomous_vassal = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		always = no ############################ Remove this line to unleash the magic ########################################
 		NOT = {
 			is_subject_of = FROM
 			is_subject_of = THIS
@@ -521,7 +524,7 @@ demand_autonomous_vassal = {
 }
 
 cancel_autonomous_vassal =  {
-	category = influence
+	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
@@ -560,25 +563,24 @@ demand_protectorate = {
 
 	is_visible = {
 		NOT = {
-			is_subject_of = FROM
-			is_subject_of = THIS
-			is_subject_of_type = protectorate
-			is_subject_of_type = autonomous_vassal
-			is_subject_of_type = ward
-			is_subject_of_type = estate
+			is_subject = yes
+			FROM = { is_subject_of = ROOT }
 		}
 	}
 	is_allowed = {
+		NOT = {
+			is_subject = yes
+			is_at_war = yes
+			is_rival = FROM
+		}
 		FROM = {
 			NOT = {
 				is_subject = yes
+				is_at_war = yes
+				is_great_power = yes
 				is_rival = ROOT
 				is_emperor = yes
-				is_great_power = yes
 			}
-		}
-		NOT = {
-			is_rival = FROM
 		}
 	}
 	on_accept = {
@@ -598,7 +600,6 @@ demand_protectorate = {
 		modifier = declined_protectorate_status
 		}
 	}
-
 	ai_acceptance = {
 		add_entry = { name = Base
 			export_to_variable = {
@@ -606,6 +607,33 @@ demand_protectorate = {
 				value = -25
 				who = FROM
 				with = THIS
+			}
+		}
+		add_entry = { name = Free_City
+			limit = {
+				FROM = { has_reform = free_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+		}
+		add_entry = { name = Trading_City
+			limit = {
+				FROM = { has_reform = trading_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+			}
+		}
+		add_entry = { name = In_Trade_League
+			limit = {
+				FROM = { is_in_trade_league = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
 			}
 		}
 		add_entry = { name = Married
@@ -727,61 +755,9 @@ demand_protectorate = {
 			}
 			multiply_variable = { which = ai_value value = 5 }
 		}
-		add_entry = { name = Same_Religion
-			LIMIT = {
-					has_matching_religion = FROM
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 15
-			}
-		}
-		add_entry = { name = Different_Religion
-			LIMIT = {
-				NOT = {
-					has_matching_religion = FROM
-					}
-			}
-
-			export_to_variable = {
-				variable_name = ai_value
-				value = -30
-				who = FROM
-			}
-		}
-		add_entry = { name = Borders_Unfaithful
-			LIMIT = {
-					AND = {
-							has_matching_religion = FROM
-							FROM = {has_border_with_religious_enemy	= yes}
-					}
-			}
-
-			export_to_variable = {
-				variable_name = ai_value
-				value = 15
-				who = FROM
-			}
-		}
-		add_entry = { name = root_excommunicated
-			LIMIT = {
-					AND = {
-							has_matching_religion = FROM
-							ROOT = {is_excommunicated = yes}
-					}
-			}
-
-			export_to_variable = {
-				variable_name = ai_value
-				value = -50
-				who = FROM
-			}
-		}
 		add_entry = { name = Impressed_by_your_generals
 			LIMIT = {
-					FROM = {
 					has_commanding_three_star = yes
-					}
 			}
 			export_to_variable = {
 				variable_name = ai_value
@@ -822,44 +798,40 @@ demand_protectorate = {
 				who = FROM
 			}
 		}
-
 	}
 
 	ai_will_do = { # this is a trigger
-		AND = {
-			NOT = { #stops spam
-				OR = {
-					has_opinion_modifier = {
-						who = FROM
-			  		modifier = declined_protectorate_status
-					}
-					has_opinion_modifier = {
-						who = ROOT
-						modifier = declined_protectorate_status
-					}
+		NOT = { #stops spam
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_protectorate_status
+			}
+			subtract_variable = {
+				which = ai_value
+				which = ai_value_diprep
+			}
+			multiply_variable = { which = ai_value value = 5 }
+		}
+		NOT = {
+			frenchie_enemy_of_FROM = yes
+		}
+		NOT = {
+			any_subject_country = {
+				AND = {
+					liberty_desire = 50
+					is_subject_of_type = protectorate
 				}
 			}
-			has_opinion = { #dont do it to people you hate
-				who = ROOT
-				value = 1
-			}
-			any_rival_country = { #only do it against who your rivals will eat
-					has_casus_belli_against = FROM
-			}
-			NOT = {
-				any_subject_country = {
-					AND = {
-						liberty_desire = 50
-						is_subject_of_type = protectorate
-					}
-				}
-			}
+		}
+		any_known_country = {
+			frenchie_enemy_of_FROM = yes
+			frenchie_enemy_of_ROOT = yes
 		}
 	}
 }
 
 make_protec_free_asasantana = {
-	category = influence
+	category = french
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -869,19 +841,20 @@ make_protec_free_asasantana = {
 	is_visible = {
 		FROM = { is_subject_of_type = protectorate }
 		overlord_of = FROM
+		ai = yes
 	}
 	is_allowed = {
-	FROM = { is_subject_of_type = protectorate }
-	overlord_of = FROM
-	NOT = { ROOT = { ai = yes} }
+		FROM = { is_subject_of_type = protectorate }
+		overlord_of = FROM
+		FROM = { ai = yes}
 	}
 	on_accept = {
 		FROM = { grant_independence = yes }
 	}
 	on_decline =	{
 		add_opinion = {
-		who = FROM
-		modifier = declined_protectorate_status
+			who = FROM
+			modifier = declined_protectorate_status
 		}
 	}
 
@@ -1013,61 +986,9 @@ make_protec_free_asasantana = {
 			}
 			multiply_variable = { which = ai_value value = -5 }
 		}
-		add_entry = { name = Same_Religion
-			LIMIT = {
-					has_matching_religion = FROM
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -15
-			}
-		}
-		add_entry = { name = Different_Religion
-			LIMIT = {
-				NOT = {
-					has_matching_religion = FROM
-					}
-			}
-
-			export_to_variable = {
-				variable_name = ai_value
-				value = 30
-				who = FROM
-			}
-		}
-		add_entry = { name = Borders_Unfaithful
-			LIMIT = {
-					AND = {
-							has_matching_religion = FROM
-							FROM = {has_border_with_religious_enemy	= yes}
-					}
-			}
-
-			export_to_variable = {
-				variable_name = ai_value
-				value = -15
-				who = FROM
-			}
-		}
-		add_entry = { name = root_excommunicated
-			LIMIT = {
-					AND = {
-							has_matching_religion = FROM
-							ROOT = {is_excommunicated = yes}
-					}
-			}
-
-			export_to_variable = {
-				variable_name = ai_value
-				value = 50
-				who = FROM
-			}
-		}
 		add_entry = { name = Impressed_by_your_generals
 			LIMIT = {
-					FROM = {
 					has_commanding_three_star = yes
-					}
 			}
 			export_to_variable = {
 				variable_name = ai_value
@@ -1116,6 +1037,110 @@ make_protec_free_asasantana = {
 				has_opinion_modifier = {
 					who = FROM
 		  		modifier = declined_protectorate_status
+				}
+			}
+		}
+	}
+}
+
+abandon_Protectorate = {
+	category = influence
+
+	alert_index = 40
+	alert_tooltip = demand_dummy_alert_tooltip
+
+	require_acceptance = no # Whether the recipient gets an option to decline
+
+	is_visible = {
+		FROM = { is_subject_of_type = protectorate }
+		overlord_of = FROM
+	}
+	is_allowed = {
+		FROM = { is_subject_of_type = protectorate }
+		overlord_of = FROM
+	}
+	on_accept = {
+		FROM = { grant_independence = yes }
+	}
+	on_decline =	{
+	}
+
+	ai_acceptance = {
+	}
+
+	ai_will_do = {
+		OR = {
+			AND = {
+				NOT = { # Don't tell them to leave if they will feed your enemies
+					any_known_country = {
+							frenchie_enemy_of_FROM = yes
+							frenchie_enemy_of_ROOT = yes
+					}
+				}
+				FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
+			}
+		}
+	}
+}
+
+stop_being_protectorate = {
+	category = french
+
+	alert_index = 40
+	alert_tooltip = demand_dummy_alert_tooltip
+
+	require_acceptance = no # Whether the recipient gets an option to decline
+
+	is_visible = {
+		AND = {
+			ROOT = { is_subject_of_type = protectorate }
+			ROOT = { is_subject_of = FROM }
+			#FROM = { ai = yes }
+		}
+	}
+	is_allowed = {
+		AND = {
+			ROOT = { is_subject_of_type = protectorate }
+			ROOT = { is_subject_of = FROM }
+			#FROM = { ai = yes }
+		}
+	}
+	on_accept = {
+		ROOT = { grant_independence = yes }
+		add_opinion = {
+			who = ROOT
+			modifier = declined_protectorate_status
+		}
+	}
+	on_decline =	{
+	}
+
+	ai_acceptance = {
+	}
+	ai_will_do = {
+		ROOT = {
+			OR = {
+				liberty_desire = 90 #Leave at 90 whatever happens
+				AND = {
+					NOT = {
+						overlord = { # Don't get away if you have an enemy neighbour in the prot network that you can kill
+							any_subject_country = {
+								is_subject_of_type = protectorate
+								is_neighbor_of = ROOT
+								frenchie_enemy_of_ROOT = yes
+								ROOT = {
+									army_strength = {
+										who = PREV
+										value = 1.1
+									}
+								}
+							}
+						}
+					}
+					liberty_desire = 75 # Leave if you have 75 lib assuming no enemies
+				}
+				FROM = {
+					frenchie_enemy_of_ROOT = yes
 				}
 			}
 		}
@@ -1180,83 +1205,362 @@ stop_being_protectorate = {
 			ROOT = { is_subject_of = FROM }
 			#FROM = { ai = yes }
 		}
-	}
-	on_accept = {
-		ROOT = { grant_independence = yes }
-		add_opinion = {
-		who = ROOT
-		modifier = declined_protectorate_status
+  }
+	is_allowed = {
+		is_subject_of = FROM
+		OR = {
+			is_subject_of_type = protectorate
+			is_subject_of_type = autonomous_vassal
 		}
 	}
-	on_decline =	{
+	on_accept = {
+		add_opinion = {
+			who = FROM
+			modifier = declined_protectorate_status
+		}
+		grant_independence = yes
 	}
 
-	ai_acceptance = {
-	}
-
-	ai_will_do = { # this is a trigger
-		ROOT = { liberty_desire = 75 }
+	ai_will_do = {
+		NOT = {
+			always = yes
+		}
 	}
 }
 
+ask_to_become_protectorate = {
+  category = influence
 
+  alert_index = 40
+  alert_tooltip = demand_dummy_alert_tooltip
 
-#cancel_protectorate =  {
-#	category = influence
-#	require_acceptance = no
-#	is_visible = {
-#		overlord_of = FROM
-#		FROM = {
-#			is_subject_of_type = protectorate
-#		}
-#	}
-#	is_allowed = {
-#		reverse_has_opinion_modifier = {
-#			modifier = insulted
-#			who = FROM
-#		}
-#	}
-#	on_accept = {
-#		add_trust = {
-#			value = -10
-#			mutual = yes
-#		}
-#		FROM = {
-#			grant_independence = yes
-#		}
-#	}
-#	ai_will_do = {
-#		OR = {
-#			ROOT = { has_casus_belli_against = FROM }
-#		}
-#	}
-#}
+  require_acceptance = yes # Whether the recipient gets an option to decline
 
-#become_independent = {
-#	category = influence
-#	require_acceptance = no
-#	is_visible = {
-#		is_subject_of = FROM
-#		OR = {
-#			is_subject_of_type = protectorate
-#			is_subject_of_type = autonomous_vassal
+  is_visible = {
+    ROOT = {
+      NOT = {
+				is_subject_of = FROM
+			}
+    }
+  }
+  is_allowed = {
+		ROOT = {
+			NOT = {
+				is_subject_of = FROM
+				is_at_war = yes
+				is_rival = FROM
+				is_emperor = yes
+				is_great_power = yes
+				protectorate = 1
+				has_reform = free_city
+				has_reform = trading_city
+				is_in_trade_league = yes
+			}
+		}
+    FROM = {
+      NOT = {
+        is_subject = yes
+        is_at_war = yes
+        is_rival = ROOT
+      }
+    }
+  }
+  on_accept = {
+      add_trust = {
+          who = FROM
+          value = 5
+          mutual = yes
+      }
+      FROM = {
+          create_subject = {
+              subject_type = protectorate
+              subject = ROOT
+          }
+      }
+  }
+  on_decline =    {
+    add_opinion = {
+    	who = FROM
+      modifier = declined_protectorate_status
+    }
+  }
+  ai_acceptance = {
+    add_entry = { name = Base
+      export_to_variable = {
+          variable_name = ai_value
+          value = 25
+          who = FROM
+          with = THIS
+      }
+    }
+    add_entry = { name = Married
+      limit = {
+          FROM = { marriage_with = ROOT }
+      }
+      export_to_variable = {
+          variable_name = ai_value
+          value = 10
+      }
+    }
+    add_entry = { name = Alliance
+      limit = {
+          FROM = { alliance_with = ROOT }
+      }
+      export_to_variable = {
+          variable_name = ai_value
+          value = 30
+      }
+    }
+    add_entry = { name = Is_Elector
+      limit = {
+          FROM = { is_elector = yes}
+      }
+      export_to_variable = {
+          variable_name = ai_value
+          value = 50
+          who = FROM
+      }
+    }
+    add_entry = { name = Trust
+      export_to_variable = {
+          variable_name = ai_value
+          value = trust
+          who = FROM
+          with = ROOT
+      }
+      multiply_variable = {
+        which = ai_value
+        value = 2
+      }
+      subtract_variable = {
+        which = ai_value
+        value = 100
+      }
+    }
+    add_entry = { name = your_armies
+      export_to_variable = {
+          variable_name = ai_value
+          value = army_size
+          who = ROOT
+      }
+      multiply_variable = {   which = ai_value value = -0.5   }
+    }
+    add_entry = { name = your_economy
+      export_to_variable = {
+          variable_name = ai_value
+          value = monthly_income
+          who = ROOT
+      }
+      multiply_variable = {   which = ai_value value = 3  }
+    }
+    add_entry = { name = Opinion
+      export_to_variable = {
+          variable_name = ai_value
+          value = opinion
+          who = FROM
+          with = ROOT
+      }
+      multiply_variable = {
+          which = ai_value
+          value = 0.25
+      }
+    }
+    add_entry = { name = Development
+      export_to_variable = {
+        variable_name = ai_value
+        value = total_development
+        who = ROOT
+      }
+      multiply_variable = {
+        which = ai_value
+      	value = -0.2
+      }
+    }
+    add_entry = { name = too_many_prots
+        limit = {
+            FROM = {
+                any_subject_country = {
+                    liberty_desire = 55
+                }
+            }
+        }
+        export_to_variable = {
+            variable_name = ai_value
+            value = -100
+            who = ROOT
+        }
+    }
+    add_entry = { name = you_are_an_enemy
+        limit = {
+            FROM = {
+                frenchie_enemy_of_ROOT = yes
+            }
+        }
+        export_to_variable = {
+            variable_name = ai_value
+            value = -50
+            who = ROOT
+        }
+    }
+    add_entry = { name = protectorates_protest
+        limit = {
+            FROM = {
+                any_subject_country = {
+                    frenchie_enemy_of_ROOT = yes
+                }
+            }
+        }
+        export_to_variable = {
+            variable_name = ai_value
+            value = -15
+            who = ROOT
+        }
+    }
+    add_entry = { name = a_fox_in_the_hen_house
+        limit = {
+            FROM = {
+                any_subject_country = {
+                 ROOT = {
+                     army_strength = {
+                         who = PREV
+                         value = 1
+                     }
+                 }
+                    ROOT = {
+                        frenchie_enemy_of_PREV = yes
+                    }
+                }
+            }
+        }
+        export_to_variable = {
+            variable_name = ai_value
+            value = -15
+            who = ROOT
+        }
+    }
+    add_entry = { name = ROOT_in_danger
+        limit = {
+            FROM = {
+                any_neighbor_country = {
+                    frenchie_enemy_of_FROM = yes
+                }
+            }
+        }
+        export_to_variable = {
+            variable_name = ai_value
+            value = 20
+            who = ROOT
+        }
+    }
+	}
+
+  ai_will_do = {
+		NOT = { #stops spam
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_protectorate_status
+			}
+		}
+		NOT = { # Don't do it if your army is about as big as FROM or bigger
+			army_strength = {
+				who = FROM
+				value = 0.7
+			}
+		}
+		frenchie_would_accept_becoming_protec = yes
+		OR = {
+			ROOT = {
+				any_neighbor_country = { # Do it if you feel menaced, and if you already have an overlord, if the next guy is stronger
+					frenchie_enemy_of_ROOT = yes
+					army_strength = {
+						who = ROOT
+						value = 1.2
+					}
+					OR = {
+						ROOT = { # Either you're a subject and looking for a stronger overlord
+							is_subject = yes
+							overlord = {
+								FROM = {
+									army_strength = {
+										who = PREV
+										value = 1.2
+									}
+								}
+							}
+						}
+						FROM = { # And/Or you're just looking for an enemy of the country to become protectorate of
+							frenchie_enemy_of_PREV = yes
+						}
+						frenchie_enemy_of_FROM = yes # And/Or your enemy hates your future overlord
+					}
+				}
+			}
+			FROM = { # Do it if you wanna eat any of FROM's protectorates
+				any_subject_country = {
+					is_subject_of_type = protectorate
+					ROOT = {
+						army_strength = {
+							who = PREV
+							value = 1
+						}
+					}
+					ROOT = {
+						frenchie_enemy_of_PREV = yes
+					}
+				}
+			}
+		}
+  }
+}
+
+## Religion stuff
+#		add_entry = { name = Same_Religion_group
+#			LIMIT = {
+#					frenchie_same_religion_group_as_FROM = yes
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = 30
+#			}
 #		}
-#  }
-#	is_allowed = {
-#		is_subject_of = FROM
-#		OR = {
-#			is_subject_of_type = protectorate
-#			is_subject_of_type = autonomous_vassal
+#		add_entry = { name = Different_Religion_group
+#			LIMIT = {
+#				NOT = {
+#					frenchie_same_religion_group_as_FROM = yes
+#				}
+#			}
+#
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -30
+#				who = FROM
+#			}
 #		}
-#	}
-#	on_accept = {
-#		add_opinion = {
-#			who = FROM
-#			modifier = declined_protectorate_status
+#		add_entry = { name = Borders_Unfaithful
+#			LIMIT = {
+#					AND = {
+#							frenchie_same_religion_group_as_FROM = yes
+#							FROM = { has_border_with_religious_enemy = yes }
+#					}
+#			}
+#
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = 15
+#				who = FROM
+#			}
 #		}
-#		grant_independence = yes
-#	}
-#	ai_will_do = {
-#		liberty_desire = 50
-#	}
-#}
+#		add_entry = { name = root_excommunicated
+#			LIMIT = {
+#					AND = {
+#							has_matching_religion = FROM
+#							ROOT = {is_excommunicated = yes}
+#					}
+#			}
+#
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -50
+#				who = FROM
+#			}
+#		}

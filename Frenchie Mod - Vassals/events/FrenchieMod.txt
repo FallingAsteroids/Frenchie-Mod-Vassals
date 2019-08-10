@@ -1,0 +1,22 @@
+namespace = leon_mod
+
+# remove truces
+#country_event = {
+#  id = leon_mod.1
+#  title = "leon_mod_1_title"
+#  desc = "leon_mod_1_desc"
+#  hidden = no
+#    trigger = { #truce with overlord and need to be autonomous vassal or protectorate
+#      truce_with = overlord
+#      OR = {
+#        is_subject_of_type = autonomous_vassal
+#        is_subject_of_type = protectorate
+#      }
+#    }
+#    mean_time_to_happen = {
+#      months = 1
+#    }
+#    option = {
+#
+#    }
+#}

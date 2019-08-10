@@ -1,0 +1,355 @@
+frenchie_enemy_of_PREV = {
+  OR = {
+    is_rival = PREV
+    ai_attitude = {
+      who = PREV
+      attitude = attitude_hostile
+    }
+    ai_attitude = {
+      who = PREV
+      attitude = attitude_outraged
+    }
+    NOT = {
+      has_opinion = {
+       who = PREV
+       value = -100
+      }
+    }
+  }
+}
+
+frenchie_enemy_of_ROOT = {
+  OR = {
+    is_rival = ROOT
+    ai_attitude = {
+      who = ROOT
+      attitude = attitude_hostile
+    }
+    ai_attitude = {
+      who = ROOT
+      attitude = attitude_outraged
+    }
+    NOT = {
+      has_opinion = {
+        who = ROOT
+        value = -100
+      }
+    }
+  }
+}
+
+frenchie_enemy_of_FROM = {
+  OR = {
+    is_rival = FROM
+    ai_attitude = {
+      who = FROM
+      attitude = attitude_hostile
+    }
+    ai_attitude = {
+      who = FROM
+      attitude = attitude_outraged
+    }
+    NOT = {
+      has_opinion = {
+       who = FROM
+       value = -100
+      }
+    }
+  }
+}
+
+frenchie_same_religion_group_as_FROM = {
+  OR = {
+    AND = {
+      religion_group = christian
+      FROM = { religion_group = christian }
+    }
+    AND = {
+      religion_group = muslim
+      FROM = { religion_group = muslim }
+    }
+    AND = {
+      religion_group = eastern
+      FROM = { religion_group = eastern }
+    }
+    AND = {
+      religion_group = dharmic
+      FROM = { religion_group = dharmic }
+    }
+    AND = {
+      religion_group = pagan
+      FROM = { religion_group = pagan }
+    }
+    AND = {
+      religion_group = jewish
+      FROM = { religion_group = jewish }
+    }
+    AND = {
+      religion_group = zoroastrian
+      FROM = { religion_group = zoroastrian }
+    }
+  }
+}
+
+frenchie_same_religion_group_as_ROOT = {
+  OR = {
+    AND = {
+      religion_group = christian
+      ROOT = { religion_group = christian }
+    }
+    AND = {
+      religion_group = muslim
+      ROOT = { religion_group = muslim }
+    }
+    AND = {
+      religion_group = eastern
+      ROOT = { religion_group = eastern }
+    }
+    AND = {
+      religion_group = dharmic
+      ROOT = { religion_group = dharmic }
+    }
+    AND = {
+      religion_group = pagan
+      ROOT = { religion_group = pagan }
+    }
+    AND = {
+      religion_group = jewish
+      ROOT = { religion_group = jewish }
+    }
+    AND = {
+      religion_group = zoroastrian
+      ROOT = { religion_group = zoroastrian }
+    }
+  }
+}
+
+
+frenchie_would_accept_becoming_protec = {
+  variable_arithmetic_trigger = {
+    export_to_variable = {
+        variable_name = acceptance
+        value = -25
+    }
+    if = {
+      limit = {
+        ROOT = { has_reform = trading_city }
+      }
+      subtract_variable = {
+        which = acceptance
+        value = 30
+      }
+    }
+    if = {
+      limit = {
+        ROOT = { is_in_trade_league = yes }
+      }
+      change_variable = {
+        which = acceptance
+        value = -30
+      }
+    }
+    if = {
+      limit = {
+        FROM = { marriage_with = ROOT }
+      }
+      change_variable = {
+        which = acceptance
+        value = 10
+      }
+    }
+    if = {
+      limit = {
+        FROM = { alliance_with = ROOT }
+      }
+      subtract_variable = {
+        which = acceptance
+        value = 30
+      }
+    }
+    if = {
+      limit = {
+        ROOT = { has_reform = free_city }
+      }
+      subtract_variable = {
+        which = acceptance
+        value = 30
+      }
+    }
+    if = {
+      limit = {
+        FROM = { is_emperor = yes }
+      }
+      change_variable = {
+        which = acceptance
+        value = 20
+      }
+    }
+    if = {
+      limit = {
+        ROOT = { is_elector = yes}
+      }
+      subtract_variable = {
+        which = acceptance
+        value = 50
+      }
+    }
+    export_to_variable = {
+      variable_name = trustVAR
+      value = trust
+      who = ROOT
+      with = FROM
+    }
+    multiply_variable = {
+      which = trustVAR
+      value = 2
+    }
+    subtract_variable = {
+      which = trustVAR
+      value = 100
+    }
+    change_variable = {
+      which = acceptance
+      which = trustVAR
+    }
+    export_to_variable = {
+      variable_name = theirarmyVAR
+      value = army_size
+      who = FROM
+    }
+    export_to_variable = {
+      variable_name = yourarmyVAR
+      value = army_size
+      who = ROOT
+    }
+    subtract_variable = {
+      which = theirarmyVAR
+      which = yourarmyVAR
+    }
+    change_variable = {
+      which = acceptance
+      which = theirarmyVAR
+    }
+    export_to_variable = {
+      variable_name = distanceVAR
+      value = border_distance
+      who = FROM
+    }
+    divide_variable = {
+      which = distanceVAR
+      value = 5
+    }
+    multiply_variable = {
+      which = distanceVAR
+      value = -1
+    }
+    change_variable = {
+      which = acceptance
+      which = distanceVAR
+    }
+    export_to_variable = {
+      variable_name = theirincomeVAR
+      value = monthly_income
+      who = FROM
+    }
+    export_to_variable = {
+      variable_name = yourincomeVAR
+      value = monthly_income
+      who = ROOT
+    }
+    subtract_variable = {
+      which = theirincomeVAR
+      which = yourincomeVAR
+    }
+    change_variable = {
+      which = acceptance
+      which = theirincomeVAR
+    }
+    export_to_variable = {
+      variable_name = opinionVAR
+      value = opinion
+      who = ROOT
+      with = FROM
+    }
+    multiply_variable = {
+      which = opinionVAR
+      value = 0.25
+    }
+    change_variable = {
+      which = acceptance
+      which = opinionVAR
+    }
+    export_to_variable = {
+      variable_name = theirdiprepVAR
+      value = modifier:diplomatic_reputation
+      who = FROM
+    }
+    export_to_variable ={
+    variable_name = ourdiprepVAR
+    value = modifier:diplomatic_reputation
+    who = ROOT
+    }
+    subtract_variable = {
+      which = theirdiprepVAR
+      which = ourdiprepVAR
+    }
+    multiply_variable = {
+      which = theirdiprepVAR
+      value = 5
+    }
+    change_variable = {
+      which = acceptance
+      which = theirdiprepVAR
+    }
+    if = {
+      limit = {
+        FROM = {
+          has_commanding_three_star = yes
+        }
+      }
+      change_variable = {
+        which = acceptance
+        value = 10
+      }
+    }
+    export_to_variable = {
+      variable_name = ourdevVAR
+      value = total_development
+      who = ROOT
+    }
+    multiply_variable = {
+      which = ourdevVAR
+      value = -0.2
+    }
+    change_variable = {
+      which = acceptance
+      which = ourdevVAR
+    }
+    if = {
+      limit = {
+        FROM = {
+          is_bankrupt = yes
+        }
+      }
+      change_variable = {
+        which = acceptance
+        value = -100
+      }
+    }
+    if = {
+      limit = {
+        ROOT = { protectorate = 1 }
+      }
+      change_variable = {
+        which = acceptance
+        value = -20
+      }
+    }
+
+
+    check_variable = {
+        which = acceptance
+        value = 0
+    }
+  }
+}
