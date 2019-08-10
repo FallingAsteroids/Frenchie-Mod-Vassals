@@ -235,17 +235,17 @@ frenchie_would_accept_becoming_protec = {
       value = border_distance
       who = FROM
     }
-    multiply_variable = {
-      which = distanceVAR
-      value = -1
-    }
     divide_variable = {
       which = distanceVAR
       value = 5
     }
+    multiply_variable = {
+      which = distanceVAR
+      value = -1
+    }
     change_variable = {
       which = acceptance
-      value = distanceVAR
+      which = distanceVAR
     }
     export_to_variable = {
       variable_name = theirincomeVAR
