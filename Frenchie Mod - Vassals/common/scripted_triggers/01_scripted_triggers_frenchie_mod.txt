@@ -31,8 +31,8 @@ frenchie_enemy_of_ROOT = {
     }
     NOT = {
       has_opinion = {
-       who = ROOT
-       value = -100
+        who = ROOT
+        value = -100
       }
     }
   }

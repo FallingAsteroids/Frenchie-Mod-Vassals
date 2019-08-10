@@ -1051,8 +1051,8 @@ abandon_Protectorate = {
 		overlord_of = FROM
 	}
 	is_allowed = {
-	FROM = { is_subject_of_type = protectorate }
-	overlord_of = FROM
+		FROM = { is_subject_of_type = protectorate }
+		overlord_of = FROM
 	}
 	on_accept = {
 		FROM = { grant_independence = yes }
@@ -1074,9 +1074,6 @@ abandon_Protectorate = {
 				}
 				FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
 			}
-			ROOT = {
-				frenchie_enemy_of_FROM = yes # Dump em if you hate em
-			}
 		}
 	}
 }
@@ -1090,7 +1087,6 @@ stop_being_protectorate = {
 	require_acceptance = no # Whether the recipient gets an option to decline
 
 	is_visible = {
-		ai = yes
 		AND = {
 			ROOT = { is_subject_of_type = protectorate }
 			ROOT = { is_subject_of = FROM }
@@ -1107,8 +1103,8 @@ stop_being_protectorate = {
 	on_accept = {
 		ROOT = { grant_independence = yes }
 		add_opinion = {
-		who = ROOT
-		modifier = declined_protectorate_status
+			who = ROOT
+			modifier = declined_protectorate_status
 		}
 	}
 	on_decline =	{
@@ -1136,10 +1132,7 @@ stop_being_protectorate = {
 							}
 						}
 					}
-					liberty_desire = 75 # Leave if you have 75 lib and other conditions
-				}
-				ROOT = {
-					frenchie_enemy_of_FROM = yes
+					liberty_desire = 75 # Leave if you have 75 lib assuming no enemies
 				}
 				FROM = {
 					frenchie_enemy_of_ROOT = yes
@@ -1173,6 +1166,12 @@ become_independent = {
 		}
 		grant_independence = yes
 	}
+
+	ai_will_do = {
+		NOT = {
+			always = yes
+		}
+	}
 }
 
 ask_to_become_protectorate = {
@@ -1184,25 +1183,26 @@ ask_to_become_protectorate = {
   require_acceptance = yes # Whether the recipient gets an option to decline
 
   is_visible = {
-    FROM = {
+    ROOT = {
       NOT = {
-				is_subject = yes
 				is_subject_of = FROM
 			}
     }
   }
   is_allowed = {
-    NOT = {
-			is_subject_of = FROM
-      is_at_war = yes
-    	is_rival = FROM
-      is_emperor = yes
-      is_great_power = yes
-      protectorate = 1
-			has_reform = free_city
-			has_reform = trading_city
-			is_in_trade_league = yes
-    }
+		ROOT = {
+			NOT = {
+				is_subject_of = FROM
+				is_at_war = yes
+				is_rival = FROM
+				is_emperor = yes
+				is_great_power = yes
+				protectorate = 1
+				has_reform = free_city
+				has_reform = trading_city
+				is_in_trade_league = yes
+			}
+		}
     FROM = {
       NOT = {
         is_subject = yes
