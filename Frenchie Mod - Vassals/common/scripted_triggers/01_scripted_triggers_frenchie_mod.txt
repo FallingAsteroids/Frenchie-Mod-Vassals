@@ -169,7 +169,7 @@ frenchie_would_accept_becoming_protec = {
     }
     if = {
       limit = {
-        FROM = { has_reform = free_city }
+        ROOT = { has_reform = free_city }
       }
       subtract_variable = {
         which = acceptance
@@ -282,12 +282,12 @@ frenchie_would_accept_becoming_protec = {
     export_to_variable = {
       variable_name = theirdiprepVAR
       value = modifier:diplomatic_reputation
-      who = ROOT
+      who = FROM
     }
     export_to_variable ={
     variable_name = ourdiprepVAR
     value = modifier:diplomatic_reputation
-    who = FROM
+    who = ROOT
     }
     subtract_variable = {
       which = theirdiprepVAR
