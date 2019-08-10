@@ -1399,12 +1399,10 @@ ask_to_become_protectorate = {
 			}
 		}
 		NOT = { # Don't do it if your army is about as big as FROM or bigger
-					ROOT = {
-							army_strength = {
-									who = FROM
-									value = 0.7
-							}
-					}
+			army_strength = {
+				who = FROM
+				value = 0.7
+			}
 		}
 		frenchie_would_accept_becoming_protec = yes
 		OR = {
@@ -1413,21 +1411,23 @@ ask_to_become_protectorate = {
 					frenchie_enemy_of_ROOT = yes
 					army_strength = {
 						who = ROOT
-						value = 1.5
+						value = 1.2
 					}
-					ROOT = { # Either you're a subject and looking for a stronger overlord
-						is_subject = yes
-						overlord = {
-							FROM = {
-								army_strength = {
-									who = PREV
-									value = 1.3
+					OR = {
+						ROOT = { # Either you're a subject and looking for a stronger overlord
+							is_subject = yes
+							overlord = {
+								FROM = {
+									army_strength = {
+										who = PREV
+										value = 1.3
+									}
 								}
 							}
 						}
-					}
-					FROM = { # And/Or you're just looking for an enemy of the country to become protectorate of
-						frenchie_enemy_of_PREV = yes
+						FROM = { # And/Or you're just looking for an enemy of the country to become protectorate of
+							frenchie_enemy_of_PREV = yes
+						}
 					}
 				}
 			}
