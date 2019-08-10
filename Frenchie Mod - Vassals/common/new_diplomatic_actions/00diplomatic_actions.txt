@@ -1277,6 +1277,19 @@ ask_to_become_protectorate = {
               subject = ROOT
           }
       }
+			overlord = {
+				ROOT = {
+					add_trust = {
+						who = PREV
+						value = -5
+						mutual = yes
+					}
+					add_opinion = {
+						who = PREV
+						modifier = declined_protectorate_status
+					}
+				}
+			}
   }
   on_decline =    {
     add_opinion = {
