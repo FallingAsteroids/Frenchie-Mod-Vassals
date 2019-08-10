@@ -129,7 +129,7 @@ frenchie_would_accept_becoming_protec = {
   variable_arithmetic_trigger = {
     export_to_variable = {
         variable_name = acceptance
-        value = 1000
+        value = -25
     }
     if = {
       limit = {

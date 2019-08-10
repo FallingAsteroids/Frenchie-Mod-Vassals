@@ -1464,6 +1464,225 @@ frencheese = {
     }
   }
   is_allowed = {
+		ROOT = {
+			variable_arithmetic_trigger = {
+				export_to_variable = {
+						variable_name = acceptance
+						value = -25
+				}
+				if = {
+					limit = {
+						ROOT = { has_reform = trading_city }
+					}
+					subtract_variable = {
+						which = acceptance
+						value = 30
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { is_in_trade_league = yes }
+					}
+					subtract_variable = {
+						which = acceptance
+						value = 30
+					}
+				}
+				if = {
+					limit = {
+						FROM = { marriage_with = ROOT }
+					}
+					change_variable = {
+						which = acceptance
+						value = 10
+					}
+				}
+				if = {
+					limit = {
+						FROM = { alliance_with = ROOT }
+					}
+					subtract_variable = {
+						which = acceptance
+						value = 30
+					}
+				}
+				if = {
+					limit = {
+						FROM = { is_emperor = yes }
+					}
+					change_variable = {
+						which = acceptance
+						value = 20
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { is_elector = yes}
+					}
+					subtract_variable = {
+						which = acceptance
+						value = 50
+					}
+				}
+				export_to_variable = {
+					variable_name = trustVAR
+					value = trust
+					who = ROOT
+					with = FROM
+				}
+				multiply_variable = {
+					which = trustVAR
+					value = 2
+				}
+				subtract_variable = {
+					which = trustVAR
+					value = 100
+				}
+				change_variable = {
+					which = acceptance
+					which = trustVAR
+				}
+				export_to_variable = {
+					variable_name = theirarmyVAR
+					value = army_size
+					who = FROM
+				}
+				export_to_variable = {
+					variable_name = yourarmyVAR
+					value = army_size
+					who = ROOT
+				}
+				subtract_variable = {
+					which = theirarmyVAR
+					which = yourarmyVAR
+				}
+				change_variable = {
+					which = acceptance
+					which = theirarmyVAR
+				}
+				export_to_variable = {
+					variable_name = distanceVAR
+					value = border_distance
+					who = FROM
+				}
+				multiply_variable = {
+					which = distanceVAR
+					value = -1
+				}
+				divide_variable = {
+					which = distanceVAR
+					value = 5
+				}
+				change_variable = {
+					which = acceptance
+					value = distanceVAR
+				}
+				export_to_variable = {
+					variable_name = theirincomeVAR
+					value = monthly_income
+					who = FROM
+				}
+				export_to_variable = {
+					variable_name = yourincomeVAR
+					value = monthly_income
+					who = ROOT
+				}
+				subtract_variable = {
+					which = theirincomeVAR
+					which = yourincomeVAR
+				}
+				multiply_variable = {
+					which = theirincomeVAR
+					value = -1
+				}
+				change_variable = {
+					which = acceptance
+					which = theirincomeVAR
+				}
+				export_to_variable = {
+					variable_name = opinionVAR
+					value = opinion
+					who = ROOT
+					with = FROM
+				}
+				multiply_variable = {
+					which = opinionVAR
+					value = 0.25
+				}
+				change_variable = {
+					which = acceptance
+					which = opinionVAR
+				}
+				export_to_variable = {
+					variable_name = theirdiprepVAR
+					value = modifier:diplomatic_reputation
+					who = FROM
+				}
+				export_to_variable ={
+				variable_name = ourdiprepVAR
+				value = modifier:diplomatic_reputation
+				who = ROOT
+				}
+				subtract_variable = {
+					which = theirdiprepVAR
+					which = ourdiprepVAR
+				}
+				change_variable = {
+					which = acceptance
+					which = theirdiprepVAR
+				}
+				if = {
+					limit = {
+						FROM = {
+							has_commanding_three_star = yes
+						}
+					}
+					change_variable = {
+						which = acceptance
+						value = 10
+					}
+				}
+				export_to_variable = {
+					variable_name = ourdevVAR
+					value = total_development
+					who = ROOT
+				}
+				multiply_variable = {
+					which = ourdevVAR
+					value = -0.2
+				}
+				change_variable = {
+					which = acceptance
+					which = ourdevVAR
+				}
+				if = {
+					limit = {
+						FROM = {
+							is_bankrupt = yes
+						}
+					}
+					subtract_variable = {
+						which = acceptance
+						value = 100
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { protectorate = 1 }
+					}
+					subtract_variable = {
+						which = acceptance
+						value = 20
+					}
+				}
+
+
+				check_variable = {
+						which = acceptance
+						value = 0
+				}
+			}
+		}
     NOT = {
 			is_subject_of = FROM
       is_at_war = yes
