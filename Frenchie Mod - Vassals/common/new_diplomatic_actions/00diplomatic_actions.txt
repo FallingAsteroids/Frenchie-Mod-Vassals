@@ -806,11 +806,6 @@ demand_protectorate = {
 				who = FROM
 				modifier = declined_protectorate_status
 			}
-			subtract_variable = {
-				which = ai_value
-				which = ai_value_diprep
-			}
-			multiply_variable = { which = ai_value value = 5 }
 		}
 		NOT = {
 			frenchie_enemy_of_FROM = yes
@@ -1147,63 +1142,14 @@ stop_being_protectorate = {
 	}
 }
 
-Abandon_Protectorate = {
+become_independent = {
 	category = influence
-
-	alert_index = 40
-	alert_tooltip = demand_dummy_alert_tooltip
-
-	require_acceptance = no # Whether the recipient gets an option to decline
-
+	require_acceptance = no
 	is_visible = {
-		FROM = { is_subject_of_type = protectorate }
-		overlord_of = FROM
-	}
-	is_allowed = {
-	FROM = { is_subject_of_type = protectorate }
-	overlord_of = FROM
-	}
-	on_accept = {
-		FROM = { grant_independence = yes }
-	}
-	on_decline =	{
-	}
-
-	ai_acceptance = {
-	}
-
-	ai_will_do = { # this is a trigger
-		AND = {
-			NOT = {
-				any_rival_country = { #only do it against who your rivals will eat
-						has_casus_belli_against = FROM
-				}
-			}
-			FROM = { liberty_desire = 26 }
-		}
-	}
-}
-
-stop_being_protectorate = {
-	category = influence
-
-	alert_index = 40
-	alert_tooltip = demand_dummy_alert_tooltip
-
-	require_acceptance = no # Whether the recipient gets an option to decline
-
-	is_visible = {
-		AND = {
-			ROOT = { is_subject_of_type = protectorate }
-			ROOT = { is_subject_of = FROM }
-			#FROM = { ai = yes }
-		}
-	}
-	is_allowed = {
-		AND = {
-			ROOT = { is_subject_of_type = protectorate }
-			ROOT = { is_subject_of = FROM }
-			#FROM = { ai = yes }
+		is_subject_of = FROM
+		OR = {
+			is_subject_of_type = protectorate
+			is_subject_of_type = autonomous_vassal
 		}
   }
 	is_allowed = {
