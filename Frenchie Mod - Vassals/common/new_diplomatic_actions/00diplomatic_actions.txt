@@ -569,7 +569,6 @@ demand_protectorate = {
 	}
 	is_allowed = {
 		NOT = {
-			always = yes
 			is_subject = yes
 			is_at_war = yes
 			is_rival = FROM
@@ -840,7 +839,6 @@ make_protec_free_asasantana = {
 		ai = yes
 	}
 	is_allowed = {
-		NOT = { always = yes }
 		FROM = { is_subject_of_type = protectorate }
 		overlord_of = FROM
 		FROM = { ai = yes}
@@ -1066,14 +1064,19 @@ abandon_Protectorate = {
 	}
 
 	ai_will_do = {
-		AND = {
-			NOT = { # Don't tell them to leave if they will feed your enemies
-				any_known_country = {
-						frenchie_enemy_of_FROM = yes
-						frenchie_enemy_of_ROOT = yes
+		OR = {
+			AND = {
+				NOT = { # Don't tell them to leave if they will feed your enemies
+					any_known_country = {
+							frenchie_enemy_of_FROM = yes
+							frenchie_enemy_of_ROOT = yes
+					}
 				}
+				FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
 			}
-			FROM = { liberty_desire = 55 } # Don't tell them to leave if they pay tarrifs
+			ROOT = {
+				frenchie_enemy_of_FROM = yes # Dump em if you hate em
+			}
 		}
 	}
 }
@@ -1114,29 +1117,35 @@ stop_being_protectorate = {
 	ai_acceptance = {
 	}
 	ai_will_do = {
-			ROOT = {
-					OR = {
-							liberty_desire = 90 #Leave at 90 whatever happens
-							AND = {
-									overlord = { # Don't get away if you have an enemy neighbour in the prot network
-											any_subject_country = {
-													NOT = {
-															is_subject_of_type = protectorate
-															is_neighbor_of = ROOT
-															is_enemy_of = ROOT
-													}
-											}
+		ROOT = {
+			OR = {
+				liberty_desire = 90 #Leave at 90 whatever happens
+				AND = {
+					NOT = {
+						overlord = { # Don't get away if you have an enemy neighbour in the prot network that you can kill
+							any_subject_country = {
+								is_subject_of_type = protectorate
+								is_neighbor_of = ROOT
+								frenchie_enemy_of_ROOT = yes
+								ROOT = {
+									army_strength = {
+										who = PREV
+										value = 1.1
 									}
-									liberty_desire = 75 # Leave if you have 75 lib and other conditions
-									any_known_country = { # Leave if you no longer have any enemies outside that your overlord will protect you from
-											frenchie_enemy_of_ROOT = yes
-											NOT = {
-													frenchie_enemy_of_FROM = yes
-											}
-									}
+								}
 							}
+						}
 					}
+					liberty_desire = 75 # Leave if you have 75 lib and other conditions
+				}
+				ROOT = {
+					frenchie_enemy_of_FROM = yes
+				}
+				FROM = {
+					frenchie_enemy_of_ROOT = yes
+				}
 			}
+		}
 	}
 }
 
@@ -1420,7 +1429,7 @@ ask_to_become_protectorate = {
 								FROM = {
 									army_strength = {
 										who = PREV
-										value = 1.3
+										value = 1.2
 									}
 								}
 							}
@@ -1428,6 +1437,7 @@ ask_to_become_protectorate = {
 						FROM = { # And/Or you're just looking for an enemy of the country to become protectorate of
 							frenchie_enemy_of_PREV = yes
 						}
+						frenchie_enemy_of_FROM = yes # And/Or your enemy hates your future overlord
 					}
 				}
 			}
