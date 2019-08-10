@@ -340,6 +340,11 @@ papal_subjugation = {
 
 	trigger = {
 		overlord_of = PAP
+		NOT = {
+			PAP = {
+				is_subject_of_type = protectorate
+			}
+		}
 		NOT = { tag = ITA }
 	}
 
