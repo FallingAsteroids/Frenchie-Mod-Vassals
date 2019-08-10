@@ -261,10 +261,6 @@ frenchie_would_accept_becoming_protec = {
       which = theirincomeVAR
       which = yourincomeVAR
     }
-    multiply_variable = {
-      which = theirincomeVAR
-      value = -1
-    }
     change_variable = {
       which = acceptance
       which = theirincomeVAR
@@ -286,12 +282,12 @@ frenchie_would_accept_becoming_protec = {
     export_to_variable = {
       variable_name = theirdiprepVAR
       value = modifier:diplomatic_reputation
-      who = FROM
+      who = ROOT
     }
     export_to_variable ={
     variable_name = ourdiprepVAR
     value = modifier:diplomatic_reputation
-    who = ROOT
+    who = FROM
     }
     subtract_variable = {
       which = theirdiprepVAR
