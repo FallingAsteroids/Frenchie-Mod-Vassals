@@ -1473,7 +1473,8 @@ ask_to_become_protectorate = {
 		OR = {
 			ROOT = {
 				any_neighbor_country = { # Do it if you feel menaced, and if you already have an overlord, if the next guy is stronger
-					frenchie_enemy_of_ROOT = yes
+					frenchie_enemy_of_ROOT = yes #your enemy hates you
+					frenchie_enemy_of_FROM = yes #your enemy hates your future overlord
 					army_strength = {
 						who = ROOT
 						value = 1.2
@@ -1490,10 +1491,16 @@ ask_to_become_protectorate = {
 								}
 							}
 						}
-						FROM = { # And/Or you're just looking for an enemy of the country to become protectorate of
-							frenchie_enemy_of_PREV = yes
+						AND = { # And/Or you're just looking for an enemy of the country to become protectorate of
+							ROOT = {
+								NOT = {
+									is_subject = yes
+								}
+							}
+							FROM = {
+								frenchie_enemy_of_PREV = yes
+							}
 						}
-						frenchie_enemy_of_FROM = yes # And/Or your enemy hates your future overlord
 					}
 				}
 			}
