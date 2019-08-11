@@ -608,8 +608,8 @@ demand_protectorate = {
 		}
 		log = "[From.GetName] has refused to become protectorate under [Root.GetName]"
 		add_opinion = {
-		who = FROM
-		modifier = declined_protectorate_status
+			who = FROM
+			modifier = declined_protectorate_status
 		}
 	}
 	ai_acceptance = {
