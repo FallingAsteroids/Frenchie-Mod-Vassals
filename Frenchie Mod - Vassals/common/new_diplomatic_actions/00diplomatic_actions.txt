@@ -1382,7 +1382,7 @@ ask_to_become_protectorate = {
         limit = {
             FROM = {
                 any_subject_country = {
-                    liberty_desire = 55
+                    liberty_desire = 45
                 }
             }
         }
