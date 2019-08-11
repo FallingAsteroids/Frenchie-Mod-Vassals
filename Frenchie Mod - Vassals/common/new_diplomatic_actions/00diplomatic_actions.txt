@@ -589,12 +589,14 @@ demand_protectorate = {
 			value = 5
 			mutual = yes
 		}
+		log = "[From.GetName] has accepted to become protectorate under [Root.GetName]"
 		create_subject = {
 			subject_type = protectorate
 			subject = FROM
 		}
 	}
 	on_decline =	{
+		log = "[From.GetName] has refused to become protectorate under [Root.GetName]"
 		add_opinion = {
 		who = FROM
 		modifier = declined_protectorate_status
@@ -845,8 +847,10 @@ make_protec_free_asasantana = {
 	}
 	on_accept = {
 		FROM = { grant_independence = yes }
+		log = "[Root.GetName] has released his vassal [Root.GetName] (Asasantana)"
 	}
 	on_decline =	{
+		log = "[Root.GetName] has not released his vassal [From.GetName] (Asasantana)"
 		add_opinion = {
 			who = FROM
 			modifier = declined_protectorate_status
@@ -1055,6 +1059,7 @@ abandon_Protectorate = {
 		overlord_of = FROM
 	}
 	on_accept = {
+		log = "[Root.GetName] has released his vassal [From.GetName]"
 		FROM = { grant_independence = yes }
 	}
 	on_decline =	{
@@ -1101,6 +1106,7 @@ stop_being_protectorate = {
 		}
 	}
 	on_accept = {
+		log = "[Root.GetName] has stopped being a protectorate of [From.GetName]"
 		ROOT = { grant_independence = yes }
 		add_opinion = {
 			who = ROOT
@@ -1212,16 +1218,11 @@ ask_to_become_protectorate = {
     }
   }
 	on_accept = {
+		log = "[From.GetName] has accepted [Root.GetName]'s request to become a protectorate and will now protect him"
     add_trust = {
       who = FROM
       value = 5
       mutual = yes
-    }
-    FROM = {
-      create_subject = {
-        subject_type = protectorate
-        subject = ROOT
-      }
     }
 		overlord = {
 			ROOT = {
@@ -1236,8 +1237,15 @@ ask_to_become_protectorate = {
 				}
 			}
 		}
+		FROM = {
+			create_subject = {
+				subject_type = protectorate
+				subject = ROOT
+			}
+		}
   }
-  on_decline =    {
+  on_decline = {
+		log = "[From.GetName] has refused [Root.GetName]'s request to become a protectorate and will not protect him"
     add_opinion = {
     	who = FROM
       modifier = declined_protectorate_status
