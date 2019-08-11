@@ -1,7 +1,7 @@
 namespace = leon_mod
 
 # remove truces
-country_event = {
+country_event = { #event for overlord: subject left (located in stop_being_protectorate, become_independent)
   id = leon_mod.1
   title = "leon_mod_1.t"
   desc = "leon_mod_1.d"
@@ -10,3 +10,60 @@ country_event = {
   option = {
     name = "leon_mod.1.a"
   }
+}
+
+country_event = { #event for overlord: protectorate gained (loaced in demand_protectorate)
+  id = leon_mod.2
+  title = "leon_mod_2.t"
+  desc = "leon_mod_2.d"
+  is_triggered_only = yes
+
+  option = {
+    name = "leon_mod.2.a"
+  }
+}
+
+country_event = { #event for overlord: protectorate not gained (loaced in demand_protectorate)
+  id = leon_mod.3
+  title = "leon_mod_3.t"
+  desc = "leon_mod_3.d"
+  is_triggered_only = yes
+
+  option = {
+    name = "leon_mod.3.a"
+  }
+}
+
+
+country_event = {  #event for subject: overlord abandoned you (located in abandon_Protectorate)
+  id = leon_mod.4
+  title = "leon_mod_4.t"
+  desc = "leon_mod_4.d"
+  is_triggered_only = yes
+
+  option = {
+    name = "leon_mod.4.a"
+  }
+}
+
+country_event = {  #event for subject: overlord accepted you (located in ask_to_become_protectorate)
+  id = leon_mod.5
+  title = "leon_mod_5.t"
+  desc = "leon_mod_5.d"
+  is_triggered_only = yes
+
+  option = {
+    name = "leon_mod.5.a"
+  }
+}
+
+country_event = {  #event for subject: overlord denied you (located in ask_to_become_protectorate)
+  id = leon_mod.6
+  title = "leon_mod_6.t"
+  desc = "leon_mod_6.d"
+  is_triggered_only = yes
+
+  option = {
+    name = "leon_mod.6.a"
+  }
+}

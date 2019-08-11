@@ -584,6 +584,11 @@ demand_protectorate = {
 		}
 	}
 	on_accept = {
+		ROOT = {
+			country_event = {
+				id = leon_mod.2
+			}
+		}
 		add_trust = {
 			who = FROM
 			value = 5
@@ -596,6 +601,11 @@ demand_protectorate = {
 		}
 	}
 	on_decline =	{
+		ROOT = {
+			country_event = {
+				id = leon_mod.3
+			}
+		}
 		log = "[From.GetName] has refused to become protectorate under [Root.GetName]"
 		add_opinion = {
 		who = FROM
@@ -1059,6 +1069,11 @@ abandon_Protectorate = {
 		overlord_of = FROM
 	}
 	on_accept = {
+		FROM = {
+			country_event = {
+				id = leon_mod.4
+			}
+		}
 		log = "[Root.GetName] has released his vassal [From.GetName]"
 		FROM = { grant_independence = yes }
 	}
@@ -1106,6 +1121,11 @@ stop_being_protectorate = {
 		}
 	}
 	on_accept = {
+		FROM = {
+			country_event = {
+				id = leon_mod.1
+			}
+		}
 		log = "[Root.GetName] has stopped being a protectorate of [From.GetName]"
 		ROOT = { grant_independence = yes }
 		add_opinion = {
@@ -1223,6 +1243,11 @@ ask_to_become_protectorate = {
     }
   }
 	on_accept = {
+		ROOT = {
+			country_event = {
+				id = leon_mod.5
+			}
+		}
 		log = "[From.GetName] has accepted [Root.GetName]'s request to become a protectorate and will now protect him"
     add_trust = {
       who = FROM
@@ -1250,6 +1275,11 @@ ask_to_become_protectorate = {
 		}
   }
   on_decline = {
+		ROOT = {
+			country_event = {
+				id = leon_mod.6
+			}
+		}
 		log = "[From.GetName] has refused [Root.GetName]'s request to become a protectorate and will not protect him"
     add_opinion = {
     	who = FROM
