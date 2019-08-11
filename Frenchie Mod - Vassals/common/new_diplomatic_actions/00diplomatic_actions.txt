@@ -1160,6 +1160,11 @@ become_independent = {
 		}
 	}
 	on_accept = {
+		FROM = {
+			country_event = {
+				id = leon_mod.1
+			}
+		}
 		add_opinion = {
 			who = FROM
 			modifier = declined_protectorate_status
