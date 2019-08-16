@@ -54,3 +54,27 @@
   increase_autonomy_desc:0 "Increase autonomy, allowing you to get closer to becoming independant."
 
   DIPLOMACYACTION_CATEGORY_french:0 "French actions"
+
+  leon_mod.1.t:0 "One of your subjects have left you!"
+  leon_mod_1.d:0 "One of your volunatry subjects have decided to leave you."
+  leon_mod_1.a:0 "Traitors!"
+
+  leon_mod_2.t:0 "You have gained a protectorate!"
+  leon_mod_2.d:0 "You have gained a new protectorate! Your sphere of power expands!"
+  leon_mod_2.a:0 "Glorious!"
+
+  leon_mod_3.t:0 "A nation has declined your protectorate demand!"
+  leon_mod_3.d:0 "A nation has decided that despite your demand, they do not wish to be your protectorate."
+  leon_mod_3.a:0 "But why not?"
+
+  leon_mod_4.t:0 "Your overlord has abandoned you!"
+  leon_mod_4.d:0 "Your overlord has abandoned you, leaving you on your own, without protection."
+  leon_mod_4.a:0 "How dare they?"
+
+  leon_mod_5.t:0 "You have become a protectorate!"
+  leon_mod_5.d:0 "Your request has been accepted, and you are now a protectorate!"
+  leon_mod_5.a:0 "We're free of danger!"
+
+  leon_mod_6.t:0 "You have not become a protectorate!"
+  leon_mod_6.d:0 "Your request has been denied, and you are not a protectorate!"
+  leon_mod_6.a:0 "We never liked them anyway."
