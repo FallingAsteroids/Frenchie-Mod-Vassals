@@ -857,7 +857,7 @@ make_protec_free_asasantana = {
 	}
 	on_accept = {
 		FROM = { grant_independence = yes }
-		log = "[Root.GetName] has released his vassal [Root.GetName] (Asasantana)"
+		log = "[Root.GetName] has released his vassal [From.GetName] (Asasantana)"
 	}
 	on_decline =	{
 		log = "[Root.GetName] has not released his vassal [From.GetName] (Asasantana)"
@@ -1158,7 +1158,15 @@ stop_being_protectorate = {
 							}
 						}
 					}
-					liberty_desire = 75 # Leave if you have 75 lib assuming no enemies
+					AND = {
+						liberty_desire = 75 # Leave if you have 75 lib assuming no enemies
+						any_known_country = {
+							NOT = {
+								frenchie_enemy_of_FROM = yes
+								frenchie_enemy_of_ROOT = yes
+							}
+						}
+					}
 				}
 				FROM = {
 					frenchie_enemy_of_ROOT = yes
@@ -1323,6 +1331,18 @@ ask_to_become_protectorate = {
           who = FROM
       }
     }
+		add_entry = { name = Distance_Between_Borders
+			export_to_variable = {
+				variable_name = ai_value
+				value = border_distance
+				who = FROM
+			}
+			multiply_variable = {
+				which = ai_value
+				value = -1
+			}
+			divide_variable = { which = ai_value value = 5 }
+		}
     add_entry = { name = Trust
       export_to_variable = {
           variable_name = ai_value
@@ -1382,7 +1402,8 @@ ask_to_become_protectorate = {
         limit = {
             FROM = {
                 any_subject_country = {
-                    liberty_desire = 45
+										is_subject_of_type = protectorate
+                    liberty_desire = 50
                 }
             }
         }
@@ -1392,6 +1413,53 @@ ask_to_become_protectorate = {
             who = ROOT
         }
     }
+		add_entry = { name = subjects_becoming_unmanageable
+				limit = {
+						FROM = {
+								any_subject_country = {
+									is_subject_of_type = protectorate
+									variable_arithmetic_trigger = {
+										export_to_variable = {
+												variable_name = frenchie_lib_desire
+												value = modifier:liberty_desire
+										}
+										export_to_variable = {
+											variable_name = frenchie_overlord_army_size
+											value = army_size
+											who = FROM
+										}
+										export_to_variable = {
+											variable_name = frenchie_asker_army_size
+											value = army_size
+											who = ROOT
+										}
+										divide_variable = {
+											which = frenchie_asker_army_size
+											which = frenchie_overlord_army_size
+										}
+										multiply_variable = {
+											which = frenchie_asker_army_size
+											value = 75
+										}
+										change_variable = {
+											which = frenchie_lib_desire
+											which = frenchie_asker_army_size
+										}
+
+										check_variable = {
+											which = frenchie_lib_desire
+											value = 50
+										}
+									}
+								}
+						}
+				}
+				export_to_variable = {
+						variable_name = ai_value
+						value = -50
+						who = ROOT
+				}
+		}
     add_entry = { name = you_are_an_enemy
         limit = {
             FROM = {
