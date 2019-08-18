@@ -55,7 +55,7 @@
 
   DIPLOMACYACTION_CATEGORY_french:0 "French actions"
 
-  leon_mod.1.t:0 "One of your subjects have left you!"
+  leon_mod_1.t:0 "One of your subjects have left you!"
   leon_mod_1.d:0 "One of your volunatry subjects have decided to leave you."
   leon_mod_1.a:0 "Traitors!"
 

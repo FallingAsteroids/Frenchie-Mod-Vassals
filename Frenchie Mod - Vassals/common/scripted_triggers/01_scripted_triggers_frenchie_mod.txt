@@ -81,12 +81,12 @@ frenchie_same_religion_group_as_FROM = {
       FROM = { religion_group = pagan }
     }
     AND = {
-      religion_group = jewish
-      FROM = { religion_group = jewish }
+      religion_group = jewish_group
+      FROM = { religion_group = jewish_group }
     }
     AND = {
-      religion_group = zoroastrian
-      FROM = { religion_group = zoroastrian }
+      religion_group = zoroastrian_group
+      FROM = { religion_group = zoroastrian_group }
     }
   }
 }
@@ -114,12 +114,12 @@ frenchie_same_religion_group_as_ROOT = {
       ROOT = { religion_group = pagan }
     }
     AND = {
-      religion_group = jewish
-      ROOT = { religion_group = jewish }
+      religion_group = jewish_group
+      FROM = { religion_group = jewish_group }
     }
     AND = {
-      religion_group = zoroastrian
-      ROOT = { religion_group = zoroastrian }
+      religion_group = zoroastrian_group
+      FROM = { religion_group = zoroastrian_group }
     }
   }
 }
