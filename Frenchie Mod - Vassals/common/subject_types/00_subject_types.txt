@@ -718,6 +718,7 @@ autonomous_vassal = {
 	counts_for_borders = no			# Whether distance between borders counts this subject type as part of its overlord's borders.
 	can_use_claims = yes				# Whether the overlord can use the subject's claims and cores for declaring war
 	can_fight_independence_war = no
+	relative_power_class = 4
 	is_voluntary = yes				# Whether they can leave the relationship whenever they want
 	can_transfer_in_peace = no							# Whether this subject type can be made into a vassal with the "Transfer Subject" Age Ability.
 
