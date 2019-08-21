@@ -3942,6 +3942,11 @@ opinion_sublimis_deus = {
 }
 
 declined_protectorate_status = {
-opinion = -25
-yearly_decay = 3
+	opinion = -25
+	yearly_decay = 3
+}
+
+declined_avassal_status = {
+	opinion = -25
+	yearly_decay = 3
 }

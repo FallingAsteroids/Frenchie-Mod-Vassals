@@ -487,8 +487,12 @@ demand_autonomous_vassal = {
 			subject = FROM
 		}
 	}
-	on_decline =	{	}
-
+	on_decline = {
+		add_opinion = {
+			who = FROM
+			modifier = declined_avassal_status
+		}
+	}
 	ai_acceptance = {
 		add_entry = { name = Base
 			export_to_variable = {
@@ -690,6 +694,12 @@ demand_autonomous_vassal = {
 	}
 
 	ai_will_do = { # this is a trigger
+		NOT = { #stops spam
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_avassal_status
+			}
+		}
 		NOT = {
 			frenchie_enemy_of_FROM = yes
 			FROM = { frenchie_enemy_of_ROOT = yes }
