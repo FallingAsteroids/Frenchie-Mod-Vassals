@@ -3950,3 +3950,13 @@ declined_avassal_status = {
 	opinion = -25
 	yearly_decay = 3
 }
+
+formed_protectorate_relationship = {
+	opinion = 5
+	yearly_decay = 2.5
+}
+
+broke_protectorate_relationship = {
+	opinion = 5
+	yearly_decay = 2.5
+}

@@ -701,8 +701,10 @@ demand_autonomous_vassal = {
 			}
 		}
 		NOT = {
-			frenchie_enemy_of_FROM = yes
-			FROM = { frenchie_enemy_of_ROOT = yes }
+			OR = {
+				frenchie_enemy_of_FROM = yes
+				FROM = { frenchie_enemy_of_ROOT = yes }
+			}
 		}
 		NOT = {
 			any_subject_country = {
@@ -722,9 +724,21 @@ demand_autonomous_vassal = {
 				is_neighbor_of = FROM
 			}
 		}
-		any_known_country = {
-			frenchie_enemy_of_FROM = yes
-			frenchie_enemy_of_ROOT = yes
+		OR = {
+			any_known_country = {
+				frenchie_enemy_of_FROM = yes
+				frenchie_enemy_of_ROOT = yes
+			}
+			has_opinion = {
+				who = FROM
+				value = 100
+			}
+			FROM = {
+				has_opinion = {
+					who = ROOT
+					value = 100
+				}
+			}
 		}
 	}
 }
@@ -803,6 +817,16 @@ demand_protectorate = {
 		create_subject = {
 			subject_type = protectorate
 			subject = FROM
+		}
+		add_opinion = {
+			who = FROM
+			modifier = formed_protectorate_relationship
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = formed_protectorate_relationship
+			}
 		}
 	}
 	on_decline =	{
@@ -1023,6 +1047,10 @@ demand_protectorate = {
 				who = FROM
 				modifier = declined_protectorate_status
 			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = broke_protectorate_relationship
+			}
 		}
 		NOT = {
 			frenchie_enemy_of_FROM = yes
@@ -1066,10 +1094,6 @@ make_protec_free_asasantana = {
 	}
 	on_decline =	{
 		log = "[Root.GetName] has not released his vassal [From.GetName] (Asasantana)"
-		add_opinion = {
-			who = FROM
-			modifier = declined_protectorate_status
-		}
 	}
 
 	ai_acceptance = {
@@ -1250,9 +1274,12 @@ make_protec_free_asasantana = {
 			OR = {
 				has_opinion_modifier = {
 					who = FROM
-		  		modifier = declined_protectorate_status
+		  			modifier = formed_protectorate_relationship
 				}
 			}
+		}
+		NOT = {
+			frenchie_FROM_would_accept_becoming_protec = yes
 		}
 	}
 }
@@ -1280,6 +1307,16 @@ abandon_Protectorate = {
 			}
 		}
 		log = "[Root.GetName] has released his vassal [From.GetName]"
+		add_opinion = {
+			who = FROM
+			modifier = broke_protectorate_relationship
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = broke_protectorate_relationship
+			}
+		}
 		FROM = { grant_independence = yes }
 	}
 	on_decline =	{
@@ -1289,6 +1326,12 @@ abandon_Protectorate = {
 	}
 
 	ai_will_do = {
+		NOT = {
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_protectorate_relationship
+			}
+		}
 		OR = {
 			AND = {
 				NOT = { # Don't tell them to leave if they will feed your enemies
@@ -1334,8 +1377,14 @@ stop_being_protectorate = {
 		log = "[Root.GetName] has stopped being a protectorate of [From.GetName]"
 		ROOT = { grant_independence = yes }
 		add_opinion = {
-			who = ROOT
-			modifier = declined_protectorate_status
+			who = FROM
+			modifier = broke_protectorate_relationship
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = broke_protectorate_relationship
+			}
 		}
 	}
 	on_decline =	{
@@ -1344,6 +1393,12 @@ stop_being_protectorate = {
 	ai_acceptance = {
 	}
 	ai_will_do = {
+		NOT = {
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_protectorate_relationship
+			}
+		}
 		ROOT = {
 			OR = {
 				liberty_desire = 90 #Leave at 90 whatever happens
@@ -1406,7 +1461,13 @@ become_independent = {
 		}
 		add_opinion = {
 			who = FROM
-			modifier = declined_protectorate_status
+			modifier = broke_protectorate_relationship
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = broke_protectorate_relationship
+			}
 		}
 		grant_independence = yes
 	}
@@ -1462,11 +1523,21 @@ ask_to_become_protectorate = {
 			}
 		}
 		log = "[From.GetName] has accepted [Root.GetName]'s request to become a protectorate and will now protect him"
-    add_trust = {
-      who = FROM
-      value = 5
-      mutual = yes
-    }
+		add_trust = {
+			who = FROM
+			value = 5
+			mutual = yes
+		}
+		add_opinion = {
+			who = FROM
+			modifier = formed_protectorate_relationship
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = formed_protectorate_relationship
+			}
+		}
 		overlord = {
 			ROOT = {
 				add_trust = {
@@ -1476,8 +1547,12 @@ ask_to_become_protectorate = {
 				}
 				add_opinion = {
 					who = PREV
-					modifier = declined_protectorate_status
+					modifier = broke_protectorate_relationship
 				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = broke_protectorate_relationship
 			}
 		}
 		FROM = {
@@ -1494,10 +1569,10 @@ ask_to_become_protectorate = {
 			}
 		}
 		log = "[From.GetName] has refused [Root.GetName]'s request to become a protectorate and will not protect him"
-    add_opinion = {
-    	who = FROM
-      modifier = declined_protectorate_status
-    }
+		add_opinion = {
+			who = FROM
+			modifier = declined_protectorate_status
+		}
   }
   ai_acceptance = {
     add_entry = { name = Base
@@ -1737,6 +1812,14 @@ ask_to_become_protectorate = {
 			has_opinion_modifier = {
 				who = FROM
 				modifier = declined_protectorate_status
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_protectorate_relationship
+			}
+			has_opinion = {
+				who = FROM
+				modifier = broke_protectorate_relationship
 			}
 		}
 		NOT = { # Don't do it if your army is about as big as FROM or bigger
