@@ -832,6 +832,7 @@ cancel_autonomous_vassal =  {
 			value = -100
 			mutual = yes
 		}
+		log = "[Root.GetName] has cancelled his autonomous vassal [From.GetName]"
 		FROM = {
 			grant_independence = yes
 		}
@@ -1717,14 +1718,14 @@ ask_to_become_protectorate = {
 				is_in_trade_league = yes
 			}
 		}
-    FROM = {
-      NOT = {
-        is_subject = yes
-        is_at_war = yes
-        is_rival = ROOT
-      }
-    }
-  }
+		FROM = {
+		NOT = {
+			is_subject = yes
+			is_at_war = yes
+			is_rival = ROOT
+		}
+		}
+	}
 	on_accept = {
 		ROOT = {
 			country_event = {

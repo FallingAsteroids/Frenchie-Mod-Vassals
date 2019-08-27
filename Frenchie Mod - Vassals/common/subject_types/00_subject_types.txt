@@ -721,6 +721,7 @@ autonomous_vassal = {
 	relative_power_class = 4
 	is_voluntary = yes				# Whether they can leave the relationship whenever they want
 	can_transfer_in_peace = no							# Whether this subject type can be made into a vassal with the "Transfer Subject" Age Ability.
+	can_release_in_peace = no
 
 	takes_diplo_slot = yes
 	joins_overlords_wars = yes
@@ -796,6 +797,7 @@ protectorate = {
 	can_fight_independence_war = no
 	is_voluntary = yes				# Whether they can leave the relationship whenever they want
 	can_transfer_in_peace = no							# Whether this subject type can be made into a vassal with the "Transfer Subject" Age Ability.
+	can_release_in_peace = no
 
 	takes_diplo_slot = no
 	joins_overlords_wars = no
