@@ -441,24 +441,94 @@ frenchie_FROM_would_accept_becoming_protec = {
       which = acceptance
       which = trustVAR
     }
-    export_to_variable = {
-      variable_name = theirarmyVAR
-      value = army_size
-      who = ROOT
+
+    if = {
+      limit = {
+        NOT = {
+          variable_arithmetic_trigger = {
+            export_to_variable = {
+              variable_name = frenchie_my_army_size
+              value = army_size
+            }
+            export_to_variable = {
+              variable_name = frenchie_their_army_size
+              value = army_size
+              who = FROM
+            }
+            change_variable = { which = frenchie_their_army_size value = 1 }
+            divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+            multiply_variable = { which = frenchie_my_army_size value = 20 }
+            subtract_variable = { which = frenchie_my_army_size value = 30 }
+  
+            check_variable = {
+              which = frenchie_my_army_size
+              value = 30
+            }
+          }
+        }
+      }
+      export_to_variable = {
+        variable_name = theirarmyVAR
+        value = army_size
+        who = ROOT
+      }
+      export_to_variable = {
+        variable_name = yourarmyVAR
+        value = army_size
+        who = FROM
+      }
+      change_variable = {
+        which = yourarmyVAR
+        value = 1
+      }
+      divide_variable = {
+        which = theirarmyVAR
+        which = yourarmyVAR
+      }
+      multiply_variable = {
+        which = theirarmyVAR
+        value = 20
+      }
+      subtract_variable = {
+        which = theirarmyVAR
+        value = 30
+      }
+
+      change_variable = {
+        which = acceptance
+        which = theirarmyVAR
+      }
     }
-    export_to_variable = {
-      variable_name = yourarmyVAR
-      value = army_size
-      who = FROM
+    if = {
+      limit = {
+        variable_arithmetic_trigger = {
+          export_to_variable = {
+            variable_name = frenchie_my_army_size
+            value = army_size
+           }
+          export_to_variable = {
+            variable_name = frenchie_their_army_size
+            value = army_size
+            who = FROM
+          }
+          change_variable = { which = frenchie_their_army_size value = 1 }
+          divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+          multiply_variable = { which = frenchie_my_army_size value = 20 }
+          subtract_variable = { which = frenchie_my_army_size value = 30 }
+  
+          check_variable = {
+            which = frenchie_my_army_size
+            value = 30
+          }
+        }
+      }
+
+      change_variable = {
+        which = acceptance
+        which = 30
+      }
     }
-    subtract_variable = {
-      which = theirarmyVAR
-      which = yourarmyVAR
-    }
-    change_variable = {
-      which = acceptance
-      which = theirarmyVAR
-    }
+
     export_to_variable = {
       variable_name = distanceVAR
       value = border_distance
@@ -475,24 +545,6 @@ frenchie_FROM_would_accept_becoming_protec = {
     change_variable = {
       which = acceptance
       which = distanceVAR
-    }
-    export_to_variable = {
-      variable_name = theirincomeVAR
-      value = monthly_income
-      who = ROOT
-    }
-    export_to_variable = {
-      variable_name = yourincomeVAR
-      value = monthly_income
-      who = FROM
-    }
-    subtract_variable = {
-      which = theirincomeVAR
-      which = yourincomeVAR
-    }
-    change_variable = {
-      which = acceptance
-      which = theirincomeVAR
     }
     export_to_variable = {
       variable_name = opinionVAR
