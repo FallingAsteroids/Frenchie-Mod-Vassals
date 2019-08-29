@@ -443,11 +443,12 @@ demand_autonomous_vassal = {
 
 	is_visible = {
 		NOT = {
+			AND = {
+				is_subject = yes
+				NOT = { is_subject_of_type = protectorate }
+			}
 			is_subject_of = FROM
 			is_rival = FROM
-			is_subject_of_type = autonomous_vassal
-			is_subject_of_type = ward
-			is_subject_of_type = estate
 			FROM = {
 				is_subject_of = ROOT
 				is_rival = ROOT
@@ -458,12 +459,20 @@ demand_autonomous_vassal = {
 	}
 	is_allowed = {
 		NOT = {
+			AND = {
+				is_subject = yes
+				NOT = { is_subject_of_type = protectorate }
+			}
 			is_subject_of = FROM
 			is_rival = FROM
-			is_subject_of_type = autonomous_vassal
-			is_subject_of_type = ward
-			is_subject_of_type = estate
 			FROM = {
+				AND = {
+					is_subject = yes
+					NOT = {
+						is_subject_of_type = protectorate
+						is_subject_of_type = autonomous_vassal
+					}
+				}
 				is_subject_of = ROOT
 				is_rival = ROOT
 				is_great_power = yes
