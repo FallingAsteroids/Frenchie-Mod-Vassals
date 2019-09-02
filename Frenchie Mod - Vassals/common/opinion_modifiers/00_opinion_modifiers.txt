@@ -3960,3 +3960,13 @@ broke_protectorate_relationship = {
 	opinion = 5
 	yearly_decay = 2.5
 }
+
+formed_avassal_relationship = {
+	opinion = 10
+	yearly_decay = 2.5
+}
+
+broke_avassal_relationship = {
+	opinion = 10
+	yearly_decay = 2.5
+}
