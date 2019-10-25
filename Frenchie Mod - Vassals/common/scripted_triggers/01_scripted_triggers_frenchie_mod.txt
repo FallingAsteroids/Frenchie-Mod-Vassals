@@ -459,7 +459,7 @@ frenchie_FROM_would_accept_becoming_protec = {
             divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
             multiply_variable = { which = frenchie_my_army_size value = 20 }
             subtract_variable = { which = frenchie_my_army_size value = 30 }
-  
+
             check_variable = {
               which = frenchie_my_army_size
               value = 30
@@ -515,7 +515,7 @@ frenchie_FROM_would_accept_becoming_protec = {
           divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
           multiply_variable = { which = frenchie_my_army_size value = 20 }
           subtract_variable = { which = frenchie_my_army_size value = 30 }
-  
+
           check_variable = {
             which = frenchie_my_army_size
             value = 30
@@ -631,6 +631,53 @@ frenchie_FROM_would_accept_becoming_protec = {
     check_variable = {
         which = acceptance
         value = 0
+    }
+  }
+}
+
+frenchie_pyramid = {
+  OR = {
+    AND = {
+      ROOT = { is_subject = no }
+      FROM = { is_subject = yes }
+    }
+    AND = {
+      OR = {
+        ROOT = { is_subject_of_type = protectorate }
+      }
+      OR = {
+        FROM = { is_subject_of_type = autonomous_vassal }
+        FROM = { is_subject_of_type = personal_union }
+        FROM = { is_subject_of_type = ward }
+        FROM = { is_subject_of_type = estate }
+      }
+    }
+    AND = {
+      OR = {
+        ROOT = { is_subject_of_type = autonomous_vassal }
+      }
+      OR = {
+        FROM = { is_subject_of_type = personal_union }
+        FROM = { is_subject_of_type = ward }
+        FROM = { is_subject_of_type = estate }
+      }
+    }
+    AND = {
+      OR = {
+        ROOT = { is_subject_of_type = personal_union }
+      }
+      OR = {
+        FROM = { is_subject_of_type = ward }
+        FROM = { is_subject_of_type = estate }
+      }
+    }
+    AND = {
+      OR = {
+        ROOT = { is_subject_of_type = ward }
+      }
+      OR = {
+        FROM = { is_subject_of_type = estate }
+      }
     }
   }
 }
