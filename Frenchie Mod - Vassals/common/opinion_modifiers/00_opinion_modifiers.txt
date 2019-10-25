@@ -3957,7 +3957,7 @@ formed_protectorate_relationship = {
 }
 
 broke_protectorate_relationship = {
-	opinion = 5
+	opinion = -5
 	yearly_decay = 2.5
 }
 
@@ -3967,6 +3967,11 @@ formed_avassal_relationship = {
 }
 
 broke_avassal_relationship = {
-	opinion = 10
+	opinion = -10
+	yearly_decay = 2.5
+}
+
+no_betray = {
+	opinion = -10
 	yearly_decay = 2.5
 }
