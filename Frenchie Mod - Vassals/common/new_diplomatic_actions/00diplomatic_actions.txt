@@ -2910,7 +2910,7 @@ propose_betrayal = {
 		add_entry = { name = Bankruptcy
 			limit = {
 				ROOT = {
-				is_bankrupt = yes
+					is_bankrupt = yes
 				}
 			}
 			export_to_variable = {
@@ -2919,7 +2919,7 @@ propose_betrayal = {
 				who = FROM
 			}
 		}
-		add_entry = { name = warscore
+		add_entry = { name = frenchie_warscore
 			export_to_variable = {
 				which = ai_value
 				value = trigger_value:war_score
