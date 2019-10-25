@@ -688,108 +688,118 @@ frenchie_would_betray = {
         variable_name = acceptance
         value = -50
     }
-    add_entry = { name = In_Trade_League
+    if = { #In_Trade_League
       limit = {
         FROM = { is_in_trade_league = yes }
       }
-      export_to_variable = {
+
+      change_variable = {
         variable_name = acceptance
         value = -20
       }
     }
-    add_entry = { name = Married
+    if = { #married
       limit = {
-        FROM = {
-          marriage_with = ROOT
-        }
+        FROM = { marriage_with = ROOT }
       }
-      export_to_variable = {
-        variable_name = acceptance
+      change_variable = {
+        which = acceptance
         value = 15
       }
     }
-    add_entry = { name = Is_Emperor
+    if = { #married
       limit = {
         ROOT = { is_emperor = yes }
       }
-      export_to_variable = {
+
+      change_variable = {
         variable_name = acceptance
         value = 20
       }
     }
-    add_entry = { name = Trust
-      export_to_variable = {
-        variable_name = acceptance
-        value = trust
-        who = FROM
-        with = ROOT
-      }
-      multiply_variable = {
-        which = acceptance
-        value = 1.5
-      }
-      subtract_variable = {
-        which = acceptance
-        value = 75
-      }
-    }
-    add_entry = { name = Distance_Between_Borders
-      export_to_variable = {
-        variable_name = acceptance
-        value = border_distance
-        who = FROM
-      }
-      multiply_variable = {
-        which = acceptance
-        value = -1
-      }
-      divide_variable = { which = acceptance value = 3 }
-    }
-    add_entry = { name = Opinion
-      export_to_variable = {
-        variable_name = acceptance
-        value = opinion
-        who = FROM
-        with = ROOT
-      }
-      multiply_variable = {
-        which = acceptance
-        value = 0.25
-      }
-    }
-    add_entry = { name = Relative_Diplomatic_Reputation
-      export_to_variable = {
-        variable_name = acceptance
-        value = modifier:diplomatic_reputation
-      }
-      export_to_variable ={
-      variable_name = acceptance_diprep
-      value = modifier:diplomatic_reputation
+    export_to_variable = {
+      variable_name = trustVAR
+      value = trust
       who = FROM
-      }
-      subtract_variable = {
-        which = acceptance
-        which = acceptance_diprep
-      }
-      multiply_variable = { which = acceptance value = 5 }
+      with = ROOT
     }
-    add_entry = { name = Bankruptcy
+    multiply_variable = {
+      which = trustVAR
+      value = 1.5
+    }
+    subtract_variable = {
+      which = trustVAR
+      value = 75
+    }
+    change_variable = {
+      which = acceptance
+      which = trustVAR
+    }
+    export_to_variable = {
+      variable_name = border_distanceVAR
+      value = border_distance
+      who = FROM
+    }
+    multiply_variable = {
+      which = border_distanceVAR
+      value = -1
+    }
+    divide_variable = { which = border_distanceVAR value = 3 }
+    change_variable = {
+      which = acceptance
+      which = border_distanceVAR
+    }
+    export_to_variable = {
+      variable_name = opinionVAR
+      value = opinion
+      who = FROM
+      with = ROOT
+    }
+    multiply_variable = {
+      which = opinionVAR
+      value = 0.25
+    }
+    change_variable = {
+      which = acceptance
+      which = opinionVAR
+    }
+    export_to_variable = {
+      variable_name = ourdiprepVAR
+      value = modifier:diplomatic_reputation
+    }
+    export_to_variable ={
+    variable_name = theirdiprepVAR
+    value = modifier:diplomatic_reputation
+    who = FROM
+    }
+    subtract_variable = {
+      which = ourdiprepVAR
+      which = theirdiprepVAR
+    }
+    multiply_variable = { which = ourdiprepVAR value = 5 }
+    change_variable = {
+      which = acceptance
+      which = ourdiprepVAR
+    }
+    if = { #Bankruptcy
       limit = {
         ROOT = {
         is_bankrupt = yes
         }
       }
-      export_to_variable = {
+      change_variable = {
         variable_name = acceptance
         value = -100
         who = FROM
       }
     }
-    add_entry = { name = warscore
-      export_to_variable = {
-        which = acceptance
-        value = trigger_value:war_score
-      }
+    export_to_variable = {
+      which = warscoreVAR
+      value = trigger_value:war_score
+    }
+    change_variable = {
+      which = acceptance
+      which = warscoreVAR
     }
   }
 
