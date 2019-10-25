@@ -37,7 +37,7 @@ east_indian_trade_route = {
 				continent = oceania
 			}
 		}
-
+		
 	}
 
 	trigger = {
@@ -55,7 +55,7 @@ east_indian_trade_route = {
 		}
 	}
 
-	trade_efficiency = 0.05
+	trade_efficiency = 0.05	
 }
 
 #########################################################
@@ -592,6 +592,70 @@ the_mandate_of_heaven_lost = {
 	discipline = -0.1
 	stability_cost_modifier = 0.5
 	global_unrest = 10
+}
+
+lost_control_of_beijing = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		OR = {
+			NOT = { owns = 1816 }
+			NOT = { controls = 1816 }
+		}
+	}
+
+	imperial_mandate = -0.05
+}
+
+lost_control_of_nanjing = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		OR = {
+			NOT = { owns = 1821 }
+			NOT = { controls = 1821 }
+		}
+	}
+
+	imperial_mandate = -0.05
+}
+
+lost_control_of_canton = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		OR = {
+			NOT = { owns = 667 }
+			NOT = { controls = 667 }
+		}
+	}
+
+	imperial_mandate = -0.05
+}
+
+waging_war_for_china = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		is_in_war = {
+			attacker_leader = root
+			casus_belli = cb_chinese_unification
+		}
+	}
+	
+	imperial_mandate = 0.05
 }
 
 ##################################################

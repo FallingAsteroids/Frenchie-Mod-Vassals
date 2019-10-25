@@ -7,4 +7,4 @@ tags={
 	"Historical"
 }
 picture="nap.jpg"
-supported_version="1.28.*.*"
+supported_version="1.29.*.*"
