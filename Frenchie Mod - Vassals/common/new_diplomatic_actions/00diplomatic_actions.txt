@@ -2692,9 +2692,11 @@ propose_betrayal = {
 
 	is_visible = {
 		ROOT = {
-			is_in_war = {
-				OR = {
+			OR = {
+				is_in_war = {
 					attacker_leader = ROOT
+				}
+				is_in_war = {
 					defender_leader = ROOT
 				}
 			}
@@ -2712,9 +2714,11 @@ propose_betrayal = {
 	}
 	is_allowed = {
 		ROOT = {
-			is_in_war = {
-				OR = {
+			OR = {
+				is_in_war = {
 					attacker_leader = ROOT
+				}
+				is_in_war = {
 					defender_leader = ROOT
 				}
 			}
