@@ -265,7 +265,7 @@ released_vassal = {
 	yearly_decay = 5
 }
 
-helped_support_rebels = 
+helped_support_rebels =
 {
 	opinion = 100
 	yearly_decay = 5
@@ -337,7 +337,7 @@ claimed_throne_on_us = {
 	min = -100
 }
 
-claimed_throne_other_rm = 
+claimed_throne_other_rm =
 {
 	opinion = -50
 	yearly_decay = 3
@@ -391,14 +391,14 @@ they_force_unioned_us = {
 }
 
 
-elector_voted_for_us = 
+elector_voted_for_us =
 {
 	opinion = 25
 	yearly_decay = 2
 	max = 25
 }
 
-elector_stopped_voting_for_us = 
+elector_stopped_voting_for_us =
 {
 	opinion = -25
 	yearly_decay = 1
@@ -622,7 +622,7 @@ sabotage_reputation = {
 aggressive_expansion = {
 	opinion = -1
 	months = 0
-	yearly_decay = 2	
+	yearly_decay = 2
 	min = -1000
 }
 
@@ -2079,7 +2079,7 @@ reconciling_differences = {
 
 opinion_captured_alexandria_great_carrack = {
 	opinion = -75
-	yearly_decay = 1	
+	yearly_decay = 1
 }
 
 opinion_negotiated_peace = {
@@ -2118,12 +2118,12 @@ sankin_kotai = {
 
 opinion_sword_hunt = {
 	opinion = -50
-	yearly_decay = 2	
+	yearly_decay = 2
 }
 
 border_friction_from_event = {
 	opinion = -50
-	yearly_decay = 2	
+	yearly_decay = 2
 }
 
 broke_free_from_us = {
@@ -2254,7 +2254,7 @@ completed_hajj = {
 
 invited_eid_al_fitr = {
 	opinion = 10
-	yearly_decay = 1	
+	yearly_decay = 1
 }
 
 ##################################################
@@ -2277,7 +2277,7 @@ opinion_treaty_of_amity_and_commerce = {
 
 opinion_disgruntled = {
 	opinion = -25
-	yearly_decay = 1	
+	yearly_decay = 1
 }
 
 opinion_disappointed = {
@@ -3009,11 +3009,11 @@ protestant_ideal = {
 
 opinion_spurned_heir = {
 	opinion = -25
-	yearly_decay = 2	
+	yearly_decay = 2
 }
 opinion_choose_heir = {
 	opinion = 25
-	yearly_decay = 2	
+	yearly_decay = 2
 }
 opinion_spurned_pu = {
 	opinion = -50
@@ -3027,23 +3027,23 @@ opinion_religious_tension = {
 # Subject Interactions
 opinion_reprimanded = {
 	opinion = -60
-	yearly_decay = 1	
+	yearly_decay = 1
 }
 opinion_resourceful = {
 	opinion = 60
-	yearly_decay = 1	
+	yearly_decay = 1
 }
 opinion_purged_manpower = {
 	opinion = -25
-	yearly_decay = 2	
+	yearly_decay = 2
 }
 opinion_sent_general = {
 	opinion = 30
-	yearly_decay = 2	
+	yearly_decay = 2
 }
 opinion_sent_advisor = {
 	opinion = 30
-	yearly_decay = 2	
+	yearly_decay = 2
 }
 opinion_sent_gold_manpower = {
 	opinion = 30
@@ -3449,7 +3449,7 @@ installed_ruler_crimean_succession = {
 	opinion = 150
 	yearly_decay = 4
 }
-	
+
 opinion_approves_of_compliment = {
 	opinion = 25
 	yearly_decay = 2
@@ -3457,7 +3457,7 @@ opinion_approves_of_compliment = {
 
 opinion_grateful_for_invitation = {
 	opinion = 25
-	yearly_decay = 3		
+	yearly_decay = 3
 }
 
 opinion_went_on_grand_tour = {
@@ -3538,7 +3538,7 @@ grateful_for_aid = {
 denied_aid = {
 	opinion = -50
 	yearly_decay = 2
-} 
+}
 
 outrageous_demands = {
 	opinion = -25
@@ -3944,6 +3944,7 @@ opinion_sublimis_deus = {
 opinion_KOR_supported_war_for_north = {
 	opinion = 60
 	yearly_decay = 1.5
+}
 
 declined_protectorate_status = {
 	opinion = -25
