@@ -2783,7 +2783,7 @@ propose_betrayal = {
 				}
 			}
 		}
-		log = "[From.GetName] Has changed sides in war and is now rooting for [Root.GetName]"
+		log = "[From.GetName] Has changed sides in war and is now with [Root.GetName]"
 		if = {
 			limit = {
 				FROM = {
@@ -2981,7 +2981,7 @@ propose_betrayal = {
 	}
 }
 
-propose_betrayal = {
+offer_to_betray = {
 	category = alliance
 
 	alert_index = 40
@@ -3082,7 +3082,7 @@ propose_betrayal = {
 				}
 			}
 		}
-		log = "[From.GetName] Has changed sides in war and is now rooting for [Root.GetName]"
+		log = "[Root.GetName] Has changed sides in war and is now rooting for [From.GetName]"
 		if = {
 			limit = {
 				ROOT = {
