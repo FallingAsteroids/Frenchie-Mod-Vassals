@@ -639,6 +639,10 @@ frenchie_pyramid = {
   OR = {
     AND = {
       ROOT = { is_subject = no }
+      FROM = { is_subject = no }
+    }
+    AND = {
+      ROOT = { is_subject = no }
       FROM = { is_subject = yes }
     }
     AND = {
@@ -744,7 +748,7 @@ frenchie_would_betray = {
       which = border_distanceVAR
       value = -1
     }
-    divide_variable = { which = border_distanceVAR value = 3 }
+    divide_variable = { which = border_distanceVAR value = 5 }
     change_variable = {
       which = acceptance
       which = border_distanceVAR
