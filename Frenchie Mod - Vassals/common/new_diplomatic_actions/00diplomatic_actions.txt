@@ -459,6 +459,10 @@ demand_autonomous_vassal = {
 				is_great_power = yes
 				is_emperor = yes
 			}
+			FROM = { is_subject_of_type = autonomous_vassal }
+			FROM = { is_subject_of_type = personal_union }
+			FROM = { is_subject_of_type = ward }
+			FROM = { is_subject_of_type = estate }
 		}
 	}
 	is_allowed = {
@@ -2682,610 +2686,610 @@ become_independent = {
 	}
 }
 
-propose_betrayal = {
-	category = alliance
+#propose_betrayal = {
+#	category = alliance
+#
+#	alert_index = 40
+#	alert_tooltip = demand_dummy_alert_tooltip
+#
+#	require_acceptance = yes # Whether the recipient gets an option to decline
+#
+#	is_visible = {
+#		ROOT = {
+#			OR = {
+#				is_in_war = {
+#					attacker_leader = ROOT
+#				}
+#				is_in_war = {
+#					defender_leader = ROOT
+#				}
+#			}
+#		}
+#		FROM = {
+#			war_with = ROOT
+#			NOT = {
+#				OR = {
+#					is_in_war = {
+#						attacker_leader = FROM
+#					}
+#					is_in_war = {
+#						defender_leader = FROM
+#					}
+#				}
+#				is_great_power = yes
+#				is_emperor = yes
+#				is_subject_of_type = estate
+#				is_subject_of_type = ward
+#				is_subject_of_type = personal_union
+#			}
+#		}
+#	}
+#	is_allowed = {
+#		ROOT = {
+#			OR = {
+#				is_in_war = {
+#					attacker_leader = ROOT
+#				}
+#				is_in_war = {
+#					defender_leader = ROOT
+#				}
+#			}
+#			NOT = {
+#				is_rival = FROM
+#			}
+#			frenchie_pyramid = yes
+#		}
+#		FROM = {
+#			war_with = ROOT
+#			is_great_power = no
+#			is_emperor = no
+#			NOT = {
+#				is_rival = ROOT
+#				AND = {
+#					OR = {
+#						is_subject_of_type = estate
+#						is_subject_of_type = ward
+#						is_subject_of_type = personal_union
+#					}
+#					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
+#						overlord = {
+#							overlord_of = ROOT
+#						}
+#						overlord = {
+#							overlord = {
+#								overlord_of = ROOT
+#							}
+#						}
+#						ROOT = {
+#							overlord = {
+#								overlord = {
+#									overlord_of = FROM
+#								}
+#							}
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#	on_accept = {
+#		add_trust = {
+#			who = FROM
+#			value = 10
+#			mutual = yes
+#		}
+#		FROM = {
+#			overlord = {
+#				add_trust = {
+#					who = FROM
+#					value = -20
+#					mutual = yes
+#				}
+#			}
+#		}
+#		log = "[From.GetName] Has changed sides in war and is now with [Root.GetName]"
+#		if = {
+#			limit = {
+#				FROM = {
+#					is_subject = no
+#				}
+#			}
+#			create_subject = {
+#				subject_type = traitor
+#				subject = FROM
+#			}
+#			FROM = { grant_independence = yes }
+#		}
+#		if = {
+#			limit = {
+#				FROM = {
+#					is_subject_of_type = protectorate
+#				}
+#			}
+#			create_subject = {
+#				subject_type = protectorate
+#				subject = FROM
+#			}
+#		}
+#		if = {
+#			limit = {
+#				FROM = {
+#					is_subject_of_type = autonomous_vassal
+#				}
+#			}
+#			create_subject = {
+#				subject_type = autonomous_vassal
+#				subject = FROM
+#			}
+#		}
+#	}
+#	on_decline = {
+#		add_opinion = {
+#			who = FROM
+#			modifier = no_betray
+#		}
+#	}
+#	ai_acceptance = {
+#		add_entry = { name = Base
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -50
+#				who = FROM
+#				with = THIS
+#			}
+#		}
+#		add_entry = { name = In_Trade_League
+#			limit = {
+#				FROM = { is_in_trade_league = yes }
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -20
+#			}
+#		}
+#		add_entry = { name = Married
+#			limit = {
+#				FROM = {
+#					marriage_with = ROOT
+#				}
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = 15
+#			}
+#		}
+#		add_entry = { name = Is_Emperor
+#			limit = {
+#				ROOT = { is_emperor = yes }
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = 20
+#			}
+#		}
+#		add_entry = { name = Trust
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = trust
+#				who = FROM
+#				with = ROOT
+#			}
+#			multiply_variable = {
+#				which = ai_value
+#				value = 1.5
+#			}
+#			subtract_variable = {
+#				which = ai_value
+#				value = 75
+#			}
+#		}
+#		add_entry = { name = Distance_Between_Borders
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = border_distance
+#				who = FROM
+#			}
+#			multiply_variable = {
+#				which = ai_value
+#				value = -1
+#			}
+#			divide_variable = { which = ai_value value = 5 }
+#		}
+#		add_entry = { name = Opinion
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = opinion
+#				who = FROM
+#				with = ROOT
+#			}
+#			multiply_variable = {
+#				which = ai_value
+#				value = 0.25
+#			}
+#		}
+#		add_entry = { name = Relative_Diplomatic_Reputation
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = modifier:diplomatic_reputation
+#			}
+#			export_to_variable ={
+#			variable_name = ai_value_diprep
+#			value = modifier:diplomatic_reputation
+#			who = FROM
+#			}
+#			subtract_variable = {
+#				which = ai_value
+#				which = ai_value_diprep
+#			}
+#			multiply_variable = { which = ai_value value = 5 }
+#		}
+#		add_entry = { name = Bankruptcy
+#			limit = {
+#				ROOT = {
+#					is_bankrupt = yes
+#				}
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -100
+#				who = FROM
+#			}
+#		}
+#		add_entry = { name = frenchie_warscore
+#			export_to_variable = {
+#				which = ai_value
+#				value = trigger_value:war_score
+#			}
+#		}
+#	}
+#
+#	ai_will_do = { # this is a trigger
+#		NOT = { #stops spam
+#			has_opinion_modifier = {
+#				who = FROM
+#				modifier = no_betray
+#			}
+#		}
+#		NOT = { # Don't ask your enemies to join you
+#			OR = {
+#				frenchie_enemy_of_FROM = yes
+#				FROM = { frenchie_enemy_of_ROOT = yes }
+#			}
+#		}
+#		NOT = {
+#			any_subject_country = {
+#				OR = {
+#					AND = {
+#						FROM = { is_subject_of_type = autonomous_vassal }
+#						liberty_desire = 50
+#						is_subject_of_type = autonomous_vassal
+#					}
+#					AND = {
+#						FROM = { is_subject_of_type = protectorate }
+#						liberty_desire = 50
+#						is_subject_of_type = protectorate
+#					}
+#				}
+#			}
+#		}
+#		NOT = {
+#			FROM = {
+#				any_owned_province = {
+#					is_claim = ROOT
+#				}
+#			}
+#		}
+#		FROM = {
+#			frenchie_would_betray = yes
+#		}
+#	}
+#}
 
-	alert_index = 40
-	alert_tooltip = demand_dummy_alert_tooltip
-
-	require_acceptance = yes # Whether the recipient gets an option to decline
-
-	is_visible = {
-		ROOT = {
-			OR = {
-				is_in_war = {
-					attacker_leader = ROOT
-				}
-				is_in_war = {
-					defender_leader = ROOT
-				}
-			}
-		}
-		FROM = {
-			war_with = ROOT
-			NOT = {
-				OR = {
-					is_in_war = {
-						attacker_leader = FROM
-					}
-					is_in_war = {
-						defender_leader = FROM
-					}
-				}
-				is_great_power = yes
-				is_emperor = yes
-				is_subject_of_type = estate
-				is_subject_of_type = vassal
-				is_subject_of_type = personal_union
-			}
-		}
-	}
-	is_allowed = {
-		ROOT = {
-			OR = {
-				is_in_war = {
-					attacker_leader = ROOT
-				}
-				is_in_war = {
-					defender_leader = ROOT
-				}
-			}
-			NOT = {
-				is_rival = FROM
-			}
-			frenchie_pyramid = yes
-		}
-		FROM = {
-			war_with = ROOT
-			is_great_power = no
-			is_emperor = no
-			NOT = {
-				is_rival = ROOT
-				AND = {
-					OR = {
-						is_subject_of_type = estate
-						is_subject_of_type = vassal
-						is_subject_of_type = personal_union
-					}
-					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
-						overlord = {
-							overlord_of = ROOT
-						}
-						overlord = {
-							overlord = {
-								overlord_of = ROOT
-							}
-						}
-						ROOT = {
-							overlord = {
-								overlord = {
-									overlord_of = FROM
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	on_accept = {
-		add_trust = {
-			who = FROM
-			value = 10
-			mutual = yes
-		}
-		FROM = {
-			overlord = {
-				add_trust = {
-					who = FROM
-					value = -20
-					mutual = yes
-				}
-			}
-		}
-		log = "[From.GetName] Has changed sides in war and is now with [Root.GetName]"
-		if = {
-			limit = {
-				FROM = {
-					is_subject = no
-				}
-			}
-			create_subject = {
-				subject_type = traitor
-				subject = FROM
-			}
-			FROM = { grant_independence = yes }
-		}
-		if = {
-			limit = {
-				FROM = {
-					is_subject_of_type = protectorate
-				}
-			}
-			create_subject = {
-				subject_type = protectorate
-				subject = FROM
-			}
-		}
-		if = {
-			limit = {
-				FROM = {
-					is_subject_of_type = autonomous_vassal
-				}
-			}
-			create_subject = {
-				subject_type = autonomous_vassal
-				subject = FROM
-			}
-		}
-	}
-	on_decline = {
-		add_opinion = {
-			who = FROM
-			modifier = no_betray
-		}
-	}
-	ai_acceptance = {
-		add_entry = { name = Base
-			export_to_variable = {
-				variable_name = ai_value
-				value = -50
-				who = FROM
-				with = THIS
-			}
-		}
-		add_entry = { name = In_Trade_League
-			limit = {
-				FROM = { is_in_trade_league = yes }
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -20
-			}
-		}
-		add_entry = { name = Married
-			limit = {
-				FROM = {
-					marriage_with = ROOT
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 15
-			}
-		}
-		add_entry = { name = Is_Emperor
-			limit = {
-				ROOT = { is_emperor = yes }
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 20
-			}
-		}
-		add_entry = { name = Trust
-			export_to_variable = {
-				variable_name = ai_value
-				value = trust
-				who = FROM
-				with = ROOT
-			}
-			multiply_variable = {
-				which = ai_value
-				value = 1.5
-			}
-			subtract_variable = {
-				which = ai_value
-				value = 75
-			}
-		}
-		add_entry = { name = Distance_Between_Borders
-			export_to_variable = {
-				variable_name = ai_value
-				value = border_distance
-				who = FROM
-			}
-			multiply_variable = {
-				which = ai_value
-				value = -1
-			}
-			divide_variable = { which = ai_value value = 5 }
-		}
-		add_entry = { name = Opinion
-			export_to_variable = {
-				variable_name = ai_value
-				value = opinion
-				who = FROM
-				with = ROOT
-			}
-			multiply_variable = {
-				which = ai_value
-				value = 0.25
-			}
-		}
-		add_entry = { name = Relative_Diplomatic_Reputation
-			export_to_variable = {
-				variable_name = ai_value
-				value = modifier:diplomatic_reputation
-			}
-			export_to_variable ={
-			variable_name = ai_value_diprep
-			value = modifier:diplomatic_reputation
-			who = FROM
-			}
-			subtract_variable = {
-				which = ai_value
-				which = ai_value_diprep
-			}
-			multiply_variable = { which = ai_value value = 5 }
-		}
-		add_entry = { name = Bankruptcy
-			limit = {
-				ROOT = {
-					is_bankrupt = yes
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -100
-				who = FROM
-			}
-		}
-		add_entry = { name = frenchie_warscore
-			export_to_variable = {
-				which = ai_value
-				value = trigger_value:war_score
-			}
-		}
-	}
-
-	ai_will_do = { # this is a trigger
-		NOT = { #stops spam
-			has_opinion_modifier = {
-				who = FROM
-				modifier = no_betray
-			}
-		}
-		NOT = { # Don't ask your enemies to join you
-			OR = {
-				frenchie_enemy_of_FROM = yes
-				FROM = { frenchie_enemy_of_ROOT = yes }
-			}
-		}
-		NOT = {
-			any_subject_country = {
-				OR = {
-					AND = {
-						FROM = { is_subject_of_type = autonomous_vassal }
-						liberty_desire = 50
-						is_subject_of_type = autonomous_vassal
-					}
-					AND = {
-						FROM = { is_subject_of_type = protectorate }
-						liberty_desire = 50
-						is_subject_of_type = protectorate
-					}
-				}
-			}
-		}
-		NOT = {
-			FROM = {
-				any_owned_province = {
-					is_claim = ROOT
-				}
-			}
-		}
-		FROM = {
-			frenchie_would_betray = yes
-		}
-	}
-}
-
-offer_to_betray = {
-	category = alliance
-
-	alert_index = 40
-	alert_tooltip = demand_dummy_alert_tooltip
-
-	require_acceptance = yes # Whether the recipient gets an option to decline
-
-	is_visible = {
-		FROM = {
-			OR = {
-				is_in_war = {
-					attacker_leader = FROM
-				}
-				is_in_war = {
-					defender_leader = FROM
-				}
-			}
-		}
-		ROOT = {
-			war_with = FROM
-			NOT = {
-				OR = {
-					is_in_war = {
-						attacker_leader = ROOT
-					}
-					is_in_war = {
-						defender_leader = ROOT
-					}
-				}
-				is_great_power = yes
-				is_emperor = yes
-				is_subject_of_type = estate
-				is_subject_of_type = vassal
-				is_subject_of_type = personal_union
-			}
-		}
-	}
-	is_allowed = {
-		FROM = {
-			OR = {
-				is_in_war = {
-					attacker_leader = FROM
-				}
-				is_in_war = {
-					defender_leader = FROM
-				}
-			}
-			NOT = {
-				is_rival = ROOT
-			}
-			frenchie_pyramid = yes
-		}
-		ROOT = {
-			war_with = FROM
-			is_great_power = no
-			is_emperor = no
-			NOT = {
-				is_rival = FROM
-				AND = {
-					OR = {
-						is_subject_of_type = estate
-						is_subject_of_type = vassal
-						is_subject_of_type = personal_union
-					}
-					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
-						overlord = {
-							overlord_of = FROM
-						}
-						overlord = {
-							overlord = {
-								overlord_of = FROM
-							}
-						}
-						FROM = {
-							overlord = {
-								overlord = {
-									overlord_of = ROOT
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	on_accept = {
-		add_trust = {
-			who = FROM
-			value = 10
-			mutual = yes
-		}
-		ROOT = {
-			overlord = {
-				add_trust = {
-					who = ROOT
-					value = -20
-					mutual = yes
-				}
-			}
-		}
-		log = "[Root.GetName] Has changed sides in war and is now rooting for [From.GetName]"
-		if = {
-			limit = {
-				ROOT = {
-					is_subject = no
-				}
-			}
-			FROM = {
-				create_subject = {
-					subject_type = traitor
-					subject = ROOT
-				}
-			}
-			ROOT = { grant_independence = yes }
-		}
-		if = {
-			limit = {
-				ROOT = {
-					is_subject_of_type = protectorate
-				}
-			}
-			FROM = {
-				create_subject = {
-					subject_type = protectorate
-					subject = ROOT
-				}
-			}
-		}
-		if = {
-			limit = {
-				ROOT = {
-					is_subject_of_type = autonomous_vassal
-				}
-			}
-			FROM = {
-				create_subject = {
-					subject_type = autonomous_vassal
-					subject = ROOT
-				}
-			}
-		}
-	}
-	on_decline = {
-		add_opinion = {
-			who = FROM
-			modifier = no_betray
-		}
-	}
-	ai_acceptance = {
-		add_entry = { name = Base
-			export_to_variable = {
-				variable_name = ai_value
-				value = 50
-				who = FROM
-				with = THIS
-			}
-		}
-		add_entry = { name = Married
-			limit = {
-				FROM = {
-					marriage_with = ROOT
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 15
-			}
-		}
-		add_entry = { name = Is_Emperor
-			limit = {
-				FROM = { is_emperor = yes }
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 20
-			}
-		}
-		add_entry = { name = Trust
-			export_to_variable = {
-				variable_name = ai_value
-				value = trust
-				who = FROM
-				with = ROOT
-			}
-			multiply_variable = {
-				which = ai_value
-				value = 1.5
-			}
-			subtract_variable = {
-				which = ai_value
-				value = 75
-			}
-		}
-		add_entry = { name = Distance_Between_Borders
-			export_to_variable = {
-				variable_name = ai_value
-				value = border_distance
-				who = FROM
-			}
-			multiply_variable = {
-				which = ai_value
-				value = -1
-			}
-			divide_variable = { which = ai_value value = 5 }
-		}
-		add_entry = { name = Opinion
-			export_to_variable = {
-				variable_name = ai_value
-				value = opinion
-				who = FROM
-				with = ROOT
-			}
-			multiply_variable = {
-				which = ai_value
-				value = 0.25
-			}
-		}
-		add_entry = { name = Bankruptcy
-			limit = {
-				ROOT = {
-					is_bankrupt = yes
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -100
-				who = FROM
-			}
-		}
-		add_entry = { name = frenchie_warscore
-			export_to_variable = {
-				which = ai_value
-				value = trigger_value:war_score
-			}
-			multiply_variable = {
-				which = ai_value
-				value = -1
-			}
-		}
-		add_entry = { name = claimed
-			limit = {
-				any_owned_province = {
-					is_claim = FROM
-				}
-			}
-			export_to_variable = {
-				which = ai_value
-				value = -100
-			}
-		}
-		add_entry = { name = protecs_unmanageable
-			limit = {
-				ROOT = {
-					is_subject_of_type = protectorate
-				}
-				FROM = {
-					any_subject_country = {
-						is_subject_of_type = protectorate
-						liberty_desire = 50
-					}
-				}
-			}
-			export_to_variable = {
-				which = ai_value
-				value = -100
-			}
-		}
-		add_entry = { name = avs_unmanageable
-			limit = {
-				ROOT = {
-					is_subject_of_type = autonomous_vassal
-				}
-				FROM = {
-					any_subject_country = {
-						is_subject_of_type = autonomous_vassal
-						liberty_desire = 50
-					}
-				}
-			}
-			export_to_variable = {
-				which = ai_value
-				value = -50
-			}
-		}
-	}
-
-	ai_will_do = {
-		NOT = { #stops spam
-			has_opinion_modifier = {
-				who = FROM
-				modifier = no_betray
-			}
-		}
-		NOT = { # Don't ask to join your enemies
-			OR = {
-				frenchie_enemy_of_FROM = yes
-				FROM = { frenchie_enemy_of_ROOT = yes }
-			}
-		}
-		ROOT = {
-			frenchie_would_betray = yes
-		}
-	}
-}
+#offer_to_betray = {
+#	category = alliance
+#
+#	alert_index = 40
+#	alert_tooltip = demand_dummy_alert_tooltip
+#
+#	require_acceptance = yes # Whether the recipient gets an option to decline
+#
+#	is_visible = {
+#		FROM = {
+#			OR = {
+#				is_in_war = {
+#					attacker_leader = FROM
+#				}
+#				is_in_war = {
+#					defender_leader = FROM
+#				}
+#			}
+#		}
+#		ROOT = {
+#			war_with = FROM
+#			NOT = {
+#				OR = {
+#					is_in_war = {
+#						attacker_leader = ROOT
+#					}
+#					is_in_war = {
+#						defender_leader = ROOT
+#					}
+#				}
+#				is_great_power = yes
+#				is_emperor = yes
+#				is_subject_of_type = estate
+#				is_subject_of_type = ward
+#				is_subject_of_type = personal_union
+#			}
+#		}
+#	}
+#	is_allowed = {
+#		FROM = {
+#			OR = {
+#				is_in_war = {
+#					attacker_leader = FROM
+#				}
+#				is_in_war = {
+#					defender_leader = FROM
+#				}
+#			}
+#			NOT = {
+#				is_rival = ROOT
+#			}
+#			frenchie_pyramid = yes
+#		}
+#		ROOT = {
+#			war_with = FROM
+#			is_great_power = no
+#			is_emperor = no
+#			NOT = {
+#				is_rival = FROM
+#				AND = {
+#					OR = {
+#						is_subject_of_type = estate
+#						is_subject_of_type = ward
+#						is_subject_of_type = personal_union
+#					}
+#					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
+#						overlord = {
+#							overlord_of = FROM
+#						}
+#						overlord = {
+#							overlord = {
+#								overlord_of = FROM
+#							}
+#						}
+#						FROM = {
+#							overlord = {
+#								overlord = {
+#									overlord_of = ROOT
+#								}
+#							}
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#	on_accept = {
+#		add_trust = {
+#			who = FROM
+#			value = 10
+#			mutual = yes
+#		}
+#		ROOT = {
+#			overlord = {
+#				add_trust = {
+#					who = ROOT
+#					value = -20
+#					mutual = yes
+#				}
+#			}
+#		}
+#		log = "[Root.GetName] Has changed sides in war and is now rooting for [From.GetName]"
+#		if = {
+#			limit = {
+#				ROOT = {
+#					is_subject = no
+#				}
+#			}
+#			FROM = {
+#				create_subject = {
+#					subject_type = traitor
+#					subject = ROOT
+#				}
+#			}
+#			ROOT = { grant_independence = yes }
+#		}
+#		if = {
+#			limit = {
+#				ROOT = {
+#					is_subject_of_type = protectorate
+#				}
+#			}
+#			FROM = {
+#				create_subject = {
+#					subject_type = protectorate
+#					subject = ROOT
+#				}
+#			}
+#		}
+#		if = {
+#			limit = {
+#				ROOT = {
+#					is_subject_of_type = autonomous_vassal
+#				}
+#			}
+#			FROM = {
+#				create_subject = {
+#					subject_type = autonomous_vassal
+#					subject = ROOT
+#				}
+#			}
+#		}
+#	}
+#	on_decline = {
+#		add_opinion = {
+#			who = FROM
+#			modifier = no_betray
+#		}
+#	}
+#	ai_acceptance = {
+#		add_entry = { name = Base
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = 50
+#				who = FROM
+#				with = THIS
+#			}
+#		}
+#		add_entry = { name = Married
+#			limit = {
+#				FROM = {
+#					marriage_with = ROOT
+#				}
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = 15
+#			}
+#		}
+#		add_entry = { name = Is_Emperor
+#			limit = {
+#				FROM = { is_emperor = yes }
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = 20
+#			}
+#		}
+#		add_entry = { name = Trust
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = trust
+#				who = FROM
+#				with = ROOT
+#			}
+#			multiply_variable = {
+#				which = ai_value
+#				value = 1.5
+#			}
+#			subtract_variable = {
+#				which = ai_value
+#				value = 75
+#			}
+#		}
+#		add_entry = { name = Distance_Between_Borders
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = border_distance
+#				who = FROM
+#			}
+#			multiply_variable = {
+#				which = ai_value
+#				value = -1
+#			}
+#			divide_variable = { which = ai_value value = 5 }
+#		}
+#		add_entry = { name = Opinion
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = opinion
+#				who = FROM
+#				with = ROOT
+#			}
+#			multiply_variable = {
+#				which = ai_value
+#				value = 0.25
+#			}
+#		}
+#		add_entry = { name = Bankruptcy
+#			limit = {
+#				ROOT = {
+#					is_bankrupt = yes
+#				}
+#			}
+#			export_to_variable = {
+#				variable_name = ai_value
+#				value = -100
+#				who = FROM
+#			}
+#		}
+#		add_entry = { name = frenchie_warscore
+#			export_to_variable = {
+#				which = ai_value
+#				value = trigger_value:war_score
+#			}
+#			multiply_variable = {
+#				which = ai_value
+#				value = -1
+#			}
+#		}
+#		add_entry = { name = claimed
+#			limit = {
+#				any_owned_province = {
+#					is_claim = FROM
+#				}
+#			}
+#			export_to_variable = {
+#				which = ai_value
+#				value = -100
+#			}
+#		}
+#		add_entry = { name = protecs_unmanageable
+#			limit = {
+#				ROOT = {
+#					is_subject_of_type = protectorate
+#				}
+#				FROM = {
+#					any_subject_country = {
+#						is_subject_of_type = protectorate
+#						liberty_desire = 50
+#					}
+#				}
+#			}
+#			export_to_variable = {
+#				which = ai_value
+#				value = -100
+#			}
+#		}
+#		add_entry = { name = avs_unmanageable
+#			limit = {
+#				ROOT = {
+#					is_subject_of_type = autonomous_vassal
+#				}
+#				FROM = {
+#					any_subject_country = {
+#						is_subject_of_type = autonomous_vassal
+#						liberty_desire = 50
+#					}
+#				}
+#			}
+#			export_to_variable = {
+#				which = ai_value
+#				value = -50
+#			}
+#		}
+#	}
+#
+#	ai_will_do = {
+#		NOT = { #stops spam
+#			has_opinion_modifier = {
+#				who = FROM
+#				modifier = no_betray
+#			}
+#		}
+#		NOT = { # Don't ask to join your enemies
+#			OR = {
+#				frenchie_enemy_of_FROM = yes
+#				FROM = { frenchie_enemy_of_ROOT = yes }
+#			}
+#		}
+#		ROOT = {
+#			frenchie_would_betray = yes
+#		}
+#	}
+#}
 
 ## Religion stuff
 #		add_entry = { name = Same_Religion_group
