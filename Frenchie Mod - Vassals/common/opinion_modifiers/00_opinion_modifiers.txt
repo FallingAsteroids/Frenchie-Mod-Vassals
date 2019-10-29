@@ -3980,3 +3980,13 @@ no_betray = {
 	opinion = -10
 	yearly_decay = 2.5
 }
+
+formed_vassal_relationship = {
+	opinion = 10
+	yearly_decay = 2.5
+}
+
+declined_vassal_status = {
+	opinion = -25
+	yearly_decay = 3
+}

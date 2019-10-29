@@ -313,8 +313,8 @@ cancel_estate =  {
 	}
 }
 
-demand_vassalisation = {
-	category = french
+lower_autonomy = {
+	category = influence
 
 	alert_index = 40
 	alert_tooltip = demand_dummy_alert_tooltip
@@ -322,87 +322,828 @@ demand_vassalisation = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = no ############################ Remove this line to unleash the magic ########################################
-		NOT = {
-			is_subject_of = FROM
-			is_subject_of = THIS
-			is_subject_of_type = vassal
-			is_subject_of_type = estate
+		ROOT = {
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_subject_of = FROM
+			}
+
+		}
+		FROM = {
+			is_subject_of = ROOT
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = protectorate
+				is_subject_of_type = tributary_state
+			}
 		}
 	}
 	is_allowed = {
-		always = yes
+		ROOT = {
+			NOT = {
+				is_at_war = yes
+			}
+
+		}
+		FROM = {
+			NOT = {
+				is_at_war = yes
+			}
+		}
+	}
+	on_accept = {
+		log = "[Root.GetName] has lowered the autonomy of [From.GetName]"
+		if = {
+			limit = {
+				FROM = {
+					is_subject_of_type = autonomous_vassal
+				}
+			}
+			create_subject = {
+				subject_type = vassal
+				subject = FROM
+			}
+		} ############# PROGRESS
+	}
+	on_decline = {
+		add_opinion = {
+			who = FROM
+			modifier = declined_vassal_status
+		}
+	}
+	ai_acceptance = {
+		add_entry = { name = Base
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+				who = FROM
+				with = THIS
+			}
+		}
+		add_entry = { name = Free_City
+			limit = {
+				FROM = { has_reform = free_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+			}
+		}
+		add_entry = { name = Trading_City
+			limit = {
+				FROM = { has_reform = trading_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+			}
+		}
+		add_entry = { name = In_Trade_League
+			limit = {
+				FROM = { is_in_trade_league = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+			}
+		}
+		add_entry = { name = Married
+			limit = {
+				FROM = { marriage_with = ROOT }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 15
+			}
+		}
+		add_entry = { name = Alliance
+			limit = {
+				FROM = { alliance_with = ROOT }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 30
+			}
+		}
+		add_entry = { name = Is_Emperor
+			limit = {
+				ROOT = { is_emperor = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 20
+			}
+		}
+		add_entry = { name = Is_Elector
+			limit = {
+				FROM = { is_elector = yes}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -80
+				who = FROM
+			}
+		}
+		add_entry = { name = Trust
+			export_to_variable = {
+				variable_name = ai_value
+				value = trust
+				who = FROM
+				with = ROOT
+			}
+			multiply_variable = {
+				which = ai_value
+				value = 1.5
+			}
+			subtract_variable = {
+				which = ai_value
+				value = 75
+			}
+		}
+		add_entry = { name = Relative_Armies
+			limit = {
+				NOT = {
+					variable_arithmetic_trigger = {
+						export_to_variable = {
+							variable_name = frenchie_my_army_size
+							value = army_size
+						}
+						export_to_variable = {
+							variable_name = frenchie_their_army_size
+							value = army_size
+							who = FROM
+						}
+						change_variable = { which = frenchie_their_army_size value = 1 }
+						divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+						multiply_variable = { which = frenchie_my_army_size value = 20 }
+						subtract_variable = { which = frenchie_my_army_size value = 30 }
+
+						check_variable = {
+							which = frenchie_my_army_size
+							value = 30
+						}
+					}
+				}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = army_size
+			}
+			export_to_variable = {
+				variable_name = ai_value_army
+				value = army_size
+				who = FROM
+			}
+			change_variable = { which = ai_value_army value = 1 }
+			divide_variable = { which = ai_value which = ai_value_army }
+			multiply_variable = { which = ai_value value = 20 }
+			subtract_variable = { which = ai_value value = 30 }
+		}
+		add_entry = { name = Relative_Armies
+			limit = {
+				variable_arithmetic_trigger = {
+					export_to_variable = {
+						variable_name = frenchie_my_army_size
+						value = army_size
+					}
+					export_to_variable = {
+						variable_name = frenchie_their_army_size
+						value = army_size
+						who = FROM
+					}
+					change_variable = { which = frenchie_their_army_size value = 1 }
+					divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+					multiply_variable = { which = frenchie_my_army_size value = 20 }
+					subtract_variable = { which = frenchie_my_army_size value = 30 }
+
+					check_variable = {
+						which = frenchie_my_army_size
+						value = 30
+					}
+				}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 30
+			}
+		}
+		add_entry = { name = Distance_Between_Borders
+			export_to_variable = {
+				variable_name = ai_value
+				value = border_distance
+				who = FROM
+			}
+			multiply_variable = {
+				which = ai_value
+				value = -1
+			}
+			divide_variable = { which = ai_value value = 4 }
+		}
+		add_entry = { name = Opinion
+			export_to_variable = {
+				variable_name = ai_value
+				value = opinion
+				who = FROM
+				with = ROOT
+			}
+			multiply_variable = {
+				which = ai_value
+				value = 0.20
+			}
+		}
+		add_entry = { name = Relative_Diplomatic_Reputation
+			export_to_variable = {
+				variable_name = ai_value
+				value = modifier:diplomatic_reputation
+			}
+			export_to_variable ={
+			variable_name = ai_value_diprep
+			value = modifier:diplomatic_reputation
+			who = FROM
+			}
+			subtract_variable = {
+				which = ai_value
+				which = ai_value_diprep
+			}
+			multiply_variable = { which = ai_value value = 5 }
+		}
+		add_entry = { name = Development
+			export_to_variable = {
+				variable_name = ai_value
+				value = total_development
+				who = FROM
+			}
+			multiply_variable = {
+				which = ai_value
+				value = -0.3
+			}
+		}
+		add_entry = { name = Bankruptcy
+			limit = {
+				ROOT = {
+				is_bankrupt = yes
+				}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -100
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_Prots_It_Would_Abandon
+			limit = {
+				FROM = { protectorate = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -20
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_AVs_It_Would_Abandon
+			limit = {
+				FROM = { autonomous_vassal = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_PU_It_Would_Abandon
+			limit = {
+				FROM = { personal_union = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_vassals_It_Would_Abandon
+			limit = {
+				FROM = { vassal = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Same_faith
+			limit = {
+				religion = FROM
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 20
+			}
+		}
+		add_entry = { name = Close_faith
+			limit = {
+				NOT = { religion = FROM }
+				religion_group = FROM
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 10
+			}
+		}
+		add_entry = { name = Infidel
+			limit = {
+				NOT = { religion_group = FROM }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -15
+			}
+		}
+	}
+
+	ai_will_do = { # this is a trigger
+		NOT = { #stops spam
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_protectorate_status
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_protectorate_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = broke_protectorate_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_avassal_status
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_avassal_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = broke_avassal_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_vassal_relationship
+			}
+		}
+		NOT = {
+			OR = {
+				frenchie_enemy_of_FROM = yes
+				FROM = { frenchie_enemy_of_ROOT = yes }
+			}
+		}
+		NOT = {
+			any_subject_country = {
+				AND = {
+					liberty_desire = 70
+					is_subject_of_type = vassal
+				}
+			}
+		}
+		army_strength = {
+			who = FROM
+			value = 1.5
+		}
+		OR = {
+			is_neighbor_of = FROM
+			any_subject_country = {
+				is_neighbor_of = FROM
+			}
+		}
+		OR = {
+			any_known_country = {
+				frenchie_enemy_of_FROM = yes
+				frenchie_enemy_of_ROOT = yes
+			}
+		}
+	}
+}
+
+########@
+
+demand_vassal = {
+	category = influence
+
+	alert_index = 40
+	alert_tooltip = demand_dummy_alert_tooltip
+
+	require_acceptance = yes # Whether the recipient gets an option to decline
+
+	is_visible = {
+		ROOT = {
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_rival = FROM
+				is_subject_of = FROM
+			}
+
+		}
+		FROM = {
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_emperor = yes
+				is_great_power = yes
+				is_rival = ROOT
+			}
+		}
+	}
+	is_allowed = {
+		ROOT = {
+			NOT = {
+				is_at_war = yes
+			}
+
+		}
+		FROM = {
+			NOT = {
+				is_at_war = yes
+			}
+		}
 	}
 	on_accept = {
 		add_trust = {
 			who = FROM
-			value = 20
+			value = 10
 			mutual = yes
 		}
+		add_opinion = {
+			who = FROM
+			modifier = formed_vassal_relationship
+		}
+		log = "[From.GetName] has accepted to become a normal vassal under [Root.GetName]"
 		create_subject = {
 			subject_type = vassal
 			subject = FROM
 		}
 	}
-	on_decline =	{	}
-
-	ai_acceptance = { # This works similarly to variable_arithmetic_trigger, but does not support triggers generally. Instead, "limit" will be evaluated first and the rest ignored if it isn't passed.
-		add_entry = {
-			name = TRUST
-			limit = { religion = catholic }
+	on_decline = {
+		add_opinion = {
+			who = FROM
+			modifier = declined_vassal_status
+		}
+	}
+	ai_acceptance = {
+		add_entry = { name = Base
 			export_to_variable = {
-				variable_name = ai_value # Each "add_entry" must create one variable called "ai_value", the value of which will be extracted after executing all effects
-				value = trust
+				variable_name = ai_value
+				value = -50
 				who = FROM
 				with = THIS
 			}
-			subtract_variable = { which = ai_value value = 50 }
-			multiply_variable = { which = ai_value value = 2 }
 		}
-		add_entry = {
-			name = TRUST
-			limit = { NOT = { religion = catholic } }
+		add_entry = { name = Free_City
+			limit = {
+				FROM = { has_reform = free_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+			}
+		}
+		add_entry = { name = Trading_City
+			limit = {
+				FROM = { has_reform = trading_city }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+			}
+		}
+		add_entry = { name = In_Trade_League
+			limit = {
+				FROM = { is_in_trade_league = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -50
+			}
+		}
+		add_entry = { name = Married
+			limit = {
+				FROM = { marriage_with = ROOT }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 15
+			}
+		}
+		add_entry = { name = Alliance
+			limit = {
+				FROM = { alliance_with = ROOT }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 30
+			}
+		}
+		add_entry = { name = Is_Emperor
+			limit = {
+				ROOT = { is_emperor = yes }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 20
+			}
+		}
+		add_entry = { name = Is_Elector
+			limit = {
+				FROM = { is_elector = yes}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -80
+				who = FROM
+			}
+		}
+		add_entry = { name = Trust
 			export_to_variable = {
 				variable_name = ai_value
 				value = trust
 				who = FROM
-				with = THIS
-			}
-			export_to_variable = {
-				variable_name = is_defender
-				value = trigger_value:is_defender_of_faith # This sets is_defender to either 0.0 or 1.0
+				with = ROOT
 			}
 			multiply_variable = {
-				which = is_defender
-				value = 10
-			}
-			change_variable = {
 				which = ai_value
-				which = is_defender # This adds 10 to ai_value if you are defender of faith
+				value = 1.5
 			}
-			subtract_variable = { which = ai_value value = 50 }
+			subtract_variable = {
+				which = ai_value
+				value = 75
+			}
 		}
-		add_entry = {
-			name = OPINION
+		add_entry = { name = Relative_Armies
+			limit = {
+				NOT = {
+					variable_arithmetic_trigger = {
+						export_to_variable = {
+							variable_name = frenchie_my_army_size
+							value = army_size
+						}
+						export_to_variable = {
+							variable_name = frenchie_their_army_size
+							value = army_size
+							who = FROM
+						}
+						change_variable = { which = frenchie_their_army_size value = 1 }
+						divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+						multiply_variable = { which = frenchie_my_army_size value = 20 }
+						subtract_variable = { which = frenchie_my_army_size value = 30 }
+
+						check_variable = {
+							which = frenchie_my_army_size
+							value = 30
+						}
+					}
+				}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = army_size
+			}
+			export_to_variable = {
+				variable_name = ai_value_army
+				value = army_size
+				who = FROM
+			}
+			change_variable = { which = ai_value_army value = 1 }
+			divide_variable = { which = ai_value which = ai_value_army }
+			multiply_variable = { which = ai_value value = 20 }
+			subtract_variable = { which = ai_value value = 30 }
+		}
+		add_entry = { name = Relative_Armies
+			limit = {
+				variable_arithmetic_trigger = {
+					export_to_variable = {
+						variable_name = frenchie_my_army_size
+						value = army_size
+					}
+					export_to_variable = {
+						variable_name = frenchie_their_army_size
+						value = army_size
+						who = FROM
+					}
+					change_variable = { which = frenchie_their_army_size value = 1 }
+					divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+					multiply_variable = { which = frenchie_my_army_size value = 20 }
+					subtract_variable = { which = frenchie_my_army_size value = 30 }
+
+					check_variable = {
+						which = frenchie_my_army_size
+						value = 30
+					}
+				}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 30
+			}
+		}
+		add_entry = { name = Distance_Between_Borders
+			export_to_variable = {
+				variable_name = ai_value
+				value = border_distance
+				who = FROM
+			}
+			multiply_variable = {
+				which = ai_value
+				value = -1
+			}
+			divide_variable = { which = ai_value value = 4 }
+		}
+		add_entry = { name = Opinion
 			export_to_variable = {
 				variable_name = ai_value
 				value = opinion
 				who = FROM
-				with = THIS
+				with = ROOT
 			}
-			divide_variable = { which = ai_value value = 4 }
+			multiply_variable = {
+				which = ai_value
+				value = 0.20
+			}
+		}
+		add_entry = { name = Relative_Diplomatic_Reputation
+			export_to_variable = {
+				variable_name = ai_value
+				value = modifier:diplomatic_reputation
+			}
+			export_to_variable ={
+			variable_name = ai_value_diprep
+			value = modifier:diplomatic_reputation
+			who = FROM
+			}
+			subtract_variable = {
+				which = ai_value
+				which = ai_value_diprep
+			}
+			multiply_variable = { which = ai_value value = 5 }
+		}
+		add_entry = { name = Development
+			export_to_variable = {
+				variable_name = ai_value
+				value = total_development
+				who = FROM
+			}
+			multiply_variable = {
+				which = ai_value
+				value = -0.3
+			}
+		}
+		add_entry = { name = Bankruptcy
+			limit = {
+				ROOT = {
+				is_bankrupt = yes
+				}
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -100
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_Prots_It_Would_Abandon
+			limit = {
+				FROM = { protectorate = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -20
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_AVs_It_Would_Abandon
+			limit = {
+				FROM = { autonomous_vassal = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_PU_It_Would_Abandon
+			limit = {
+				FROM = { personal_union = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Has_vassals_It_Would_Abandon
+			limit = {
+				FROM = { vassal = 1 }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -30
+				who = FROM
+			}
+		}
+		add_entry = { name = Same_faith
+			limit = {
+				religion = FROM
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 20
+			}
+		}
+		add_entry = { name = Close_faith
+			limit = {
+				NOT = { religion = FROM }
+				religion_group = FROM
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = 10
+			}
+		}
+		add_entry = { name = Infidel
+			limit = {
+				NOT = { religion_group = FROM }
+			}
+			export_to_variable = {
+				variable_name = ai_value
+				value = -15
+			}
 		}
 	}
 
 	ai_will_do = { # this is a trigger
-		has_opinion_modifier = {
-			modifier = insulted
+		NOT = { #stops spam
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_protectorate_status
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_protectorate_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = broke_protectorate_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_avassal_status
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_avassal_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = broke_avassal_relationship
+			}
+			has_opinion_modifier = {
+				who = FROM
+				modifier = formed_vassal_relationship
+			}
+		}
+		NOT = {
+			OR = {
+				frenchie_enemy_of_FROM = yes
+				FROM = { frenchie_enemy_of_ROOT = yes }
+			}
+		}
+		NOT = {
+			any_subject_country = {
+				AND = {
+					liberty_desire = 70
+					is_subject_of_type = vassal
+				}
+			}
+		}
+		army_strength = {
 			who = FROM
+			value = 1.5
+		}
+		OR = {
+			is_neighbor_of = FROM
+			any_subject_country = {
+				is_neighbor_of = FROM
+			}
+		}
+		OR = {
+			any_known_country = {
+				frenchie_enemy_of_FROM = yes
+				frenchie_enemy_of_ROOT = yes
+			}
 		}
 	}
 }
 
-cancel_vassalization =  {
+cancel_vassal =  {
 	category = french
 	require_acceptance = no
 	is_visible = {
@@ -412,17 +1153,9 @@ cancel_vassalization =  {
 		}
 	}
 	is_allowed = {
-		reverse_has_opinion_modifier = {
-			modifier = insulted
-			who = FROM
-		}
+		is_at_war = no
 	}
 	on_accept = {
-		add_trust = {
-			who = FROM
-			value = -100
-			mutual = yes
-		}
 		FROM = {
 			grant_independence = yes
 		}
@@ -2659,6 +3392,7 @@ become_independent = {
 			is_subject_of_type = protectorate
 			is_subject_of_type = autonomous_vassal
 		}
+		is_at_war = no
 	}
 	on_accept = {
 		FROM = {
@@ -2666,14 +3400,34 @@ become_independent = {
 				id = leon_mod.1
 			}
 		}
-		add_opinion = {
-			who = FROM
-			modifier = broke_protectorate_relationship
-		}
-		FROM = {
+		if = {
+			limit = {
+				is_subject_of_type = protectorate
+			}
 			add_opinion = {
-				who = ROOT
+				who = FROM
 				modifier = broke_protectorate_relationship
+			}
+			FROM = {
+				add_opinion = {
+					who = ROOT
+					modifier = broke_protectorate_relationship
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_subject_of_type = autonomous_vassal
+			}
+			add_opinion = {
+				who = FROM
+				modifier = broke_avassal_relationship
+			}
+			FROM = {
+				add_opinion = {
+					who = ROOT
+					modifier = broke_avassal_relationship
+				}
 			}
 		}
 		grant_independence = yes
