@@ -360,6 +360,19 @@ lower_autonomy = {
 					is_subject_of_type = autonomous_vassal
 				}
 			}
+			FROM = { grant_independence = yes }
+			create_subject = {
+				subject_type = vassal
+				subject = FROM
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					is_subject_of_type = personal_union
+				}
+			}
+			FROM = { grant_independence = yes }
 			create_subject = {
 				subject_type = vassal
 				subject = FROM
@@ -371,6 +384,7 @@ lower_autonomy = {
 					is_subject_of_type = vassal
 				}
 			}
+			FROM = { grant_independence = yes }
 			create_subject = {
 				subject_type = estate
 				subject = FROM
