@@ -336,6 +336,7 @@ lower_autonomy = {
 				is_subject_of_type = estate
 				is_subject_of_type = protectorate
 				is_subject_of_type = tributary_state
+				is_subject_of_type = personal_union
 			}
 		}
 	}
