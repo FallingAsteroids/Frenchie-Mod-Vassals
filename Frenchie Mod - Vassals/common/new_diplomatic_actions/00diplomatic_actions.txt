@@ -313,7 +313,7 @@ cancel_estate =  {
 	}
 }
 
-demand_ward = {
+demand_vassalisation = {
 	category = french
 
 	alert_index = 40
@@ -326,7 +326,7 @@ demand_ward = {
 		NOT = {
 			is_subject_of = FROM
 			is_subject_of = THIS
-			is_subject_of_type = ward
+			is_subject_of_type = vassal
 			is_subject_of_type = estate
 		}
 	}
@@ -340,7 +340,7 @@ demand_ward = {
 			mutual = yes
 		}
 		create_subject = {
-			subject_type = ward
+			subject_type = vassal
 			subject = FROM
 		}
 	}
@@ -402,13 +402,13 @@ demand_ward = {
 	}
 }
 
-cancel_ward =  {
+cancel_vassalization =  {
 	category = french
 	require_acceptance = no
 	is_visible = {
 		overlord_of = FROM
 		FROM = {
-			is_subject_of_type = ward
+			is_subject_of_type = vassal
 		}
 	}
 	is_allowed = {
@@ -937,7 +937,7 @@ stop_being_autonomous_vassal = {
 							any_subject_country = {
 								OR = {
 									is_subject_of_type = autonomous_vassal
-									is_subject_of_type = ward
+									is_subject_of_type = vassal
 								}
 								is_neighbor_of = ROOT
 								frenchie_enemy_of_ROOT = yes
@@ -1288,7 +1288,7 @@ ask_to_become_autonomous_vassal = {
             FROM = {
                 any_subject_country = {
 					OR = {
-						is_subject_of_type = ward
+						is_subject_of_type = vassal
 						is_subject_of_type = autonomous_vassal
 					}
                  	ROOT = {
@@ -1399,7 +1399,7 @@ ask_to_become_autonomous_vassal = {
 			FROM = { # Do it if you wanna eat any of FROM's protectorates
 				any_subject_country = {
 					OR = {
-						is_subject_of_type = ward
+						is_subject_of_type = vassal
 						is_subject_of_type = autonomous_vassal
 					}
 					ROOT = {
@@ -2715,7 +2715,7 @@ propose_betrayal = {
 				is_great_power = yes
 				is_emperor = yes
 				is_subject_of_type = estate
-				is_subject_of_type = ward
+				is_subject_of_type = vassal
 				is_subject_of_type = personal_union
 			}
 		}
@@ -2744,7 +2744,7 @@ propose_betrayal = {
 				AND = {
 					OR = {
 						is_subject_of_type = estate
-						is_subject_of_type = ward
+						is_subject_of_type = vassal
 						is_subject_of_type = personal_union
 					}
 					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
@@ -3014,7 +3014,7 @@ offer_to_betray = {
 				is_great_power = yes
 				is_emperor = yes
 				is_subject_of_type = estate
-				is_subject_of_type = ward
+				is_subject_of_type = vassal
 				is_subject_of_type = personal_union
 			}
 		}
@@ -3043,7 +3043,7 @@ offer_to_betray = {
 				AND = {
 					OR = {
 						is_subject_of_type = estate
-						is_subject_of_type = ward
+						is_subject_of_type = vassal
 						is_subject_of_type = personal_union
 					}
 					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
