@@ -812,3 +812,308 @@ frenchie_would_betray = {
       value = 0
   }
 }
+
+frenchie_FROM_would_accept_becoming_vassal = {
+  variable_arithmetic_trigger = {
+      export_to_variable = {
+          variable_name = acceptance
+          value = -25
+      }
+    if = { # name = Free_City
+      limit = {
+        ROOT = { has_reform = free_city }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -50
+      }
+    }
+    if = { #name = Trading_City
+      limit = {
+        ROOT = { has_reform = trading_city }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -50
+      }
+    }
+    if = {# name = In_Trade_League
+      limit = {
+        ROOT = { is_in_trade_league = yes }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -50
+      }
+    }
+    if = { #name = Married
+      limit = {
+        ROOT = { marriage_with = FROM }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = 15
+      }
+    }
+    if = { #name = Alliance
+      limit = {
+        ROOT = { alliance_with = FROM }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = 30
+      }
+    }
+    if = {# name = Is_Emperor
+      limit = {
+        FROM = { is_emperor = yes }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = 20
+      }
+    }
+    if = { #name = Is_Elector
+      limit = {
+        ROOT = { is_elector = yes}
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -80
+        who = ROOT
+      }
+    }
+    export_to_variable = {
+      variable_name = trustVAR
+      value = trust
+      who = ROOT
+      with = FROM
+    }
+    multiply_variable = {
+      which = trustVAR
+      value = 1.5
+    }
+    subtract_variable = {
+      which = trustVAR
+      value = 75
+    }
+    change_variable = {
+      variable_name = acceptence
+      value = trustVAR
+    }
+    if = { #name = Relative_Armies
+      limit = {
+        NOT = {
+          variable_arithmetic_trigger = {
+            export_to_variable = {
+              variable_name = frenchie_my_army_size
+              value = army_size
+            }
+            export_to_variable = {
+              variable_name = frenchie_their_army_size
+              value = army_size
+              who = ROOT
+            }
+            change_variable = { which = frenchie_their_army_size value = 1 }
+            divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+            multiply_variable = { which = frenchie_my_army_size value = 20 }
+            subtract_variable = { which = frenchie_my_army_size value = 30 }
+
+            check_variable = {
+              which = frenchie_my_army_size
+              value = 30
+            }
+          }
+        }
+      }
+      change_variable = {
+        variable_name = army_VAR
+        value = army_size
+      }
+      export_to_variable = {
+        variable_name = acceptance_army
+        value = army_size
+        who = ROOT
+      }
+      change_variable = { which = acceptance_army value = 1 }
+      divide_variable = { which = army_VAR which = acceptance_army }
+      multiply_variable = { which = army_VAR value = 20 }
+      subtract_variable = { which = army_VAR value = 30 }
+      change_variable = {
+        variable_name = acceptence
+        value = trustVAR
+      }
+    }
+    if = { #name = Relative_Armies
+      limit = {
+        variable_arithmetic_trigger = {
+          export_to_variable = {
+            variable_name = frenchie_my_army_size
+            value = army_size
+          }
+          export_to_variable = {
+            variable_name = frenchie_their_army_size
+            value = army_size
+            who = ROOT
+          }
+          change_variable = { which = frenchie_their_army_size value = 1 }
+          divide_variable = { which = frenchie_my_army_size which = frenchie_their_army_size }
+          multiply_variable = { which = frenchie_my_army_size value = 20 }
+          subtract_variable = { which = frenchie_my_army_size value = 30 }
+
+          check_variable = {
+            which = frenchie_my_army_size
+            value = 30
+          }
+        }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = 30
+      }
+    }
+    change_variable = {
+      variable_name = borderVAR
+      value = border_distance
+      who = ROOT
+    }
+    multiply_variable = {
+      which = borderVAR
+      value = -1
+    }
+    divide_variable = { which = borderVAR value = 4 }
+    change_variable = {
+      variable_name = acceptence
+      value = borderVAR
+    }
+    change_variable = {
+      variable_name = opinionVAR
+      value = opinion
+      who = ROOT
+      with = FROM
+    }
+    multiply_variable = {
+      which = opinionVAR
+      value = 0.20
+    }
+    change_variable = {
+      variable_name = acceptence
+      value = opinionVAR
+    }
+    change_variable = {
+      variable_name = ourdiprepVAR
+      value = modifier:diplomatic_reputation
+    }
+    export_to_variable ={
+    variable_name = theirdiprepVAR
+    value = modifier:diplomatic_reputation
+    who = ROOT
+    }
+    subtract_variable = {
+      which = ourdiprepVAR
+      which = theirdiprepVAR
+    }
+    multiply_variable = { which = ourdiprepVAR value = 5 }
+    change_variable = {
+      variable_name = acceptence
+      value = ourdiprepVAR
+    }
+    change_variable = {
+      variable_name = ourdevVAR
+      value = total_development
+      who = ROOT
+    }
+    multiply_variable = {
+      which = ourdevVAR
+      value = -0.3
+    }
+    change_variable = {
+      variable_name = acceptence
+      value = ourdevVAR
+    }
+    if = { #name = Bankruptcy
+      limit = {
+        FROM = {
+        is_bankrupt = yes
+        }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -100
+        who = ROOT
+      }
+    }
+    if = { #name = Has_Prots_It_Would_Abandon
+      limit = {
+        ROOT = { protectorate = 1 }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -20
+        who = ROOT
+      }
+    }
+    if = { #name = Has_AVs_It_Would_Abandon
+      limit = {
+        ROOT = { autonomous_vassal = 1 }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -30
+        who = ROOT
+      }
+    }
+    if = { #name = Has_PU_It_Would_Abandon
+      limit = {
+        ROOT = { personal_union = 1 }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -30
+        who = ROOT
+      }
+    }
+    if = { #name = Has_vassals_It_Would_Abandon
+      limit = {
+        ROOT = { vassal = 1 }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -30
+        who = ROOT
+      }
+    }
+    if = { #name = Same_faith
+      limit = {
+        religion = ROOT
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = 20
+      }
+    }
+    if = { #name = Close_faith
+      limit = {
+        NOT = { religion = ROOT }
+        religion_group = ROOT
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = 10
+      }
+    }
+    if = { #name = Infidel
+      limit = {
+        NOT = { religion_group = ROOT }
+      }
+      change_variable = {
+        variable_name = acceptance
+        value = -15
+      }
+    }
+    check_variable = {
+        which = acceptance
+        value = 0
+    }
+  }
+}
