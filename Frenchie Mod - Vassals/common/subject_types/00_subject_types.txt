@@ -29,7 +29,7 @@
 
 
 # Forward declaring all subject types so they can refer to each other in triggers etc.
-vassal = {}
+vassal2 = {}
 march = {}
 daimyo_vassal = {}
 personal_union = {}
@@ -38,10 +38,10 @@ client_march = {}
 colony = {}
 tributary_state = {}
 estate = {}
-ward = {}
+vassal = {}
 autonomous_vassal = {}
 protectorate = {}
-traitor = {}
+#traitor = {}
 
 
 default = {
