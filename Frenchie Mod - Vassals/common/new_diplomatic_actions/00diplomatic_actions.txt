@@ -364,19 +364,30 @@ lower_autonomy = {
 				subject_type = vassal
 				subject = FROM
 			}
-		} ############# PROGRESS
+		}
+		if = {
+			limit = {
+				FROM = {
+					is_subject_of_type = vassal
+				}
+			}
+			create_subject = {
+				subject_type = estate
+				subject = FROM
+			}
+		}
 	}
-	on_decline = {
+	on_decline = { ### Add a CB to have the overlord force it
 		add_opinion = {
 			who = FROM
-			modifier = declined_vassal_status
+			modifier = declined_autonomy_lowering
 		}
 	}
 	ai_acceptance = {
 		add_entry = { name = Base
 			export_to_variable = {
 				variable_name = ai_value
-				value = -50
+				value = 1000
 				who = FROM
 				with = THIS
 			}
@@ -691,35 +702,9 @@ lower_autonomy = {
 				who = FROM
 				modifier = formed_vassal_relationship
 			}
-		}
-		NOT = {
-			OR = {
-				frenchie_enemy_of_FROM = yes
-				FROM = { frenchie_enemy_of_ROOT = yes }
-			}
-		}
-		NOT = {
-			any_subject_country = {
-				AND = {
-					liberty_desire = 70
-					is_subject_of_type = vassal
-				}
-			}
-		}
-		army_strength = {
-			who = FROM
-			value = 1.5
-		}
-		OR = {
-			is_neighbor_of = FROM
-			any_subject_country = {
-				is_neighbor_of = FROM
-			}
-		}
-		OR = {
-			any_known_country = {
-				frenchie_enemy_of_FROM = yes
-				frenchie_enemy_of_ROOT = yes
+			has_opinion_modifier = {
+				who = FROM
+				modifier = declined_autonomy_lowering
 			}
 		}
 	}
@@ -1140,6 +1125,7 @@ demand_vassal = {
 				frenchie_enemy_of_ROOT = yes
 			}
 		}
+		frenchie_FROM_would_accept_becoming_vassal = yes
 	}
 }
 

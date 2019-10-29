@@ -3990,3 +3990,8 @@ declined_vassal_status = {
 	opinion = -25
 	yearly_decay = 3
 }
+
+declined_autonomy_lowering = {
+	opinion = -25
+	yearly_decay = 1
+}
