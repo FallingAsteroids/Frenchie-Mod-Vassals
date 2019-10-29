@@ -358,21 +358,6 @@ lower_autonomy = {
 		if = {
 			limit = {
 				FROM = {
-					OR = {
-						is_subject_of_type = autonomous_vassal
-						is_subject_of_type = personal_union
-					}
-				}
-			}
-			FROM = { grant_independence = yes }
-			create_subject = {
-				subject_type = vassal
-				subject = FROM
-			}
-		}
-		if = {
-			limit = {
-				FROM = {
 					is_subject_of_type = vassal
 				}
 			}
@@ -381,6 +366,18 @@ lower_autonomy = {
 				subject_type = estate
 				subject = FROM
 			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						is_subject_of_type = autonomous_vassal
+						is_subject_of_type = personal_union
+					}
+				}
+			}
+			FROM = { grant_independence = yes }
+			vassalize = FROM
 		}
 	}
 	on_decline = { ### Add a CB to have the overlord force it

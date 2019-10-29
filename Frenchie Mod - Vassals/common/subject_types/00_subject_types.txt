@@ -29,7 +29,7 @@
 
 
 # Forward declaring all subject types so they can refer to each other in triggers etc.
-vassal2 = {}
+vassal = {}
 march = {}
 daimyo_vassal = {}
 personal_union = {}
@@ -38,7 +38,7 @@ client_march = {}
 colony = {}
 tributary_state = {}
 estate = {}
-vassal = {}
+ward = {}
 autonomous_vassal = {}
 protectorate = {}
 #traitor = {}
@@ -168,7 +168,7 @@ default = {
 	subject_opinion_modifier = null
 }
 
-vassal2 = {
+vassal = {
 	copy_from = default
 
 	# Graphics:
@@ -215,7 +215,7 @@ vassal2 = {
 }
 
 march = {
-	copy_from = vassal2
+	copy_from = vassal
 
 	# Graphics:
 	sprite = GFX_icon_march
@@ -258,7 +258,7 @@ march = {
 }
 
 daimyo_vassal = {
-	copy_from = vassal2
+	copy_from = vassal
 	count = vassal
 
 	# Properties:
@@ -371,7 +371,7 @@ personal_union = {
 }
 
 client_vassal = {
-	copy_from = vassal2
+	copy_from = vassal
 	count = vassal
 
 	# Graphics:
@@ -630,7 +630,7 @@ estate = {
 	decrease_tariffs = yes
 	start_colonial_war = yes
 
-vassal = {
+ward = {
 	copy_from = default
 	#is_potential_overlord = {
 		NOT = {
