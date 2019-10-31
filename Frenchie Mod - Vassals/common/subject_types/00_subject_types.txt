@@ -590,15 +590,34 @@ tributary_state = {
 estate = {
 	copy_from = vassal
 	count = vassal
+	##### Changes so far
+	can_be_established = { always = yes }
+	overlord_can_be_subject = yes
+
+	can_be_integrated = yes
+	overlord_can_fabricate_for = yes
+	has_power_projection = no
+	##### Done
+	can_send_missionary_to_subject = yes		# Requires Cradle of Civilization
+	counts_for_borders = yes			# Whether distance between borders counts this subject type as part of its overlord's borders.
+	can_use_claims = yes				# Whether the overlord can use the subject's claims and cores for declaring war
+	can_fight_independence_war = yes
+	is_voluntary = no				# Whether they can leave the relationship whenever they want
+	can_transfer_in_peace = yes							# Whether this subject type can be made into a vassal with the "Transfer Subject" Age Ability.
+	#########
+	takes_diplo_slot = no
+	joins_overlords_wars = yes
+
+	overlord_protects_external = no						# Whether overlord always gets called (declinable) against countries without the same overlord. When this is 'no' overlord will only join if the defender would have been blocked (by its subject type) from attacking the attacker.
+	uses_tariffs = yes
+
+	has_colonial_parent = yes							# Regulates most rules that should hold only for colonies
+	######
 
 	# Properties:
-	has_power_projection = yes
-	takes_diplo_slot = no
-	gives_daimyo_bonuses = yes
 	gets_help_with_rebels = no
 	separatists_become_subjects = yes
 	allows_taking_land_without_independence = yes
-	can_use_claims = no
 
 	trust_on_start = 0
 
@@ -608,56 +627,23 @@ estate = {
 	relative_power_class = 1
 
 	can_fight = {
-		same_overlord = daimyo_vassal
 	}
 	can_rival = {
-		same_overlord = daimyo_vassal
 	}
 	can_ally = {
-		same_overlord = daimyo_vassal
+		same_overlord = estate
 	}
 	can_marry = {
-		same_overlord = daimyo_vassal
+		same_overlord = all
+		other_overlord = all
+		independent_nations = yes
+
 	}
 
 	# Subject Interactions
 	#(disable)
-	scutage = no
-	grant_core_claim = yes
-	grant_province = yes
-	place_relative_on_throne = no
-	enforce_religion = no
-	enforce_culture = no
-	seize_territory = no
-	#(enable)
-	force_seppuku = yes
-	contribute_to_capital = yes
-	force_isolation = yes
-	return_land = yes
-	conscript_general = yes
-	#(special)
-	sword_hunt = yes
-	sankin_kotai = yes
-	expel_ronin = yes
-
-	# Modifiers
-
-	modifier_overlord = clear #We don't want to duplicate the ones inherited from vassal
-	modifier_subject = clear #Ditto
-	modifier_subject = {
-		modifier = subject_nation
-	}
-	modifier_overlord = {
-		modifier = daimyo_subject
-	}
-
-
-	modifier_overlord = {
-		modifier = overlord_sword_hunt
-		trigger = {
-			has_country_modifier = subject_sword_hunt
-		}
-	}
+	increase_tariffs = yes
+	decrease_tariffs = yes
 }
 
 potato = {
@@ -691,6 +677,7 @@ potato = {
 	can_rival = {
 	}
 	can_ally = {
+		same_overlord = estate
 	}
 	can_marry = {
 		same_overlord = all
