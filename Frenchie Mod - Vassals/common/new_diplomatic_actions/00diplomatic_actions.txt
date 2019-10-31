@@ -1156,7 +1156,7 @@ demand_autonomous_vassal = {
 			}
 			FROM = { is_subject_of_type = autonomous_vassal }
 			FROM = { is_subject_of_type = personal_union }
-			FROM = { is_subject_of_type = ward }
+			FROM = { is_subject_of_type = vassal }
 			FROM = { is_subject_of_type = estate }
 		}
 	}
@@ -3435,7 +3435,7 @@ become_independent = {
 #				is_great_power = yes
 #				is_emperor = yes
 #				is_subject_of_type = estate
-#				is_subject_of_type = ward
+#				is_subject_of_type = vassal
 #				is_subject_of_type = personal_union
 #			}
 #		}
@@ -3464,7 +3464,7 @@ become_independent = {
 #				AND = {
 #					OR = {
 #						is_subject_of_type = estate
-#						is_subject_of_type = ward
+#						is_subject_of_type = vassal
 #						is_subject_of_type = personal_union
 #					}
 #					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
@@ -3734,7 +3734,7 @@ become_independent = {
 #				is_great_power = yes
 #				is_emperor = yes
 #				is_subject_of_type = estate
-#				is_subject_of_type = ward
+#				is_subject_of_type = vassal
 #				is_subject_of_type = personal_union
 #			}
 #		}
@@ -3763,7 +3763,7 @@ become_independent = {
 #				AND = {
 #					OR = {
 #						is_subject_of_type = estate
-#						is_subject_of_type = ward
+#						is_subject_of_type = vassal
 #						is_subject_of_type = personal_union
 #					}
 #					OR = { # This retarded piece of code is to check wether they are from the same overlord of once removed from the same overlord
