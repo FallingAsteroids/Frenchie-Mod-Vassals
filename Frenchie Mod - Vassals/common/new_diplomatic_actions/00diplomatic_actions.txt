@@ -1160,6 +1160,7 @@ demand_autonomous_vassal = {
 			FROM = { is_subject_of_type = autonomous_vassal }
 			FROM = { is_subject_of_type = personal_union }
 			FROM = { is_subject_of_type = vassal }
+			FROM = { is_subject_of_type = march }
 			FROM = { is_subject_of_type = estate }
 		}
 	}
