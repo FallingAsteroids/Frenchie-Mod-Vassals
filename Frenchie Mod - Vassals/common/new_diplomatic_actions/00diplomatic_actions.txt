@@ -317,7 +317,10 @@ lower_autonomy = {
 		if = {
 			limit = {
 				FROM = {
-					is_subject_of_type = vassal
+					OR = {
+						is_subject_of_type = vassal
+						is_subject_of_type = march
+					}
 				}
 			}
 			FROM = { grant_independence = yes }
@@ -709,6 +712,7 @@ demand_vassal = {
 			NOT = {
 				is_subject_of_type = estate
 				is_subject_of_type = vassal
+				is_subject_of_type = march
 				is_emperor = yes
 				is_great_power = yes
 				is_rival = ROOT
