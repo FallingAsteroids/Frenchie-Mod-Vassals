@@ -693,7 +693,7 @@ potato = {
 
 ward = {
 	copy_from = default
-	#is_potential_overlord = {
+	is_potential_overlord = {
 		NOT = {
 			is_subject_of_type = estate
 		}
