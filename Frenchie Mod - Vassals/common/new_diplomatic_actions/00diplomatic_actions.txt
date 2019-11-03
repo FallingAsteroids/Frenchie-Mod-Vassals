@@ -366,6 +366,10 @@ lower_autonomy = {
 			type = cb_lower_autonomy
 			months = 12
 		}
+		declare_war_with_cb = {
+			who = FROM
+			casus_belli = cb_lower_autonomy
+		}
 	}
 	ai_acceptance = {
 		add_entry = { name = Base
