@@ -360,12 +360,18 @@ lower_autonomy = {
 			who = FROM
 			modifier = declined_autonomy_lowering
 		}
+		log = "[From.GetName] refused to become less autonomous under [Root.GetName]"
+		add_casus_belli	= {
+			target = FROM
+			type = cb_lower_autonomy
+			months = 12
+		}
 	}
 	ai_acceptance = {
 		add_entry = { name = Base
 			export_to_variable = {
 				variable_name = ai_value
-				value = 1000
+				value = -25
 				who = FROM
 				with = THIS
 			}

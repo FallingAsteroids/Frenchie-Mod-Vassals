@@ -1,0 +1,49 @@
+declined_protectorate_status = {
+	opinion = -25
+	yearly_decay = 3
+}
+
+declined_avassal_status = {
+	opinion = -25
+	yearly_decay = 3
+}
+
+formed_protectorate_relationship = {
+	opinion = 5
+	yearly_decay = 2.5
+}
+
+broke_protectorate_relationship = {
+	opinion = -5
+	yearly_decay = 2.5
+}
+
+formed_avassal_relationship = {
+	opinion = 10
+	yearly_decay = 2.5
+}
+
+broke_avassal_relationship = {
+	opinion = -10
+	yearly_decay = 2.5
+}
+
+no_betray = {
+	opinion = -10
+	yearly_decay = 2.5
+}
+
+formed_vassal_relationship = {
+	opinion = 10
+	yearly_decay = 2.5
+}
+
+declined_vassal_status = {
+	opinion = -25
+	yearly_decay = 3
+}
+
+declined_autonomy_lowering = {
+	opinion = -25
+	yearly_decay = 1
+}
