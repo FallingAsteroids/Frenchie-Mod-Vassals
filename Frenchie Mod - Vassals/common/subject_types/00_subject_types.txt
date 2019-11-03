@@ -29,7 +29,7 @@
 
 
 # Forward declaring all subject types so they can refer to each other in triggers etc.
-vassal = {}
+vassal2 = {}
 march = {}
 daimyo_vassal = {}
 personal_union = {}
@@ -39,7 +39,7 @@ colony = {}
 tributary_state = {}
 estate = {}
 potato = {}
-ward = {}
+vassal = {}
 autonomous_vassal = {}
 protectorate = {}
 #traitor = {}
@@ -169,7 +169,7 @@ default = {
 	subject_opinion_modifier = null
 }
 
-vassal = {
+vassal2 = {
 	copy_from = default
 
 	# Graphics:
@@ -216,7 +216,7 @@ vassal = {
 }
 
 march = {
-	copy_from = vassal
+	copy_from = vassal2
 
 	# Graphics:
 	sprite = GFX_icon_march
@@ -259,8 +259,8 @@ march = {
 }
 
 daimyo_vassal = {
-	copy_from = vassal
-	count = vassal
+	copy_from = vassal2
+	count = vassal2
 
 	# Properties:
 	has_power_projection = yes
@@ -372,8 +372,8 @@ personal_union = {
 }
 
 client_vassal = {
-	copy_from = vassal
-	count = vassal
+	copy_from = vassal2
+	count = vassal2
 
 	# Graphics:
 	diplomacy_overlord_sprite = GFX_diplomacy_leadclients
@@ -588,8 +588,8 @@ tributary_state = {
 # Here start the FM V Subjects
 
 estate = {
-	copy_from = vassal
-	count = vassal
+	copy_from = vassal2
+	count = vassal2
 	##### Changes so far
 	can_be_established = { always = yes }
 	overlord_can_be_subject = yes
@@ -691,7 +691,7 @@ potato = {
 	decrease_tariffs = yes
 	start_colonial_war = yes
 
-ward = {
+vassal = {
 	copy_from = default
 	is_potential_overlord = {
 		NOT = {
@@ -703,6 +703,7 @@ ward = {
  	can_have_subjects_of_other_types = yes
 
 	has_overlords_ruler = no
+	overlord_can_attack = yes
 
 	can_be_integrated = no
 	overlord_can_fabricate_for = no
@@ -722,25 +723,25 @@ ward = {
 	uses_tariffs = yes
 
 	can_fight = {
-		same_overlord = ward
+		same_overlord = vassal
 		same_overlord = autonomous_vassal
 		same_overlord = protectorate
-		other_overlord = ward
+		other_overlord = vassal
 	}
 	can_rival = {
-		other_overlord = ward
+		other_overlord = vassal
 		other_overlord = autonomous_vassal
 		other_overlord = protectorate
-		same_overlord = ward
+		same_overlord = vassal
 		same_overlord = autonomous_vassal
 		same_overlord = protectorate
 		independent_nations = yes
 	}
 	can_ally = {
-		other_overlord = ward
+		other_overlord = vassal
 		other_overlord = autonomous_vassal
 		other_overlord = protectorate
-		same_overlord = ward
+		same_overlord = vassal
 		same_overlord = autonomous_vassal
 		same_overlord = protectorate
 		independent_nations = yes
@@ -771,6 +772,8 @@ autonomous_vassal = {
  	can_have_subjects_of_other_types = yes
 	can_fight_independence_war = no
 	has_overlords_ruler = no
+	overlord_can_attack = yes
+
 
 	can_be_integrated = no
 	overlord_can_fabricate_for = no
@@ -792,25 +795,25 @@ autonomous_vassal = {
 	uses_tariffs = yes
 
 	can_fight = {
-	same_overlord = ward
+	same_overlord = vassal
 	same_overlord = autonomous_vassal
 	same_overlord = protectorate
 	other_overlord = all
 	}
 	can_rival = {
-	other_overlord = ward
+	other_overlord = vassal
 	other_overlord = autonomous_vassal
 	other_overlord = protectorate
-	same_overlord = ward
+	same_overlord = vassal
 	same_overlord = autonomous_vassal
 	same_overlord = protectorate
 	independent_nations = yes
 	}
 	can_ally = {
-	other_overlord = ward
+	other_overlord = vassal
 	other_overlord = autonomous_vassal
 	other_overlord = protectorate
-	same_overlord = ward
+	same_overlord = vassal
 	same_overlord = autonomous_vassal
 	same_overlord = protectorate
 	independent_nations = yes
@@ -832,7 +835,7 @@ protectorate = {
 	is_potential_overlord = {
 		NOT = {
 			is_subject_of_type = estate
-			is_subject_of_type = ward
+			is_subject_of_type = vassal
 			is_subject_of_type = autonomous_vassal
 			is_subject_of_type = colony
 		}
@@ -870,7 +873,7 @@ protectorate = {
 
 	can_fight = {
 		other_overlord = all
-		same_overlord = ward
+		same_overlord = vassal
 		same_overlord = personal_union
 		same_overlord = autonomous_vassal
 		same_overlord = protectorate
@@ -878,10 +881,10 @@ protectorate = {
 		independent_nations = yes
 	}
 	can_rival = {
-		other_overlord = ward
+		other_overlord = vassal
 		other_overlord = autonomous_vassal
 		other_overlord = protectorate
-		same_overlord = ward
+		same_overlord = vassal
 		same_overlord = personal_union
 		same_overlord = autonomous_vassal
 		same_overlord = protectorate
@@ -889,10 +892,10 @@ protectorate = {
 		independent_nations = yes
 	}
 	can_ally = {
-		other_overlord = ward
+		other_overlord = vassal
 		other_overlord = autonomous_vassal
 		other_overlord = protectorate
-		same_overlord = ward
+		same_overlord = vassal
 		same_overlord = personal_union
 		same_overlord = autonomous_vassal
 		same_overlord = protectorate
