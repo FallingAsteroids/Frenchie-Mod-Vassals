@@ -47,7 +47,7 @@
 #
 # --------------------------------------------------------------
 
-lower_autonomy = {
+lower_autonomy_estate = {
 	type = take_capital
 
 	badboy_factor = 1
@@ -55,8 +55,22 @@ lower_autonomy = {
 	peace_cost_factor = 0.75
 
 	peace_options = {
-		lower_autonomy
+		lower_autonomy_estate
 	}
 
-	war_name = LOWER_AUTONOMY_WAR_NAME
+	war_name = LOWER_AUTONOMY_ESTATE_WAR_NAME
+}
+
+lower_autonomy_vassal = {
+	type = take_capital
+
+	badboy_factor = 1
+	prestige_factor = 2
+	peace_cost_factor = 0.75
+
+	peace_options = {
+		lower_autonomy_vassal
+	}
+
+	war_name = LOWER_AUTONOMY_VASSAL_WAR_NAME
 }

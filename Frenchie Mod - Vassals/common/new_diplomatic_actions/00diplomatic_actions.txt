@@ -361,15 +361,46 @@ lower_autonomy = {
 			modifier = declined_autonomy_lowering
 		}
 		log = "[From.GetName] refused to become less autonomous under [Root.GetName]"
-		add_casus_belli	= {
-			target = FROM
-			type = cb_lower_autonomy
-			months = 12
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						is_subject_of_type = vassal
+						is_subject_of_type = march
+					}
+				}
+			}
+			add_casus_belli	= {
+				target = FROM
+				type = cb_lower_autonomy_estate
+				months = 12
+			}
+			declare_war_with_cb = {
+				who = FROM
+				casus_belli = cb_lower_autonomy_estate
+			}
 		}
-		declare_war_with_cb = {
-			who = FROM
-			casus_belli = cb_lower_autonomy
+
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						is_subject_of_type = autonomous_vassal
+						is_subject_of_type = personal_union
+					}
+				}
+			}
+			add_casus_belli	= {
+				target = FROM
+				type = cb_lower_autonomy_vassal
+				months = 12
+			}
+			declare_war_with_cb = {
+				who = FROM
+				casus_belli = cb_lower_autonomy_vassal
+			}
 		}
+
 	}
 	ai_acceptance = {
 		add_entry = { name = Base
