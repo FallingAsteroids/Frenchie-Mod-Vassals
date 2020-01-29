@@ -352,7 +352,10 @@ lower_autonomy = {
 				}
 			}
 			FROM = { grant_independence = yes }
-			vassalize = FROM
+			create_subject = {
+				subject_type = vassal
+				subject = FROM
+			}
 		}
 	}
 	on_decline = { ### Add a CB to have the overlord force it
