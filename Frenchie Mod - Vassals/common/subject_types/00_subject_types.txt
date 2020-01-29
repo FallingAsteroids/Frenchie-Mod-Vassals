@@ -690,6 +690,7 @@ potato = {
 	increase_tariffs = yes
 	decrease_tariffs = yes
 	start_colonial_war = yes
+}
 
 vassal = {
 	copy_from = default
