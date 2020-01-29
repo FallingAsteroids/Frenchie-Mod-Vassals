@@ -204,7 +204,7 @@ demand_estate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = yes ############################ Remove this line to unleash the magic ########################################
+		always = yes
 #		NOT = {
 #			is_subject_of = FROM
 #			is_subject_of = THIS
@@ -303,6 +303,42 @@ lower_autonomy = {
 		ROOT = {
 			NOT = {
 				is_at_war = yes
+				NOT = { #stops spam
+				has_opinion_modifier = {
+					who = FROM
+					modifier = declined_protectorate_status
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = formed_protectorate_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = broke_protectorate_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = declined_avassal_status
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = formed_avassal_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = broke_avassal_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = formed_vassal_relationship
+				}
+				FROM = {
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = frenchie_lowered_autonomy
+					}
+				}
+			}
 			}
 
 		}
@@ -355,6 +391,12 @@ lower_autonomy = {
 			create_subject = {
 				subject_type = vassal
 				subject = FROM
+			}
+		}
+		FROM = {
+			add_opinon = {
+				who = ROOT
+				modifier = frenchie_lowered_autonomy
 			}
 		}
 	}
@@ -727,6 +769,12 @@ lower_autonomy = {
 			has_opinion_modifier = {
 				who = FROM
 				modifier = declined_autonomy_lowering
+			}
+			FROM = {
+				has_opinion_modifier = {
+					who = ROOT
+					modifier = frenchie_lowered_autonomy
+				}
 			}
 		}
 	}
