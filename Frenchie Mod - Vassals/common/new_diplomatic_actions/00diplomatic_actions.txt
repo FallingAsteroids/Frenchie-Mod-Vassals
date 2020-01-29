@@ -1731,16 +1731,23 @@ ask_to_become_autonomous_vassal = {
 				AND = {
 					is_subject = yes
 					NOT = {
-						OR = {
-							is_subject_of_type = autonomous_vassal
-							is_subject_of_type = protectorate
-						}
+						is_subject_of_type = autonomous_vassal
+						is_subject_of_type = protectorate
 					}
 				}
 			}
 
 		}
-
+	}
+	FROM = {
+		NOT = {
+			AND = {
+				is_subject = yes
+				NOT = {
+					is_subject_of_type = protectorate
+				}
+			}
+		}
 	}
   }
   is_allowed = {
@@ -2983,7 +2990,10 @@ ask_to_become_protectorate = {
       NOT = {
 				is_subject_of = FROM
 			}
-    }
+	}
+	FROM = {
+		is_subject = no
+	}
   }
   is_allowed = {
 		ROOT = {
