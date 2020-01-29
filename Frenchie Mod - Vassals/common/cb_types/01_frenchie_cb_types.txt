@@ -14,7 +14,7 @@
 # --------------------------------------------------------------
 
 # Forcing lower autonomy
-cb_lower_autonomy = {
+cb_lower_autonomy_estate = {
 	valid_for_subject = yes
 
 	is_triggered_only = yes
@@ -23,5 +23,17 @@ cb_lower_autonomy = {
 	prerequisites = {
 	}
 
-	war_goal = lower_autonomy
+	war_goal = lower_autonomy_estate
+}
+
+cb_lower_autonomy_vassal = {
+	valid_for_subject = yes
+
+	is_triggered_only = yes
+	months = 240
+
+	prerequisites = {
+	}
+
+	war_goal = lower_autonomy_vassal
 }
