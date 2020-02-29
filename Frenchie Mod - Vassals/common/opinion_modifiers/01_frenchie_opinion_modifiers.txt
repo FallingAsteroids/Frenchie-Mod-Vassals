@@ -52,3 +52,8 @@ frenchie_lowered_autonomy = {
 	opinion = -30
 	yearly_decay = 1
 }
+
+frenchie_overlord_lowered_autonomy = {
+	opinion = 10
+	yearly_decay = 0.1
+}

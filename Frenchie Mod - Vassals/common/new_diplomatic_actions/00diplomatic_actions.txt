@@ -305,6 +305,10 @@ lower_autonomy = {
 				modifier = frenchie_lowered_autonomy
 			}
 		}
+		add_opinion = {
+			who = FROM
+			modifier = frenchie_overlord_lowered_autonomy
+		}
 		if = {
 			limit = {
 				FROM = {
@@ -686,46 +690,7 @@ lower_autonomy = {
 	}
 
 	ai_will_do = { # this is a trigger
-		NOT = { #stops spam
-			has_opinion_modifier = {
-				who = FROM
-				modifier = declined_protectorate_status
-			}
-			has_opinion_modifier = {
-				who = FROM
-				modifier = formed_protectorate_relationship
-			}
-			has_opinion_modifier = {
-				who = FROM
-				modifier = broke_protectorate_relationship
-			}
-			has_opinion_modifier = {
-				who = FROM
-				modifier = declined_avassal_status
-			}
-			has_opinion_modifier = {
-				who = FROM
-				modifier = formed_avassal_relationship
-			}
-			has_opinion_modifier = {
-				who = FROM
-				modifier = broke_avassal_relationship
-			}
-			has_opinion_modifier = {
-				who = FROM
-				modifier = formed_vassal_relationship
-			}
-			has_opinion_modifier = {
-				who = FROM
-				modifier = declined_autonomy_lowering
-			}
-			FROM = {
-				has_opinion_modifier = {
-					who = ROOT
-					modifier = frenchie_lowered_autonomy
-				}
-			}
-		}
+		frenchie_lowered_autonomy = yes
 	}
 }
 
@@ -1243,6 +1208,37 @@ demand_autonomous_vassal = {
 			subject_type = autonomous_vassal
 			subject = FROM
 		}
+		add_opinion = {
+			who = FROM
+			modifier = formed_avassal_relationship
+		}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = formed_avassal_relationship
+			}
+			overlord = {
+				FROM = {
+					add_trust = {
+						who = PREV
+						value = -5
+						mutual = yes
+					}
+					add_opinion = {
+						who = PREV
+						modifier = broke_avassal_relationship
+					}
+				}
+				add_opinion = {
+					who = FROM
+					modifier = broke_avassal_relationship
+				}
+				add_opinon = {
+					who = ROOT
+					modifier = broke_avassal_relationship
+				}
+			}
+		}
 	}
 	on_decline = {
 		add_opinion = {
@@ -1733,7 +1729,6 @@ ask_to_become_autonomous_vassal = {
 					}
 				}
 			}
-
 		}
 	}
 	FROM = {
