@@ -1117,3 +1117,118 @@ frenchie_FROM_would_accept_becoming_vassal = {
     }
   }
 }
+
+frenchie_recent_autonomy_lowering = {
+  AND = {
+    ROOT = {
+      AND = {
+        NOT = {
+          is_at_war = yes
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = declined_protectorate_status
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = formed_protectorate_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = broke_protectorate_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = declined_avassal_status
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = formed_avassal_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = broke_avassal_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = formed_vassal_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = frenchie_lowered_autonomy
+          }
+        }
+      }
+    }
+    FROM = {
+      AND = {
+        NOT = {
+          is_at_war = yes
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = ROOT
+            modifier = declined_protectorate_status
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = ROOT
+            modifier = formed_protectorate_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = broke_protectorate_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = declined_avassal_status
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = formed_avassal_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = broke_avassal_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = formed_vassal_relationship
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = frenchie_lowered_autonomy
+          }
+        }
+      }
+    }
+  }
+}

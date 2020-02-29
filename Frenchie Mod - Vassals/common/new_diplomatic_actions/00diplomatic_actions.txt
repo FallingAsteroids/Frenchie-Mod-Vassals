@@ -204,12 +204,7 @@ demand_estate = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		always = yes
-#		NOT = {
-#			is_subject_of = FROM
-#			is_subject_of = THIS
-#			is_subject_of_type = estate
-#		}
+		always = no
 	}
 	is_allowed = {
 		always = yes
@@ -300,65 +295,7 @@ lower_autonomy = {
 		}
 	}
 	is_allowed = {
-		ROOT = {
-			NOT = {
-				is_at_war = yes
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = FROM
-					modifier = declined_protectorate_status
-				}
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = FROM
-					modifier = formed_protectorate_relationship
-				}
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = FROM
-					modifier = broke_protectorate_relationship
-				}
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = FROM
-					modifier = declined_avassal_status
-				}
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = FROM
-					modifier = formed_avassal_relationship
-				}
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = FROM
-					modifier = broke_avassal_relationship
-				}
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = FROM
-					modifier = formed_vassal_relationship
-				}
-			}
-
-		}
-		FROM = {
-			NOT = {
-				is_at_war = yes
-			}
-			NOT = {
-				has_opinion_modifier = {
-					who = ROOT
-					modifier = frenchie_lowered_autonomy
-				}
-			}
-		}
+		frenchie_recent_autonomy_lowering = yes
 	}
 	on_accept = {
 		log = "[Root.GetName] has lowered the autonomy of [From.GetName]"
