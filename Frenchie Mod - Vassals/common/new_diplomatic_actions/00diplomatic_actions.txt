@@ -299,6 +299,12 @@ lower_autonomy = {
 	}
 	on_accept = {
 		log = "[Root.GetName] has lowered the autonomy of [From.GetName]"
+		FROM = {
+			add_opinon = {
+				who = ROOT
+				modifier = frenchie_lowered_autonomy
+			}
+		}
 		if = {
 			limit = {
 				FROM = {
@@ -340,12 +346,6 @@ lower_autonomy = {
 			create_subject = {
 				subject_type = vassal
 				subject = FROM
-			}
-		}
-		FROM = {
-			add_opinon = {
-				who = ROOT
-				modifier = frenchie_lowered_autonomy
 			}
 		}
 	}
