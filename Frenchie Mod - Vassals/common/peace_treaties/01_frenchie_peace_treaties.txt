@@ -289,9 +289,7 @@ seize_power = {
 	requires_is_allowed = no # If set to "yes", treaty will only be visible when explicitly allowed by casus belli. If not, it will be available but cost diplomatic power.
 
 	is_visible = { # Defaults to equivalent of "always = yes"
-		AND = {
 			has_country_flag = estate
-		}
 	}
 	is_allowed = { # Defaults to equivalent of "always = yes"
 	}
