@@ -219,6 +219,9 @@ demand_estate = {
 			subject_type = estate
 			subject = FROM
 		}
+		FROM = {
+			set_country_flag = estate
+		}
 	}
 	on_decline =	{	}
 
@@ -261,6 +264,7 @@ cancel_estate =  {
 		}
 		FROM = {
 			grant_independence = yes
+			clr_country_flag = estate
 		}
 	}
 	ai_will_do = {
@@ -318,6 +322,62 @@ lower_autonomy = {
 					}
 				}
 			}
+			FROM = { # Steals your subjects
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = tributary
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = tributary
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = protectorate
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = protectorate
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = autonomous_vassal
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = autonomous_vassal
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = vassal
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = vassal
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = march
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = march
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = estate
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = estate
+					}
+			 }
+			}
 			FROM = { grant_independence = yes }
 			create_subject = {
 				subject_type = estate
@@ -335,6 +395,7 @@ lower_autonomy = {
 					add_core = ROOT
 					cede_province = ROOT
 				}
+				set_country_flag = estate
 			}
 		}
 		if = {
@@ -345,6 +406,35 @@ lower_autonomy = {
 						is_subject_of_type = personal_union
 					}
 				}
+			}
+			FROM = {
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = tributary
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = tributary
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = protectorate
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = protectorate
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = autonomous_vassal
+					}
+					create_subject = {
+						subject = THIS
+						subject_type = autonomous_vassal
+					}
+			 }
 			}
 			FROM = { grant_independence = yes }
 			create_subject = {
@@ -3412,6 +3502,7 @@ become_independent = {
 				id = leon_mod.1
 			}
 		}
+		clr_country_flag = estate
 		if = {
 			limit = {
 				is_subject_of_type = protectorate

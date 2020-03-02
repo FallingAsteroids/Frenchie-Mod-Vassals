@@ -74,3 +74,17 @@ lower_autonomy_vassal = {
 
 	war_name = LOWER_AUTONOMY_VASSAL_WAR_NAME
 }
+
+insurrection = {
+	type = take_capital
+
+	badboy_factor = 1
+	prestige_factor = 10
+	peace_cost_factor = 0.75
+
+	peace_options = {
+		seize_power
+	}
+
+	war_name = INSURRECTION_WAR_NAME
+}

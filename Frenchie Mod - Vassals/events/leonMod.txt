@@ -73,3 +73,52 @@ country_event = {  #event for subject: overlord denied you (located in ask_to_be
     name = "leon_mod_6.a"
   }
 }
+
+country_event = {  #event for subject: overlord denied you (located in ask_to_become_protectorate)
+  id = leon_mod.7
+  title = "leon_mod_7.t"
+  desc = "leon_mod_7.d"
+  picture = "EUROPEAN_REFUGEES_eventPicture"
+  hidden = yes
+
+  mean_time_to_happen = {
+  	 days = 1
+  }
+  trigger = {
+    is_subject_of_type = estate
+  }
+  immediate = {
+    set_country_flag = estate
+  }
+  option = {
+    name = "leon_mod_7.a"
+    ai_chance = { factor = 100 }
+  }
+}
+
+country_event = {  #event for subject: overlord denied you (located in ask_to_become_protectorate)
+  id = leon_mod.7
+  title = "leon_mod_8.t"
+  desc = "leon_mod_8.d"
+  picture = "EUROPEAN_REFUGEES_eventPicture"
+  hidden = yes
+
+  mean_time_to_happen = {
+  	 days = 1
+  }
+  trigger = {
+    AND = {
+      NOT = {
+        is_subject_of_type = estate
+      }
+      is_at_war = no
+    }
+  }
+  immediate = {
+    set_country_flag = estate
+  }
+  option = {
+    name = "leon_mod_7.a"
+    ai_chance = { factor = 100 }
+  }
+}

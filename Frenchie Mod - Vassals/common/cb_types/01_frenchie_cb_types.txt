@@ -37,3 +37,18 @@ cb_lower_autonomy_vassal = {
 
 	war_goal = lower_autonomy_vassal
 }
+
+# Seizing_power
+
+cb_seize_power = {
+	valid_for_subject = yes
+
+	prerequisites = {
+		is_subject_of_type = estate
+		FROM = {
+			overlord_of = PREV
+		}
+	}
+
+	war_goal = insurrection
+}
