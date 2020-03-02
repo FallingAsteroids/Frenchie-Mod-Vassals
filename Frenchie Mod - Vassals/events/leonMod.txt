@@ -97,7 +97,7 @@ country_event = {  #event for subject: overlord denied you (located in ask_to_be
 }
 
 country_event = {  #event for subject: overlord denied you (located in ask_to_become_protectorate)
-  id = leon_mod.7
+  id = leon_mod.8
   title = "leon_mod_8.t"
   desc = "leon_mod_8.d"
   picture = "EUROPEAN_REFUGEES_eventPicture"
