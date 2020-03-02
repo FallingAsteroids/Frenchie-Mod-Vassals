@@ -115,10 +115,10 @@ country_event = {  #event for subject: overlord denied you (located in ask_to_be
     }
   }
   immediate = {
-    set_country_flag = estate
+    clr_country_flag = estate
   }
   option = {
-    name = "leon_mod_7.a"
+    name = "leon_mod_8.a"
     ai_chance = { factor = 100 }
   }
 }
