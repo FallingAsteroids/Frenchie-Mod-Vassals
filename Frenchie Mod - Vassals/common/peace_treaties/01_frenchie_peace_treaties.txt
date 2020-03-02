@@ -66,6 +66,16 @@ lower_autonomy_estate = {
 					cede_province = ROOT
 				}
 			}
+			FROM = {
+				add_opinon = {
+					who = ROOT
+					modifier = frenchie_lowered_autonomy
+				}
+			}
+			add_opinion = {
+				who = FROM
+				modifier = frenchie_overlord_lowered_autonomy
+			}
 	}
 	ai_weight = { # Defaults to always evaluate to 0
 		export_to_variable = {
@@ -123,6 +133,16 @@ lower_autonomy_vassal = {
 		create_subject = {
 			subject = FROM
 			subject_type = vassal
+		}
+		FROM = {
+			add_opinon = {
+				who = ROOT
+				modifier = frenchie_lowered_autonomy
+			}
+		}
+		add_opinion = {
+			who = FROM
+			modifier = frenchie_overlord_lowered_autonomy
 		}
 	}
 	ai_weight = { # Defaults to always evaluate to 0
