@@ -86,6 +86,7 @@ country_event = {  #event for subject: overlord denied you (located in ask_to_be
   }
   trigger = {
     is_subject_of_type = estate
+    NOT = { has_country_flag = estate }
   }
   immediate = {
     set_country_flag = estate
@@ -107,18 +108,50 @@ country_event = {  #event for subject: overlord denied you (located in ask_to_be
   	 days = 1
   }
   trigger = {
-    AND = {
-      NOT = {
-        is_subject_of_type = estate
-      }
-      is_at_war = no
+    NOT = {
+      is_subject_of_type = estate
     }
+    is_at_war = no
+    has_country_flag = estate
   }
   immediate = {
     clr_country_flag = estate
   }
   option = {
     name = "leon_mod_8.a"
-    ai_chance = { factor = 100 }
+  }
+}
+#independance war
+province_event = { #same culture
+  id = leon_mod.9
+  title = "leon_mod_9.t"
+  desc = "leon_mod_9.d"
+  hidden = yes
+  trigger = {
+  	NOT = {
+      any_province_in_state = {
+        is_capital_of = owner
+      }
+    }
+    owner = {
+      is_at_war = yes
+      }
+      NOT = { controlled_by = owner }
+      controller = { has_country_flag = estate }
+    }
+  mean_time_to_happen = {
+    days = 1
+  }
+  immediate = {
+    cede_province = controller
+    if = {
+      limit = {
+        has_owner_accepted_culture = yes
+      }
+      add_core = owner
+    }
+  }
+  option = {
+    name " leon_mod.9.a"
   }
 }
