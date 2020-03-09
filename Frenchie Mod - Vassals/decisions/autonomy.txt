@@ -189,4 +189,25 @@ country_decisions = {
             factor = 0
         }
     }
+    france_color_and_free = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          FRA = {
+            create_subject = {
+              subject_type = color
+              subject = ROOT
+            }
+          }
+          grant_independence = yes
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
 }
