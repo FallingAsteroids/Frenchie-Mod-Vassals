@@ -122,7 +122,7 @@ country_event = {  #event for subject: overlord denied you (located in ask_to_be
   }
 }
 #independance war
-province_event = { #same culture
+province_event = { #subject event
   id = leon_mod.9
   title = "leon_mod_9.t"
   desc = "leon_mod_9.d"
@@ -153,5 +153,34 @@ province_event = { #same culture
   }
   option = {
     name " leon_mod.9.a"
+  }
+}
+
+province_event = { #overlord event
+  id = leon_mod.10
+  title = "leon_mod_10.t"
+  desc = "leon_mod_10.d"
+  hidden = yes
+  trigger = {
+  	NOT = {
+      any_province_in_state = {
+        is_capital_of = owner
+      }
+    }
+    owner = {
+      is_at_war = yes
+    }
+    NOT = { controlled_by = owner }
+    owner = { has_country_flag = estate }
+    }
+  mean_time_to_happen = {
+    days = 1
+  }
+  immediate = {
+    add_core = controller
+    cede_province = controller
+  }
+  option = {
+    name " leon_mod.10.a"
   }
 }
