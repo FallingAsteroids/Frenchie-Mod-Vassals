@@ -51,4 +51,142 @@ country_decisions = {
             factor = 1
         }
     }
+    form_yourself = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          change_tag = ROOT
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    form_france = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          change_tag = FRA
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    form_rebels = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          change_tag = REB
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    form_pirates = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          change_tag = PIR
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    form_natives = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          change_tag = NAT
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    rebel_color_and_free = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          REB = {
+            create_subject = {
+              subject_type = color
+              subject = ROOT
+            }
+          }
+          grant_independence = yes
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    pirate_color_and_free = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          PIR = {
+            create_subject = {
+              subject_type = color
+              subject = ROOT
+            }
+          }
+          grant_independence = yes
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    native_color_and_free = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          NAT = {
+            create_subject = {
+              subject_type = color
+              subject = ROOT
+            }
+          }
+          grant_independence = yes
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
 }

@@ -216,6 +216,10 @@ demand_estate = {
 			mutual = yes
 		}
 		create_subject = {
+			subject_type = color
+			subject = FROM
+		}
+		create_subject = {
 			subject_type = estate
 			subject = FROM
 		}
@@ -373,12 +377,20 @@ lower_autonomy = {
 						is_subject_of_type = estate
 					}
 					create_subject = {
+						subject_type = color
+						subject = THIS
+					}
+					create_subject = {
 						subject = THIS
 						subject_type = estate
 					}
 			 }
 			}
 			FROM = { grant_independence = yes }
+			create_subject = {
+				subject_type = color
+				subject = FROM
+			}
 			create_subject = {
 				subject_type = estate
 				subject = FROM

@@ -100,11 +100,19 @@ lower_autonomy_estate = {
 					is_subject_of_type = estate
 				}
 				create_subject = {
+					subject_type = color
+					subject = THIS
+				}
+				create_subject = {
 					subject = THIS
 					subject_type = estate
 				}
 		 }
 		}
+			create_subject = {
+				subject_type = color
+				subject = FROM
+			}
 			create_subject = {
 				subject = FROM
 				subject_type = estate
@@ -345,6 +353,10 @@ seize_power = {
 					is_subject_of_type = estate
 				}
 				create_subject = {
+					subject_type = color
+					subject = THIS
+				}
+				create_subject = {
 					subject = THIS
 					subject_type = estate
 				}
@@ -356,9 +368,17 @@ seize_power = {
 				has_country_flag = estate
 			}
 			create_subject = {
+				subject_type = color
+				subject = THIS
+			}
+			create_subject = {
 				subject = THIS
 				subject_type = estate
 			}
+		}
+		create_subject = {
+			subject_type = color
+			subject = FROM
 		}
 		create_subject = {
 			subject = FROM
