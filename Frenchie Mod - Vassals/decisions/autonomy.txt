@@ -51,4 +51,40 @@ country_decisions = {
             factor = 1
         }
     }
+    rebel_switch = {
+      major = yes
+      potential = { always = yes }
+      allow = { always = yes }
+      effect = {
+        switch_tag = REB
+      }
+      ai_will_do = { factor = 0 }
+    }
+    rebel_change = {
+      major = yes
+      potential = { always = yes }
+      allow = { always = yes }
+      effect = {
+        change_tag = REB
+      }
+      ai_will_do = { factor = 0 }
+    }
+    pirate_switch = {
+      major = yes
+      potential = { always = yes }
+      allow = { always = yes }
+      effect = {
+        switch_tag = PIR
+      }
+      ai_will_do = { factor = 0 }
+    }
+    pirate_change = {
+      major = yes
+      potential = { always = yes }
+      allow = { always = yes }
+      effect = {
+        change_tag = PIR
+      }
+      ai_will_do = { factor = 0 }
+    }
 }
