@@ -135,21 +135,21 @@ province_event = { #same culture
     }
     owner = {
       is_at_war = yes
-      }
-      NOT = { controlled_by = owner }
-      controller = { has_country_flag = estate }
+    }
+    NOT = { controlled_by = owner }
+    controller = { has_country_flag = estate }
     }
   mean_time_to_happen = {
     days = 1
   }
   immediate = {
-    cede_province = controller
     if = {
       limit = {
-        has_owner_accepted_culture = yes
+        culture_group = controller #change "culture" to "culture_group" to change it
       }
-      add_core = owner
+      add_core = controller
     }
+    cede_province = controller
   }
   option = {
     name " leon_mod.9.a"
