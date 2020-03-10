@@ -312,6 +312,7 @@ lower_autonomy = {
 				who = ROOT
 				modifier = frenchie_lowered_autonomy
 			}
+			set_country_flag = estate
 		}
 		add_opinion = {
 			who = FROM
@@ -407,7 +408,6 @@ lower_autonomy = {
 					add_core = ROOT
 					cede_province = ROOT
 				}
-				set_country_flag = estate
 			}
 		}
 		if = {
