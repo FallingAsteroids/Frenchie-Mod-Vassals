@@ -312,7 +312,6 @@ lower_autonomy = {
 				who = ROOT
 				modifier = frenchie_lowered_autonomy
 			}
-			set_country_flag = estate
 		}
 		add_opinion = {
 			who = FROM
@@ -388,6 +387,7 @@ lower_autonomy = {
 			 }
 			}
 			FROM = { grant_independence = yes }
+			FROM = { set_country_flag = estate }
 			create_subject = {
 				subject_type = color
 				subject = FROM
