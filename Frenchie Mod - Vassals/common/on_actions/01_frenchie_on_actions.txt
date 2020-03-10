@@ -3,7 +3,10 @@ on_colonial_liberation = {
 	if = {
 		limit = {
 			NOT = {
-				has_country_flag = estate
+				OR = {
+					has_country_flag = estate
+					is_subject = yes
+				}
 			}
 		}
 		country_event = { id = colonial_nation.90 days = 1 }
