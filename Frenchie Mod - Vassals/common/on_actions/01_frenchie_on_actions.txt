@@ -1,0 +1,11 @@
+# country
+on_colonial_liberation = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = estate
+			}
+		}
+		country_event = { id = colonial_nation.90 days = 1 }
+	}
+}
