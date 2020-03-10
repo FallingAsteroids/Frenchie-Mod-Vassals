@@ -53,24 +53,3 @@ cb_seize_power = {
 
 	war_goal = insurrection
 }
-# Independence War
-cb_independence_war = {
-	exclusive = yes
-	independence = yes
-
-	prerequisites = {
-		NOT = {
-			is_subject_of_type = estate
-		}
-		is_subject_other_than_tributary_trigger = yes
-		is_subject_of = FROM
-		NOT = { is_colonial_nation_of = FROM }
-		OR = {
-			NOT = { has_reform = daimyo }
-			NOT = { from = { has_reform = shogunate } }
-		}
-		is_revolution_target = no
-	}
-
-	war_goal = defend_capital_independence
-}
