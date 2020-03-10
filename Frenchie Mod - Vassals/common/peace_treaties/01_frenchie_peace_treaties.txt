@@ -298,13 +298,13 @@ seize_power = {
 
 	is_visible = { # Defaults to equivalent of "always = yes"
 		has_casus_belli	= {
-			type = cb_lower_autonomy_vassal
+			type = cb_seize_power
 			target = FROM
 		}
 	}
 	is_allowed = { # Defaults to equivalent of "always = yes"
 		has_casus_belli	= {
-			type = cb_lower_autonomy_vassal
+			type = cb_seize_power
 			target = FROM
 		}
 	}
