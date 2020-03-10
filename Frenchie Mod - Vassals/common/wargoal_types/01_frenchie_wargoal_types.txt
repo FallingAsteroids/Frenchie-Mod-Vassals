@@ -79,7 +79,7 @@ insurrection = {
 	type = take_capital
 
 	badboy_factor = 1
-	prestige_factor = 10
+	prestige_factor = 2
 	peace_cost_factor = 0.75
 
 	peace_options = {
