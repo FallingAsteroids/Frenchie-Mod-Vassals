@@ -224,6 +224,21 @@ assume_color = {
 				subject = ROOT
 			}
 		}
+		every_subject_country = {
+			limit = {
+				is_subject_of_type = estate
+			}
+			ROOT = {
+				create_subject = {
+					subject_type = color
+					subject = PREV
+				}
+				create_subject = {
+					subject_type = estate
+					subject = PREV
+				}
+			}
+		}
 		grant_independence = yes
 	}
 	on_decline =	{
