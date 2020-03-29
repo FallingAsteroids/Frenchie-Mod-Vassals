@@ -6,8 +6,7 @@
 # These treaties don't support having a different Taker/Giver than the two countries that are negotiating.
 # Nor do they support setting provinces (like cede province) or third party countries (like annull treaties) as targets.
 
-
-lower_autonomy_estate = {
+lower_autonomy_vassal = {
 	# The following strings need localization:
 	#		"lower_autonomy_desc" (uses text processing, supporting bracket notation) ("[FROM.GetName] becomes a [THIS.GetName] Dummy")
 	#		"CB_ALLOWED_lower_autonomy" (uses plain localization) ("Enforced Dumbness")
@@ -38,13 +37,13 @@ lower_autonomy_estate = {
 
 	is_visible = { # Defaults to equivalent of "always = yes"
 		has_casus_belli	= {
-			type = cb_lower_autonomy_estate
+			type = cb_lower_autonomy_vassal
 			target = FROM
 		}
 	}
 	is_allowed = { # Defaults to equivalent of "always = yes"
 		has_casus_belli	= {
-			type = cb_lower_autonomy_estate
+			type = cb_lower_autonomy_vassal
 			target = FROM
 		}
 	}
@@ -95,51 +94,21 @@ lower_autonomy_estate = {
 					subject_type = march
 				}
 		 }
-		 every_subject_country = {
-				limit = {
-					is_subject_of_type = estate
-				}
-				create_subject = {
-					subject_type = color
-					subject = THIS
-				}
-				create_subject = {
-					subject = THIS
-					subject_type = estate
-				}
-		 }
 		}
-			create_subject = {
-				subject_type = color
-				subject = FROM
+		create_subject = {
+			subject = FROM
+			subject_type = vassal
+		}
+		FROM = {
+			add_opinon = {
+				who = ROOT
+				modifier = frenchie_lowered_autonomy
 			}
-			create_subject = {
-				subject = FROM
-				subject_type = estate
-			}
-			FROM = {
-				every_owned_province = {
-					limit = {
-						NOT = {
-							any_province_in_state = {
-								is_capital_of = FROM
-							}
-						}
-					}
-					add_core = ROOT
-					cede_province = ROOT
-				}
-			}
-			FROM = {
-				add_opinon = {
-					who = ROOT
-					modifier = frenchie_lowered_autonomy
-				}
-			}
-			add_opinion = {
-				who = FROM
-				modifier = frenchie_overlord_lowered_autonomy
-			}
+		}
+		add_opinion = {
+			who = FROM
+			modifier = frenchie_overlord_lowered_autonomy
+		}
 	}
 	ai_weight = { # Defaults to always evaluate to 0
 		export_to_variable = {
