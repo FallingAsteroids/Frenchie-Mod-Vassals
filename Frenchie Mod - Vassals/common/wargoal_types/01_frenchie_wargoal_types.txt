@@ -83,7 +83,7 @@ insurrection = {
 	peace_cost_factor = 0.75
 
 	peace_options = {
-		seize_power
+		frenchie_seize_power
 	}
 
 	war_name = INSURRECTION_WAR_NAME

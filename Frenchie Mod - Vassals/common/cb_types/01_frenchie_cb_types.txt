@@ -40,8 +40,8 @@ cb_lower_autonomy_vassal = {
 
 # Seizing_power
 
-cb_seize_power = {
-	exclusive = yes
+cb_frenchie_seize_power = {
+	# exclusive = yes
 	valid_for_subject = yes
 
 	prerequisites = {

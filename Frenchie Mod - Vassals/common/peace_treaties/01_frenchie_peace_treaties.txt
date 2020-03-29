@@ -267,7 +267,7 @@ lower_autonomy_vassal = {
 	}
 }
 
-seize_power = {
+frenchie_seize_power = {
 	# The following strings need localization:
 	#		"lower_autonomy_desc" (uses text processing, supporting bracket notation) ("[FROM.GetName] becomes a [THIS.GetName] Dummy")
 	#		"CB_ALLOWED_lower_autonomy" (uses plain localization) ("Enforced Dumbness")
