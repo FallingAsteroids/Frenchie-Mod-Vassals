@@ -195,6 +195,46 @@ cancel_dummy =  {
 	}
 }
 
+assume_color = {
+	category = french
+
+	alert_index = 40
+	alert_tooltip = demand_dummy_alert_tooltip
+
+	require_acceptance = no # Whether the recipient gets an option to decline
+
+	is_visible = {
+		is_subject = no
+		FROM = {
+			NOT = {
+				is_subject_of = ROOT
+			}
+		}
+	}
+	is_allowed = {
+		is_at_war = no
+		FROM = {
+			is_at_war = no
+		}
+	}
+	on_accept = {
+		FROM = {
+			create_subject = {
+				subject_type = color
+				subject = ROOT
+			}
+		}
+		grant_independence = yes
+	}
+	on_decline =	{
+	}
+
+	ai_acceptance = {
+	}
+	ai_will_do = {
+	}
+}
+
 demand_estate = {
 	category = french
 
