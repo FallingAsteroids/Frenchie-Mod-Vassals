@@ -53,73 +53,87 @@ frenchie_seize_power = {
 		 		limit = {
 		 			is_subject_of_type = tributary
 		 		}
-				create_subject = {
-					subject = THIS
-					subject_type = tributary
+				ROOT = {
+					create_subject = {
+						subject = PREV
+						subject_type = tributary
+					}
 				}
 		 }
 		 every_subject_country = {
 				limit = {
 					is_subject_of_type = protectorate
 				}
-				create_subject = {
-					subject = THIS
-					subject_type = protectorate
+				ROOT = {
+					create_subject = {
+						subject = PREV
+						subject_type = protectorate
+					}
 				}
 		 }
 		 every_subject_country = {
 				limit = {
 					is_subject_of_type = autonomous_vassal
 				}
-				create_subject = {
-					subject = THIS
-					subject_type = autonomous_vassal
+				ROOT = {
+					create_subject = {
+						subject = PREV
+						subject_type = autonomous_vassal
+					}
 				}
 		 }
 		 every_subject_country = {
 				limit = {
 					is_subject_of_type = vassal
 				}
-				create_subject = {
-					subject = THIS
-					subject_type = vassal
+				ROOT = {
+					create_subject = {
+						subject = PREV
+						subject_type = vassal
+					}
 				}
 		 }
 		 every_subject_country = {
 				limit = {
 					is_subject_of_type = march
 				}
-				create_subject = {
-					subject = THIS
-					subject_type = march
+				ROOT = {
+					create_subject = {
+						subject = PREV
+						subject_type = march
+					}
 				}
 		 }
 		 every_subject_country = {
 				limit = {
 					is_subject_of_type = estate
 				}
-				create_subject = {
-					subject_type = color
-					subject = THIS
+				ROOT = {
+					create_subject = {
+						subject_type = color
+						subject = PREV
+					}
+					create_subject = {
+						subject = ROOT
+						subject_type = estate
+					}
 				}
-				create_subject = {
-					subject = THIS
-					subject_type = estate
-				}
-		 }
+			}
 		}
 		clr_country_flag = estate
 		every_ally = {
 			limit = {
 				has_country_flag = estate
 			}
-			create_subject = {
-				subject_type = color
-				subject = THIS
-			}
-			create_subject = {
-				subject = THIS
-				subject_type = estate
+			ROOT = {
+				create_subject = {
+					subject_type = color
+					subject = PREV
+				}
+				create_subject = {
+					subject = PREV
+					subject_type = estate
+				}
 			}
 		}
 		create_subject = {
