@@ -319,4 +319,24 @@ country_decisions = {
             factor = 0
         }
     }
+    castile_estate_you = { #this will make you go "up" a rank
+        major = yes
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          CAS = {
+            create_subject = {
+              subject_type = estate
+              subject = ROOT
+            }
+          }
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
 }
