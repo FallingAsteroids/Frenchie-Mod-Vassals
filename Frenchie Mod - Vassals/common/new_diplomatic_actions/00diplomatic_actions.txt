@@ -1323,11 +1323,11 @@ demand_autonomous_vassal = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
+		OR = {
+			is_subject = no
+			is_subject_of_type = protectorate
+		}
 		NOT = {
-			AND = {
-				is_subject = yes
-				NOT = { is_subject_of_type = protectorate }
-			}
 			is_subject_of = FROM
 			is_rival = FROM
 			FROM = {
@@ -1347,11 +1347,11 @@ demand_autonomous_vassal = {
 		}
 	}
 	is_allowed = {
+		OR = {
+			is_subject = no
+			is_subject_of_type = protectorate
+		}
 		NOT = {
-			AND = {
-				is_subject = yes
-				NOT = { is_subject_of_type = protectorate }
-			}
 			is_subject_of = FROM
 			is_rival = FROM
 			FROM = {
