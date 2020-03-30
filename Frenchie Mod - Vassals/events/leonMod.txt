@@ -138,6 +138,18 @@ province_event = { #subject event
     }
     NOT = { controlled_by = owner }
     controller = { has_country_flag = estate }
+    OR = {
+      is_in_war = {
+        defender_leader = owner
+        attackers = controller
+        casus_belli = cb_frenchie_seize_power
+      }
+      is_in_war = {
+        defender_leader = overlord
+        attackers = controller
+        casus_belli = cb_frenchie_seize_power
+      }
+    }
     }
   mean_time_to_happen = {
     days = 1
@@ -172,6 +184,17 @@ province_event = { #overlord event
     }
     NOT = { controlled_by = owner }
     owner = { has_country_flag = estate }
+    owner = {
+      has_casus_belli = {
+        type = cb_frenchie_seize_power
+        target = controller
+      }
+    }
+    is_in_war = {
+      defender_leader = controller
+      attackers = owner
+      casus_belli = cb_frenchie_seize_power
+    }
     }
   mean_time_to_happen = {
     days = 1
