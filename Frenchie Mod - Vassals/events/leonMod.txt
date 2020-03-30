@@ -154,10 +154,12 @@ province_event = { #subject event
         }
       }
       AND = {
-        overlord = {
-          is_in_war = {
-            defender_leader = THIS
-            casus_belli = cb_frenchie_seize_power
+        owner = {
+          overlord = {
+            is_in_war = {
+              defender_leader = THIS
+              casus_belli = cb_frenchie_seize_power
+            }
           }
         }
         controller = {
