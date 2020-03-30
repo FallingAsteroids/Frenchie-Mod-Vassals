@@ -247,6 +247,7 @@ assume_color = {
 	ai_acceptance = {
 	}
 	ai_will_do = {
+		always = no
 	}
 }
 
