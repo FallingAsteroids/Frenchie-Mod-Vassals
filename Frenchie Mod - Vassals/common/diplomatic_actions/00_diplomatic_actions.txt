@@ -87,9 +87,7 @@ annexationaction = {
 	condition = {
 		tooltip = ANNEX_TOO_LOW
 		potential = {
-			FROM = {
-				vassal_of = ROOT
-			}
+			always = no
 		}
 		allow = {
 			FROM = {
@@ -122,7 +120,12 @@ integrationaction = {
 	condition = {
 		tooltip = INTEGRATETOOLOWDESC
 		potential = {
+		OR = {
 			senior_union_with = FROM
+			ROOT = {
+				is_subject_of_type = estate
+			}
+			}
 		}
 		allow = {
 			FROM = {
