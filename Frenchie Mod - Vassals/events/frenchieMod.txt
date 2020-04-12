@@ -56,6 +56,10 @@ country_event = { #event for getting money as an estate from other provinces
                   which = additionnal_income
                   value = fprovince_base_tax
                 }
+                change_variable = {
+                  which = fprovince_base_tax
+                  which = additionnal_income
+                }
                 set_variable = {
                   which = anti_autonomy
                   value = 100
@@ -72,9 +76,17 @@ country_event = { #event for getting money as an estate from other provinces
                   which = additionnal_income
                   which = anti_autonomy
                 }
+                change_variable = {
+                  which = fprovince_base_tax
+                  which = additionnal_income
+                }
                 divide_variable = {
                   which = additionnal_income
                   value = 100
+                }
+                change_variable = {
+                  which = fprovince_base_tax
+                  which = additionnal_income
                 }
                 ROOT = {
                   set_variable = {
@@ -118,6 +130,10 @@ country_event = { #event for getting money as an estate from other provinces
               which = additionnal_income
               value = fprovince_base_tax
             }
+            change_variable = {
+              which = fprovince_base_tax
+              which = additionnal_income
+            }
             set_variable = {
               which = anti_autonomy
               value = 100
@@ -134,9 +150,17 @@ country_event = { #event for getting money as an estate from other provinces
               which = additionnal_income
               which = anti_autonomy
             }
+            change_variable = {
+              which = fprovince_base_tax
+              which = additionnal_income
+            }
             divide_variable = {
               which = additionnal_income
               value = 100
+            }
+            change_variable = {
+              which = fprovince_base_tax
+              which = additionnal_income
             }
             ROOT = {
               set_variable = {
