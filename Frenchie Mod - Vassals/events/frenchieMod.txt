@@ -22,7 +22,7 @@ country_event = { #event for getting money as an estate from other provinces
       }
       set_variable = {
         which = estate_tax_income
-        value = 10
+        value = 0
       }
       overlord = {
         every_subject_country = {
@@ -37,19 +37,30 @@ country_event = { #event for getting money as an estate from other provinces
                   OR = {
                     culture = ROOT
                     is_core = ROOT
+                    any_province_in_state = {
+                      is_capital_of = owner
+                    }
                   }
+                }
+                export_to_variable = {
+                  which = fprovince_base_tax
+                  value = base_tax
                 }
                 set_variable = {
                   which = additionnal_income
-                  value = base_tax
+                  value = fprovince_base_tax
                 }
                 set_variable = {
                   which = anti_autonomy
                   value = 100
                 }
+                export_to_variable = {
+                  which = fprovince_local_autonomy
+                  value = local_autonomy
+                }
                 subtract_variable = {
                   which = anti_autonomy
-                  which = local_autonomy
+                  which = fprovince_local_autonomy
                 }
                 multiply_variable = {
                   which = additionnal_income
@@ -83,19 +94,30 @@ country_event = { #event for getting money as an estate from other provinces
                 OR = {
                   culture = ROOT
                   is_core = ROOT
+                  any_province_in_state = {
+                    is_capital_of = ROOT
+                  }
                 }
+              }
+              export_to_variable = {
+                which = fprovince_base_tax
+                value = base_tax
               }
               set_variable = {
                 which = additionnal_income
-                value = base_tax
+                value = fprovince_base_tax
               }
               set_variable = {
                 which = anti_autonomy
                 value = 100
               }
+              export_to_variable = {
+                which = fprovince_local_autonomy
+                value = local_autonomy
+              }
               subtract_variable = {
                 which = anti_autonomy
-                which = local_autonomy
+                which = fprovince_local_autonomy
               }
               multiply_variable = {
                 which = additionnal_income
