@@ -1,0 +1,89 @@
+namespace = frenchie_mod
+
+}
+
+country_event = { #event for overlord: subject left (located in stop_being_protectorate, become_independent)
+  id = frenchie_mod.1
+  title = "frenchie_mod_1.t"
+  desc = "frenchie_mod_1.d"
+  is_triggered_only = yes
+  picture = "DIPLOMACY_eventPicture"
+  hidden = yes
+
+  trigger = {
+    AND = {
+      is_subject_of_type = estate
+      has_country_flag = estate
+    }
+  }
+  immediate = {
+    ROOT = {
+      set_variable = {
+        which = additionnal_income_temp
+        value = 0
+      }
+      set_variable = {
+        which = estate_tax_income
+        value = 10
+      }
+      overlord = {
+        every_subject_country = {
+          limit = {
+            NOT = {
+              is_subject_of_type = protectorate
+            }
+          }
+          every_owned_province = {
+              if = {
+                limit = {
+                  OR = {
+                    culture = ROOT
+                    is_core = ROOT
+                  }
+                }
+                set_variable = {
+                  which = additionnal_income
+                  value = base_tax
+                }
+                set_variable = {
+                  which = anti_autonomy
+                  value = 100
+                }
+                subtract_variable = {
+                  which = anti_autonomy
+                  which = local_autonomy
+                }
+                multiply_variable = {
+                  which = additionnal_income
+                  which = anti_autonomy
+                }
+                divide_variable = {
+                  which = additionnal_income
+                  value = 100
+                }
+                ROOT = {
+                  export_to_variable = {
+                    which = additionnal_income_temp
+                    value = additionnal_income
+                    who = PREV
+                  }
+                  change_variable = {
+                    which = estate_tax_income
+                    which = additionnal_income_temp
+                  }
+                  multiply_variable = {
+                    which = additionnal_income_temp
+                    value = 0
+                  }
+                }
+              }
+          }
+        }
+      }
+      global_tax_income = estate_tax_income
+    }
+  }
+  option = {
+    name = "frenchie_mod_1.a"
+  }
+}
