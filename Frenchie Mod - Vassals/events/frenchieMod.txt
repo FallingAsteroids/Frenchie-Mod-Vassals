@@ -69,7 +69,10 @@ country_event = { #event for getting money as an estate from other provinces
                     which = additionnal_income
                     which = PREV
                   }
-                  add_treasury = additionnal_income
+                  change_variable = {
+                    which = frenchie_estate_added_tax_income
+                    which = additionnal_income
+                  }
                 }
               }
           }
@@ -120,7 +123,10 @@ country_event = { #event for getting money as an estate from other provinces
                 which = additionnal_income
                 which = PREV
               }
-              add_treasury = additionnal_income
+              change_variable = {
+                which = frenchie_estate_added_tax_income
+                which = additionnal_income
+              }
             }
           }
         }

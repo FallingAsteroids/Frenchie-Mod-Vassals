@@ -1,5 +1,4 @@
-﻿l_english:
-  demand_estate_title:0 "Demand Estatination"
+﻿l_english: demand_estate_title:0 "Demand Estatination"
   demand_estate_desc:0 "Do you wish to demand that [From.GetName] becomes your estate? If they accept, they will become your subject."
   demand_estate_tooltip:0 "Demand that they become your estate."
   demand_estate_dialog:0 "[This.GetName] demands that you become their estate!"
@@ -97,3 +96,6 @@
   autonomous_vassal_is_our:0 "$NAME|Y$ is our Autonomous Vassal."
   autonomous_vassal_long_desc:0 "Autonomous Vassals will join the overlord's wars, but can stop being a subject at any time."
   autonomous_vassal_title_plural:0 "Autonomous Vassals"
+
+  frenchie_estate_added_tax:0 "Tax on non directly controlled provinces within the empire"
+  desc_frenchie_estate_added_tax:0 "Though we don't have direct control over them, as part of the same empire we enjoy the income from provinces of our cultures, provinces that we cored and provinces that we used to own that our overlord and his subjects lose to autonomy."

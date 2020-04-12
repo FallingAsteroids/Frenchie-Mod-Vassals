@@ -12,3 +12,14 @@ on_colonial_liberation = {
 		country_event = { id = colonial_nation.90 days = 1 }
 	}
 }
+
+on_startup = {
+	set_variable = {
+		which = frenchie_estate_added_tax_income
+		value = 0
+	}
+	set_variable = {
+		which = frenchie_used_estate_added_tax_income
+		value = 0
+	}
+}

@@ -1,0 +1,16 @@
+##################################################################################################
+# frenchie mod
+##################################################################################################
+
+frenchie_estate_added_tax = {
+	while = {
+		limit = {
+			check_variable = {
+				which = frenchie_estate_added_tax_income
+				which = frenchie_used_estate_added_tax_income
+			}
+		}
+		change_variable = frenchie_used_estate_added_tax_income
+		global_tax_modifier = 1
+	}
+}
