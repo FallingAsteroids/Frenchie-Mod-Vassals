@@ -43,7 +43,7 @@ country_event = { #event for getting money as an estate from other provinces
                       }
                     }
                     NOT = {
-                    controller = ROOT
+                      owner = ROOT
                     }
                   }
                 }
@@ -104,7 +104,7 @@ country_event = { #event for getting money as an estate from other provinces
                     }
                   }
                   NOT = {
-                  controller = ROOT
+                    owner = ROOT
                   }
                 }
             }
