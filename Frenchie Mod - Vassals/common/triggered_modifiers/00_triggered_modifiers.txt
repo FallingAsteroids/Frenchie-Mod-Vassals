@@ -3,22 +3,6 @@
 #
 # Effects are fully scriptable here.
 
-###########################################
-# frencie mod
-###########################################
-is_a_subject_nation = {
-	potential = {
-		is_subject = yes
-	}
-
-	trigger = {
-		is_subject = yes
-	}
-
-	land_forcelimit = 3
-	naval_forcelimit = 6
-}
-
 
 
 ###########################################
@@ -37,7 +21,7 @@ east_indian_trade_route = {
 				continent = oceania
 			}
 		}
-		
+
 	}
 
 	trigger = {
@@ -55,7 +39,7 @@ east_indian_trade_route = {
 		}
 	}
 
-	trade_efficiency = 0.05	
+	trade_efficiency = 0.05
 }
 
 #########################################################
@@ -654,7 +638,7 @@ waging_war_for_china = {
 			casus_belli = cb_chinese_unification
 		}
 	}
-	
+
 	imperial_mandate = 0.05
 }
 

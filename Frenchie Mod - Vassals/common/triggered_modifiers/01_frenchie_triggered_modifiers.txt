@@ -1,0 +1,90 @@
+###########################################
+# frenchie mod
+###########################################
+
+is_a_subject_nation = {
+	potential = {
+		is_subject = yes
+	}
+
+	trigger = {
+		is_subject = yes
+	}
+
+	land_forcelimit = 3
+	naval_forcelimit = 6
+}
+
+the_prerogatives_of_estate = {
+  potential = {
+    has_country_flag = estate
+  }
+
+  trigger = {
+    is_subject = yes
+  }
+
+  set_variable = {
+    which = additionnal_income_temp
+    value = 0
+  }
+  set_variable = {
+    which = estate_tax_income
+    value = 10
+  }
+  overlord = {
+      every_subject_country = {
+        limit = {
+          NOT = {
+            is_subject_of_type = protectorate
+          }
+        }
+        every_owned_province = {
+          if = {
+            limit = {
+              OR = {
+                culture = ROOT
+                is_core = ROOT
+              }
+            }
+            set_variable = {
+              which = additionnal_income
+              value = base_tax
+            }
+            set_variable = {
+              which = anti_autonomy
+              value = 100
+            }
+            subtract_variable = {
+              which = anti_autonomy
+              which = local_autonomy
+            }
+            multiply_variable = {
+              which = additionnal_income
+              which = anti_autonomy
+            }
+            divide_variable = {
+              which = additionnal_income
+              value = 100
+            }
+            ROOT = {
+              export_to_variable = {
+                which = additionnal_income_temp
+                value = additionnal_income
+                who = PREV
+              }
+              change_variable = {
+                which = estate_tax_income
+                which = additionnal_income_temp
+              }
+              multiply_variable = {
+                which = additionnal_income_temp
+                value = 0
+              }
+            }
+          }
+        }
+      }
+  }
+  global_tax_income = estate_tax_income
+}
