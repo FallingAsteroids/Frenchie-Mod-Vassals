@@ -131,6 +131,10 @@ country_event = { #event for getting money as an estate from other provinces
           }
         }
       }
+      set_variable = {
+        which = frenchie_used_estate_added_tax_income
+        value = 0
+      }
       while = {
         limit = {
           check_variable = {
@@ -140,10 +144,6 @@ country_event = { #event for getting money as an estate from other provinces
         }
         change_variable = frenchie_used_estate_added_tax_income
         add_treasury = 1
-      }
-      multiply_variable = {
-        which = frenchie_used_estate_added_tax_income
-        value = 0
       }
     }
   }
