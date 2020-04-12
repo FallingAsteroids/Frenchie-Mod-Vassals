@@ -131,10 +131,19 @@ country_event = { #event for getting money as an estate from other provinces
           }
         }
       }
-      add_country_modifier = {
-        name = frenchie_estate_added_tax
-        duration = 365
-        desc = desc_frenchie_estate_added_tax
+      while = {
+        limit = {
+          check_variable = {
+            which = frenchie_estate_added_tax_income
+            which = frenchie_used_estate_added_tax_income
+          }
+        }
+        change_variable = frenchie_used_estate_added_tax_income
+        add_treasury = 1
+      }
+      multiply_variable = {
+        which = frenchie_used_estate_added_tax_income
+        value = 0
       }
     }
   }
