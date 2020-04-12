@@ -22,7 +22,7 @@ country_event = { #event for getting money as an estate from other provinces
       }
       set_variable = {
         which = estate_tax_income
-        value = 0
+        value = 12
       }
       overlord = {
         every_subject_country = {
@@ -52,7 +52,7 @@ country_event = { #event for getting money as an estate from other provinces
                   which = fprovince_base_tax
                   value = base_tax
                 }
-                set_variable = {
+                export_to_variable = {
                   which = additionnal_income
                   value = fprovince_base_tax
                 }
@@ -114,7 +114,7 @@ country_event = { #event for getting money as an estate from other provinces
               which = fprovince_base_tax
               value = base_tax
             }
-            set_variable = {
+            export_to_variable = {
               which = additionnal_income
               value = fprovince_base_tax
             }
