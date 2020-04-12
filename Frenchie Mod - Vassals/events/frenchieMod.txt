@@ -54,7 +54,7 @@ country_event = { #event for getting money as an estate from other provinces
                 }
                 export_to_variable = {
                   which = additionnal_income
-                  value = fprovince_base_tax
+                  value = base_tax
                 }
                 change_variable = {
                   which = fprovince_base_tax
@@ -128,7 +128,7 @@ country_event = { #event for getting money as an estate from other provinces
             }
             export_to_variable = {
               which = additionnal_income
-              value = fprovince_base_tax
+              value = base_tax
             }
             change_variable = {
               which = fprovince_base_tax
