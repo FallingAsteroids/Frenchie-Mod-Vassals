@@ -142,11 +142,15 @@ country_event = { #event for getting money as an estate from other provinces
             which = frenchie_used_estate_added_tax_income
           }
         }
-        change_variable = frenchie_used_estate_added_tax_income
+        change_variable = {
+          which = frenchie_used_estate_added_tax_income
+          value = 1
+        }
         add_treasury = 1
       }
     }
   }
+
   option = {
     name = "frenchie_mod_1.a"
   }
