@@ -33,13 +33,13 @@ the_prerogatives_of_estate = {
     value = 10
   }
   overlord = {
-      every_subject_country = {
-        limit = {
-          NOT = {
-            is_subject_of_type = protectorate
-          }
+    every_subject_country = {
+      limit = {
+        NOT = {
+          is_subject_of_type = protectorate
         }
-        every_owned_province = {
+      }
+      every_owned_province = {
           if = {
             limit = {
               OR = {
@@ -83,8 +83,8 @@ the_prerogatives_of_estate = {
               }
             }
           }
-        }
       }
+    }
   }
   global_tax_income = estate_tax_income
 }
