@@ -1,8 +1,6 @@
 namespace = frenchie_mod
 
-}
-
-country_event = { #event for overlord: subject left (located in stop_being_protectorate, become_independent)
+country_event = { #event for getting money as an estate from other provinces
   id = frenchie_mod.1
   title = "frenchie_mod_1.t"
   desc = "frenchie_mod_1.d"
