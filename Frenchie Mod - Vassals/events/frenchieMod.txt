@@ -131,6 +131,11 @@ country_event = { #event for getting money as an estate from other provinces
           }
         }
       }
+      add_country_modifier = {
+        name = frenchie_estate_added_tax
+        duration = 365
+        desc = desc_frenchie_estate_added_tax
+      }
     }
   }
   option = {
