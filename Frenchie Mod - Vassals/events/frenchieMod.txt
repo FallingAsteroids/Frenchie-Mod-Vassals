@@ -17,7 +17,7 @@ country_event = { #event for getting money as an estate from other provinces
   immediate = {
     ROOT = {
       set_variable = {
-        which = additionnal_income_temp
+        which = additionnal_income
         value = 0
       }
       set_variable = {
@@ -34,11 +34,16 @@ country_event = { #event for getting money as an estate from other provinces
           every_owned_province = {
               if = {
                 limit = {
-                  OR = {
-                    culture = ROOT
-                    is_core = ROOT
-                    any_province_in_state = {
-                      is_capital_of = owner
+                  AND = {
+                    OR = {
+                      culture = ROOT
+                      is_core = ROOT
+                      any_province_in_state = {
+                        is_capital_of = ROOT
+                      }
+                    }
+                    NOT = {
+                    controller = ROOT
                     }
                   }
                 }
@@ -71,17 +76,16 @@ country_event = { #event for getting money as an estate from other provinces
                   value = 100
                 }
                 ROOT = {
-                  export_to_variable = {
-                    which = additionnal_income_temp
-                    value = additionnal_income
-                    who = PREV
+                  set_variable = {
+                    which = additionnal_income
+                    which = PREV
                   }
                   change_variable = {
                     which = estate_tax_income
-                    which = additionnal_income_temp
+                    which = additionnal_income
                   }
                   multiply_variable = {
-                    which = additionnal_income_temp
+                    which = additionnal_income
                     value = 0
                   }
                 }
@@ -89,60 +93,64 @@ country_event = { #event for getting money as an estate from other provinces
           }
         }
         every_owned_province = {
-            if = {
-              limit = {
-                OR = {
-                  culture = ROOT
-                  is_core = ROOT
-                  any_province_in_state = {
-                    is_capital_of = ROOT
+          if = {
+            limit = {
+                AND = {
+                  OR = {
+                    culture = ROOT
+                    is_core = ROOT
+                    any_province_in_state = {
+                      is_capital_of = ROOT
+                    }
+                  }
+                  NOT = {
+                  controller = ROOT
                   }
                 }
-              }
-              export_to_variable = {
-                which = fprovince_base_tax
-                value = base_tax
-              }
+            }
+            export_to_variable = {
+              which = fprovince_base_tax
+              value = base_tax
+            }
+            set_variable = {
+              which = additionnal_income
+              value = fprovince_base_tax
+            }
+            set_variable = {
+              which = anti_autonomy
+              value = 100
+            }
+            export_to_variable = {
+              which = fprovince_local_autonomy
+              value = local_autonomy
+            }
+            subtract_variable = {
+              which = anti_autonomy
+              which = fprovince_local_autonomy
+            }
+            multiply_variable = {
+              which = additionnal_income
+              which = anti_autonomy
+            }
+            divide_variable = {
+              which = additionnal_income
+              value = 100
+            }
+            ROOT = {
               set_variable = {
                 which = additionnal_income
-                value = fprovince_base_tax
+                which = PREV
               }
-              set_variable = {
-                which = anti_autonomy
-                value = 100
-              }
-              export_to_variable = {
-                which = fprovince_local_autonomy
-                value = local_autonomy
-              }
-              subtract_variable = {
-                which = anti_autonomy
-                which = fprovince_local_autonomy
+              change_variable = {
+                which = estate_tax_income
+                which = additionnal_income
               }
               multiply_variable = {
                 which = additionnal_income
-                which = anti_autonomy
-              }
-              divide_variable = {
-                which = additionnal_income
-                value = 100
-              }
-              ROOT = {
-                export_to_variable = {
-                  which = additionnal_income_temp
-                  value = additionnal_income
-                  who = PREV
-                }
-                change_variable = {
-                  which = estate_tax_income
-                  which = additionnal_income_temp
-                }
-                multiply_variable = {
-                  which = additionnal_income_temp
-                  value = 0
-                }
+                value = 0
               }
             }
+          }
         }
       }
       global_tax_income = estate_tax_income
