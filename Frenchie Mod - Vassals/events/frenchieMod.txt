@@ -94,10 +94,12 @@ country_event = { #event for getting money as an estate from other provinces
                 }
               }
             }
+            log = "===== Found provice, it is [This.GetName]"
             export_to_variable = {
               which = additionnal_income
               value = base_tax
             }
+            log = "===== Its base tax is [This.additionnal_income.GetValue]"
             set_variable = {
               which = anti_autonomy
               value = 100
@@ -106,6 +108,7 @@ country_event = { #event for getting money as an estate from other provinces
               which = fprovince_local_autonomy
               value = local_autonomy
             }
+            log = "===== Its autonomy is [This.fprovince_local_autonomy.GetValue]"
             subtract_variable = {
               which = anti_autonomy
               which = fprovince_local_autonomy
@@ -118,15 +121,18 @@ country_event = { #event for getting money as an estate from other provinces
               which = additionnal_income
               value = 100
             }
+            log = "===== The Adjusted income from the province is [This.additionnal_income.GetValue]"
             ROOT = {
               set_variable = {
                 which = additionnal_income
                 which = PREV
               }
+              log = "===== The Adjusted income extracted to root is [Root.additionnal_income.GetValue]"
               change_variable = {
                 which = frenchie_estate_added_tax_income
                 which = additionnal_income
               }
+              log = "===== frenchie_estate_added_tax_income is now [Root.frenchie_estate_added_tax_income.GetValue]"
             }
           }
         }
@@ -135,6 +141,8 @@ country_event = { #event for getting money as an estate from other provinces
         which = frenchie_used_estate_added_tax_income
         value = 0
       }
+      log = "===== frenchie_estate_added_tax_income: [Root.frenchie_estate_added_tax_income.GetValue]"
+      log = "===== frenchie_used_estate_added_tax_income: [Root.frenchie_used_estate_added_tax_income.GetValue]"
       while = {
         limit = {
           check_variable = {
@@ -147,6 +155,8 @@ country_event = { #event for getting money as an estate from other provinces
           value = 1
         }
         add_treasury = 1
+        log = "===== frenchie_estate_added_tax_income: [Root.frenchie_estate_added_tax_income.GetValue]"
+        log = "===== frenchie_used_estate_added_tax_income: [Root.frenchie_used_estate_added_tax_income.GetValue]"
       }
     }
   }
