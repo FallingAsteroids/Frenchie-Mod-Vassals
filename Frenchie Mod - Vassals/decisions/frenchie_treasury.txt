@@ -1,0 +1,64 @@
+country_decisions = {
+    frenchie_estate_income = { #Tells how much you win per year
+        major = yes
+        potential = {
+          is_subject = yes
+          has_country_flag = estate
+        }
+        allow = {
+          always = no
+        }
+        effect = {
+          tooltip = {
+            ROOT = {
+              while = {
+                limit = {
+                  check_variable = {
+                    which = frenchie_estate_added_tax_income
+                    which = frenchie_used_estate_added_tax_income
+                  }
+                }
+                change_variable = {
+                  which = frenchie_used_estate_added_tax_income
+                  value = 1
+                }
+                add_treasury = 1
+              }
+            }
+          }
+        }
+        ai_will_do = {
+            factor = 1
+        }
+    }
+    frenchie_estate_income2 = { #Tells how much you win per year
+        major = yes
+        potential = {
+          is_subject = yes
+          has_country_flag = estate
+        }
+        allow = {
+          always = no
+        }
+        effect = {
+          ROOT = {
+            while = {
+              limit = {
+                check_variable = {
+                  which = frenchie_estate_added_tax_income
+                  which = frenchie_used_estate_added_tax_income
+                }
+              }
+              change_variable = {
+                which = frenchie_used_estate_added_tax_income
+                value = 1
+              }
+              add_treasury = 1
+            }
+          }
+        }
+        ai_will_do = {
+            factor = 1
+        }
+    }
+}

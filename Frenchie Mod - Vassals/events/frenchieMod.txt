@@ -46,7 +46,7 @@ country_event = { #event for getting money as an estate from other provinces
                 }
                 export_to_variable = {
                   which = additionnal_income
-                  value = base_tax
+                  value = modifier:tax_income
                 }
                 set_variable = {
                   which = anti_autonomy
@@ -101,7 +101,7 @@ country_event = { #event for getting money as an estate from other provinces
             log = "===== Found provice, it is [This.GetName]"
             export_to_variable = {
               which = additionnal_income
-              value = base_tax
+              value = modifier:tax_income
             }
             log = "===== Its base tax is [This.additionnal_income.GetValue]"
             set_variable = {
@@ -147,6 +147,14 @@ country_event = { #event for getting money as an estate from other provinces
       }
       log = "===== frenchie_estate_added_tax_income: [Root.frenchie_estate_added_tax_income.GetValue]"
       log = "===== frenchie_used_estate_added_tax_income: [Root.frenchie_used_estate_added_tax_income.GetValue]"
+      export_to_variable = {
+        which = frenchie_country_global_tax_mod
+        which = modifier:global_tax_modifier
+      }
+      multiply_variable = {
+        which = frenchie_estate_added_tax_income
+        which = frenchie_country_global_tax_mod
+      }
       while = {
         limit = {
           check_variable = {
