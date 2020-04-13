@@ -1,6 +1,6 @@
 country_decisions = {
     increase_autonomy = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
             OR = {
 		    	is_subject_of_type = autonomous_vassal
@@ -57,7 +57,7 @@ country_decisions = {
 
     #DEBUG - REMOVE
     form_yourself = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -72,7 +72,7 @@ country_decisions = {
         }
     }
     form_france = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -87,7 +87,7 @@ country_decisions = {
         }
     }
     form_rebels = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -102,7 +102,7 @@ country_decisions = {
         }
     }
     form_pirates = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -117,7 +117,7 @@ country_decisions = {
         }
     }
     form_natives = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -132,7 +132,7 @@ country_decisions = {
         }
     }
     rebel_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -153,7 +153,7 @@ country_decisions = {
         }
     }
     pirate_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -174,7 +174,7 @@ country_decisions = {
         }
     }
     native_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -195,7 +195,7 @@ country_decisions = {
         }
     }
     france_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -216,7 +216,7 @@ country_decisions = {
         }
     }
     brittany_nation_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -237,7 +237,7 @@ country_decisions = {
         }
     }
     navarra_nation_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -258,7 +258,7 @@ country_decisions = {
         }
     }
     munster_nation_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -279,7 +279,7 @@ country_decisions = {
         }
     }
     england_nation_color_and_free = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -300,7 +300,7 @@ country_decisions = {
         }
     }
     france_estate_you = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }
@@ -320,7 +320,7 @@ country_decisions = {
         }
     }
     castile_estate_you = { #this will make you go "up" a rank
-        major = yes
+        major = no
         potential = {
           always = yes
         }

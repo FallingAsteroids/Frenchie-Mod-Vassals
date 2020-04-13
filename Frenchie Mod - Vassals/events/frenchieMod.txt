@@ -16,6 +16,10 @@ country_event = { #event for getting money as an estate from other provinces
   }
   immediate = {
     ROOT = {
+      multiply_variable = {
+        which = frenchie_estate_added_tax_income
+        value = 0
+      }
       overlord = {
         every_subject_country = {
           limit = {
