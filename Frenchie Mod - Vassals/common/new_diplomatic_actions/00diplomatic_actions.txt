@@ -360,6 +360,16 @@ lower_autonomy = {
 	}
 	is_allowed = {
 		frenchie_recent_autonomy_lowering = yes
+		FROM = {
+			NOT = {
+				AND = {
+					is_subject_of_type = vassal
+					NOT = {
+						is_neighbor_of = ROOT
+					}
+				}
+			}
+		}
 	}
 	on_accept = {
 		log = "[Root.GetName] has lowered the autonomy of [From.GetName]"
