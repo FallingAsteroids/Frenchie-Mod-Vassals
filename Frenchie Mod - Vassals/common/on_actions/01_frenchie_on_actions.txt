@@ -23,3 +23,14 @@ on_startup = {
 		value = 0
 	}
 }
+
+on_bi_yearly_pulse = {
+	if = {
+		limit = {
+			has_country_flag = estate
+		}
+		country_event = {
+			id = frenchie_mod.1
+		}
+	}
+}

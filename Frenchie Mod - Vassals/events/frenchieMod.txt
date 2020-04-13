@@ -34,8 +34,10 @@ country_event = { #event for getting money as an estate from other provinces
                   OR = {
                     culture = ROOT
                     is_core = ROOT
-                    any_province_in_state = {
-                      is_capital_of = ROOT
+                    any_neighbor_province = {
+                      any_neighbor_province = {
+                        is_capital_of = ROOT
+                      }
                     }
                     previous_owner = ROOT
                   }
@@ -95,8 +97,10 @@ country_event = { #event for getting money as an estate from other provinces
                 OR = {
                   culture = ROOT
                   is_core = ROOT
-                  any_province_in_state = {
-                    is_capital_of = ROOT
+                  any_neighbor_province = {
+                    any_neighbor_province = {
+                      is_capital_of = ROOT
+                    }
                   }
                   previous_owner = ROOT
                 }
@@ -175,9 +179,5 @@ country_event = { #event for getting money as an estate from other provinces
         log = "===== frenchie_used_estate_added_tax_income: [Root.frenchie_used_estate_added_tax_income.GetValue]"
       }
     }
-  }
-
-  option = {
-    name = "frenchie_mod_1.a"
   }
 }
