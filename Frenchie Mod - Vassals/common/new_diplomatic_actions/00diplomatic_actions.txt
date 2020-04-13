@@ -3157,6 +3157,8 @@ ask_to_become_protectorate = {
     ROOT = {
       NOT = {
 				is_subject_of = FROM
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
 			}
 	}
 	FROM = {
@@ -3178,11 +3180,11 @@ ask_to_become_protectorate = {
 			}
 		}
 		FROM = {
-		NOT = {
-			is_subject = yes
-			is_at_war = yes
-			is_rival = ROOT
-		}
+			NOT = {
+				is_subject = yes
+				is_at_war = yes
+				is_rival = ROOT
+			}
 		}
 	}
 	on_accept = {

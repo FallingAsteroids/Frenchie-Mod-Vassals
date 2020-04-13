@@ -12,10 +12,15 @@ country_event = { #event for getting money as an estate from other provinces
     AND = {
       is_subject_of_type = estate
       has_country_flag = estate
+      NOT = {
+        has_country_flag = collected_estate_tax
+      }
     }
+    is_month = 0
   }
   immediate = {
     ROOT = {
+      set_country_flag = collected_estate_tax
       multiply_variable = {
         which = frenchie_estate_added_tax_income
         value = 0
@@ -179,5 +184,33 @@ country_event = { #event for getting money as an estate from other provinces
         log = "===== frenchie_used_estate_added_tax_income: [Root.frenchie_used_estate_added_tax_income.GetValue]"
       }
     }
+  }
+
+  option = {
+    name = "frenchie_mod_1.a"
+  }
+}
+
+country_event = { #event for getting money as an estate from other provinces
+  id = frenchie_mod.2
+  title = "frenchie_mod_2.t"
+  desc = "frenchie_mod_2.d"
+  is_triggered_only = yes
+  picture = "DIPLOMACY_eventPicture"
+  hidden = yes
+
+  trigger = {
+    AND = {
+      is_subject_of_type = estate
+      has_country_flag = estate
+    }
+    is_month = 1
+    has_country_flag = collected_estate_tax
+  }
+  immediate = {
+    clr_country_flag = collected_estate_tax
+  }
+  option = {
+    name = "frenchie_mod_1.a"
   }
 }
