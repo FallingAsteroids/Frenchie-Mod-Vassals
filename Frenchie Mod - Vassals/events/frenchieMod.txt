@@ -28,57 +28,64 @@ country_event = { #event for getting money as an estate from other provinces
             }
           }
           every_owned_province = {
-              if = {
-                limit = {
-                  AND = {
-                    OR = {
-                      culture = ROOT
-                      is_core = ROOT
-                      any_province_in_state = {
-                        is_capital_of = ROOT
-                      }
-                      previous_owner = ROOT
+            if = {
+              limit = {
+                AND = {
+                  OR = {
+                    culture = ROOT
+                    is_core = ROOT
+                    any_province_in_state = {
+                      is_capital_of = ROOT
                     }
-                    NOT = {
-                      controlled_by = ROOT
-                    }
+                    previous_owner = ROOT
                   }
-                }
-                export_to_variable = {
-                  which = additionnal_income
-                  value = modifier:tax_income
-                }
-                set_variable = {
-                  which = anti_autonomy
-                  value = 100
-                }
-                export_to_variable = {
-                  which = fprovince_local_autonomy
-                  value = local_autonomy
-                }
-                subtract_variable = {
-                  which = anti_autonomy
-                  which = fprovince_local_autonomy
-                }
-                multiply_variable = {
-                  which = additionnal_income
-                  which = anti_autonomy
-                }
-                divide_variable = {
-                  which = additionnal_income
-                  value = 100
-                }
-                ROOT = {
-                  set_variable = {
-                    which = additionnal_income
-                    which = PREV
-                  }
-                  change_variable = {
-                    which = frenchie_estate_added_tax_income
-                    which = additionnal_income
+                  NOT = {
+                    controlled_by = ROOT
                   }
                 }
               }
+              log = "===== OVERLORD SUBJECT PROVINCES ROOT IS [Root.GetName]"
+              log = "===== Found provice, it is [This.GetName]"
+              export_to_variable = {
+                which = additionnal_income
+                value = base_tax
+              }
+              log = "===== Its base tax is [This.additionnal_income.GetValue]"
+              set_variable = {
+                which = anti_autonomy
+                value = 100
+              }
+              export_to_variable = {
+                which = fprovince_local_autonomy
+                value = local_autonomy
+              }
+              log = "===== Its autonomy is [This.fprovince_local_autonomy.GetValue]"
+              subtract_variable = {
+                which = anti_autonomy
+                which = fprovince_local_autonomy
+              }
+              multiply_variable = {
+                which = additionnal_income
+                which = anti_autonomy
+              }
+              divide_variable = {
+                which = additionnal_income
+                value = 100
+              }
+              log = "===== The Adjusted income from the province is [This.additionnal_income.GetValue]"
+              ROOT = {
+                set_variable = {
+                  which = additionnal_income
+                  which = PREV
+                }
+                log = "===== The Adjusted income extracted to root is [Root.additionnal_income.GetValue]"
+                change_variable = {
+                  which = frenchie_estate_added_tax_income
+                  which = additionnal_income
+                }
+                log = "===== frenchie_estate_added_tax_income is now [Root.frenchie_estate_added_tax_income.GetValue]"
+              }
+            }
           }
         }
         every_owned_province = {
@@ -98,10 +105,11 @@ country_event = { #event for getting money as an estate from other provinces
                 }
               }
             }
+            log = "===== OVERLORD PROVINCES ROOT IS [Root.GetName]"
             log = "===== Found provice, it is [This.GetName]"
             export_to_variable = {
               which = additionnal_income
-              value = modifier:tax_income
+              value = base_tax
             }
             log = "===== Its base tax is [This.additionnal_income.GetValue]"
             set_variable = {
@@ -147,17 +155,9 @@ country_event = { #event for getting money as an estate from other provinces
       }
       log = "===== frenchie_estate_added_tax_income: [Root.frenchie_estate_added_tax_income.GetValue]"
       log = "===== frenchie_used_estate_added_tax_income: [Root.frenchie_used_estate_added_tax_income.GetValue]"
-      export_to_variable = {
-        which = frenchie_country_global_tax_mod
-        which = modifier:global_tax_modifier
-      }
-      change_variable = {
-        which = frenchie_country_global_tax_mod
-        value = 1
-      }
       multiply_variable = {
         which = frenchie_estate_added_tax_income
-        which = frenchie_country_global_tax_mod
+        value = 2
       }
       while = {
         limit = {
