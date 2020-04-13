@@ -151,6 +151,10 @@ country_event = { #event for getting money as an estate from other provinces
         which = frenchie_country_global_tax_mod
         which = modifier:global_tax_modifier
       }
+      change_variable = {
+        which = frenchie_country_global_tax_mod
+        value = 1
+      }
       multiply_variable = {
         which = frenchie_estate_added_tax_income
         which = frenchie_country_global_tax_mod
