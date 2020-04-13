@@ -4,7 +4,6 @@ country_event = { #event for getting money as an estate from other provinces
   id = frenchie_mod.1
   title = "frenchie_mod_1.t"
   desc = "frenchie_mod_1.d"
-  is_triggered_only = yes
   picture = "DIPLOMACY_eventPicture"
   hidden = yes
 
@@ -40,9 +39,7 @@ country_event = { #event for getting money as an estate from other provinces
                     culture = ROOT
                     is_core = ROOT
                     any_neighbor_province = {
-                      any_neighbor_province = {
-                        is_capital_of = ROOT
-                      }
+                      is_capital_of = ROOT
                     }
                     previous_owner = ROOT
                   }
@@ -103,9 +100,7 @@ country_event = { #event for getting money as an estate from other provinces
                   culture = ROOT
                   is_core = ROOT
                   any_neighbor_province = {
-                    any_neighbor_province = {
-                      is_capital_of = ROOT
-                    }
+                    is_capital_of = ROOT
                   }
                   previous_owner = ROOT
                 }
@@ -195,7 +190,6 @@ country_event = { #event for getting money as an estate from other provinces
   id = frenchie_mod.2
   title = "frenchie_mod_2.t"
   desc = "frenchie_mod_2.d"
-  is_triggered_only = yes
   picture = "DIPLOMACY_eventPicture"
   hidden = yes
 

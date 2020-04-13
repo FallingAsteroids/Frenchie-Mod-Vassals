@@ -365,7 +365,9 @@ lower_autonomy = {
 				AND = {
 					is_subject_of_type = vassal
 					NOT = {
-						is_neighbor_of = ROOT
+						any_neighbor_province = {
+							controlled_by = ROOT
+						}
 					}
 				}
 			}

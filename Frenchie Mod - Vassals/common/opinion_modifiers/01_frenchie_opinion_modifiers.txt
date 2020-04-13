@@ -10,22 +10,22 @@ declined_avassal_status = {
 
 formed_protectorate_relationship = {
 	opinion = 5
-	yearly_decay = 2.5
+	yearly_decay = 1
 }
 
 broke_protectorate_relationship = {
 	opinion = -5
-	yearly_decay = 2.5
+	yearly_decay = 1
 }
 
 formed_avassal_relationship = {
 	opinion = 10
-	yearly_decay = 2.5
+	yearly_decay = 1
 }
 
 broke_avassal_relationship = {
 	opinion = -10
-	yearly_decay = 2.5
+	yearly_decay = 1
 }
 
 no_betray = {
@@ -35,7 +35,7 @@ no_betray = {
 
 formed_vassal_relationship = {
 	opinion = 10
-	yearly_decay = 2.5
+	yearly_decay = 0.5
 }
 
 declined_vassal_status = {
