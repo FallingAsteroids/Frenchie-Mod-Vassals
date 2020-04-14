@@ -14,8 +14,10 @@ country_event = { #event for getting money as an estate from other provinces
       NOT = {
         has_country_flag = collected_estate_tax
       }
+      NOT = {
+        is_month = 1
+      }
     }
-    is_month = 0
   }
   immediate = {
     ROOT = {
@@ -197,9 +199,11 @@ country_event = { #event for getting money as an estate from other provinces
     AND = {
       is_subject_of_type = estate
       has_country_flag = estate
+      NOT = {
+        is_month = 3
+      }
+      has_country_flag = collected_estate_tax
     }
-    is_month = 1
-    has_country_flag = collected_estate_tax
   }
   immediate = {
     clr_country_flag = collected_estate_tax
