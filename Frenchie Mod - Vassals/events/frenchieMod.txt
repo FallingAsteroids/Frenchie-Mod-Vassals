@@ -57,22 +57,14 @@ country_event = { #event for getting money as an estate from other provinces
                 value = base_tax
               }
               log = "===== Its base tax is [This.additionnal_income.GetValue]"
-              set_variable = {
-                which = anti_autonomy
-                value = 100
-              }
               export_to_variable = {
                 which = fprovince_local_autonomy
                 value = local_autonomy
               }
               log = "===== Its autonomy is [This.fprovince_local_autonomy.GetValue]"
-              subtract_variable = {
-                which = anti_autonomy
-                which = fprovince_local_autonomy
-              }
               multiply_variable = {
                 which = additionnal_income
-                which = anti_autonomy
+                which = fprovince_local_autonomy
               }
               divide_variable = {
                 which = additionnal_income
@@ -118,22 +110,14 @@ country_event = { #event for getting money as an estate from other provinces
               value = base_tax
             }
             log = "===== Its base tax is [This.additionnal_income.GetValue]"
-            set_variable = {
-              which = anti_autonomy
-              value = 100
-            }
             export_to_variable = {
               which = fprovince_local_autonomy
               value = local_autonomy
             }
             log = "===== Its autonomy is [This.fprovince_local_autonomy.GetValue]"
-            subtract_variable = {
-              which = anti_autonomy
-              which = fprovince_local_autonomy
-            }
             multiply_variable = {
               which = additionnal_income
-              which = anti_autonomy
+              which = fprovince_local_autonomy
             }
             divide_variable = {
               which = additionnal_income
@@ -163,7 +147,7 @@ country_event = { #event for getting money as an estate from other provinces
       log = "===== frenchie_used_estate_added_tax_income: [Root.frenchie_used_estate_added_tax_income.GetValue]"
       multiply_variable = {
         which = frenchie_estate_added_tax_income
-        value = 2
+        value = 1.5
       }
       while = {
         limit = {
