@@ -38,6 +38,11 @@
   stop_being_autonomous_vassal_desc:0 "[From.GetName]'s rule is too cumbersome, we shall take our destiny in our own hands."
   stop_being_autonomous_vassal_tooltip:0 "We will attain our freedom or reconsider our allegiance"
 
+  demand_vassal_title:0 "Demand Vassal"
+  demand_vassal_desc:0 "Do you wish to demand that [From.GetName] becomes your vassal? If they accept, they will become your subject."
+  demand_vassal_tooltip:0 "Demand that they become your vassal."
+  demand_vassal_dialog:0 "[This.GetName] demands that you become their vassal!"
+
   ask_to_become_autonomous_vassal_title:0 "Ask to become an autonomous vassal of [From.GetName]"
   ask_to_become_autonomous_vassal_desc:0 "[From.GetName]'s rule and protection is tempting, we shall take our destiny into his hands."
   ask_to_become_autonomous_vassal_tooltip:0 "We will retain most of our diplomatic autonomy but follow them into wars."
