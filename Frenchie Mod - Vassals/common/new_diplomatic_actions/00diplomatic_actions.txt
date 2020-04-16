@@ -3643,6 +3643,44 @@ become_independent = {
 	}
 }
 
+become_independent = {
+	category = influence
+	require_acceptance = no
+
+	is_visible = { #gotta be a vassal, and gotta do it to overlord
+		is_subject_of = FROM
+		is_subject_of_type = vassal
+		frenchie_recent_autonomy_lowering = yes
+  }
+
+	is_allowed = { #no truce with overlord, and gotta have a cooldown
+		is_at_war = no
+		NOT = {
+			has_truce = FROM
+		}
+	}
+
+	on_accept = {
+		#		FROM = { #TODO: make it so that overlord gets feedback
+		#			country_event = {
+		#				id = leon_mod.1
+		#			}
+		#		}
+		create_subject = {
+			subject_type = autonomous_vassal
+			subject = ROOT
+		}
+		add_opinion = {
+			who = FROM
+			modifier = leon_subject_raised_autonomy
+		}
+	}
+
+	ai_will_do = {
+		liberty_desire = 50
+	}
+}
+
 #propose_betrayal = {
 #	category = alliance
 #

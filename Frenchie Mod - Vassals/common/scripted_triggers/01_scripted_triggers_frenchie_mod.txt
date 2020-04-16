@@ -1119,7 +1119,6 @@ frenchie_FROM_would_accept_becoming_vassal = {
 }
 
 frenchie_recent_autonomy_lowering = {
-  AND = {
     ROOT = {
       AND = {
         NOT = {
@@ -1177,6 +1176,12 @@ frenchie_recent_autonomy_lowering = {
           has_opinion_modifier = {
             who = FROM
             modifier = frenchie_overlord_lowered_autonomy
+          }
+        }
+        NOT = {
+          has_opinion_modifier = {
+            who = FROM
+            modifier = leon_subject_raised_autonomy
           }
         }
       }
@@ -1240,7 +1245,12 @@ frenchie_recent_autonomy_lowering = {
             modifier = frenchie_overlord_lowered_autonomy
           }
         }
+        NOT = {
+          has_opinion_modifier = {
+            who = ROOT
+            modifier = leon_subject_raised_autonomy
+          }
+        }
       }
     }
-  }
 }
