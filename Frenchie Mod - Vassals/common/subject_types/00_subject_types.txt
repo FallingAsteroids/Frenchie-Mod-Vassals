@@ -770,6 +770,11 @@ vassal = {
 	overlord_can_fabricate_for = no
 	has_power_projection = yes
 
+  base_liberty_desire = -15.0
+  liberty_desire_negative_prestige = 1.5
+  liberty_desire_development_ratio = 0.2
+  liberty_desire_same_dynasty = -35
+
 	can_send_missionary_to_subject = yes		# Requires Cradle of Civilization
 	counts_for_borders = yes			# Whether distance between borders counts this subject type as part of its overlord's borders.
 	can_use_claims = yes				# Whether the overlord can use the subject's claims and cores for declaring war
@@ -835,6 +840,10 @@ autonomous_vassal = {
 	has_overlords_ruler = no
 	overlord_can_attack = yes
 
+  base_liberty_desire = -25.0
+  liberty_desire_negative_prestige = 2.0
+  liberty_desire_development_ratio = 0.1
+  liberty_desire_same_dynasty = -25
 
 	can_be_integrated = no
 	overlord_can_fabricate_for = no
@@ -904,13 +913,15 @@ protectorate = {
 
 	relative_power_class = 3
 	base_liberty_desire = -35.0
+  liberty_desire_negative_prestige = 1.0
+  liberty_desire_development_ratio = 0.1
+  liberty_desire_same_dynasty = -10
 
  	can_be_established = { always = yes }
 	overlord_can_be_subject = no
  	can_have_subjects_of_other_types = yes
 	can_fight_independence_war = no
 	relative_power_class = 3
-	base_liberty_desire = -50.0
 
 	has_overlords_ruler = no
 

@@ -1,10 +1,24 @@
-﻿l_english: demand_estate_title:0 "Demand Estatination"
+﻿l_english: estate_title:0 "Estate"
+  demand_estate_title:0 "Demand Estatination"
   demand_estate_desc:0 "Do you wish to demand that [From.GetName] becomes your estate? If they accept, they will become your subject."
   demand_estate_tooltip:0 "Demand that they become your estate."
   demand_estate_dialog:0 "[This.GetName] demands that you become their estate!"
   cancel_estate_title:0 "Abandon Estate"
   cancel_estate_tooltip:0 "Abandon the estate, making them independant."
 
+  assume_color_title:0 "Assume color."
+  assume_color_desc:0 "You will inherit the map color of [From.GetName] and all your estates will be recolored accordingly."
+  assume_color_tooltip:0 "Assume [From.GetName]'s color.'"
+
+  lower_autonomy_title:0 "Lower their autonomy"
+  lower_autonomy_desc:0 "We will offer [From.GetName] to become a lower kind of subject and inherit all their subjects of that rank. If they refuse war will be declared between our nations"
+  lower_autonomy_tooltip:0 "Make [From.GetName] a lower kind of subject and take their subjects (War will happen if they refuse)"
+  lower_autonomy_dialog:0 "[This.GetName] demands that you become more attached to the crown. You will become a less autonomous subjects and every subject of that same rank will become theirs. If you refuse, war will ensue."
+
+  raise_autonomy_title:0 "Become more autonomous"
+  raise_autonomy_desc:0 "[From.GetName] has mismanaged us in such a way that we now have the power to become more autonomous without their permission. We shall seize this."
+  raise_autonomy_tooltip:0 "We shall become a more autonomous kind of subject"
+  raise_autonomy_dialog:0 "[This.GetName] Has become more autonomous"
 
   ward_title:0 "Ward"
   demand_ward_title:0 "Demand Ward"
@@ -14,12 +28,20 @@
   cancel_ward_title:0 "Abandon Ward"
   cancel_ward_tooltip:0 "Abandon the ward, making them independant."
 
-
   autonomous_vassal_title:0 "Autonomous Vassal"
   demand_autonomous_vassal_title:0 "Demand Autonomous Vassal"
   demand_autonomous_vassal_desc:0 "Do you wish to demand that [From.GetName] becomes your autonomous vassal? If they accept, they will become your subject."
   demand_autonomous_vassal_tooltip:0 "Demand that they become your autonomous vassal."
   demand_autonomous_vassal_dialog:0 "[This.GetName] demands that you become their autonomous vassal!"
+  stop_being_autonomous_vassal_title:0 "Stop being an autonomous vassal of [From.GetName]"
+  stop_being_autonomous_vassal_desc:0 "[From.GetName]'s rule is too cumbersome, we shall take our destiny in our own hands."
+  stop_being_autonomous_vassal_tooltip:0 "We will attain our freedom or reconsider our allegiance"
+
+  ask_to_become_autonomous_vassal_title:0 "Ask to become an autonomous vassal of [From.GetName]"
+  ask_to_become_autonomous_vassal_desc:0 "[From.GetName]'s rule and protection is tempting, we shall take our destiny into his hands."
+  ask_to_become_autonomous_vassal_tooltip:0 "We will retain most of our diplomatic autonomy but follow them into wars."
+  ask_to_become_autonomous_vassal_dialog:0 "[This.GetName] wishes to become your Autonomous Vassal!"
+
 
   cancel_autonomous_vassal_title:0 "Abandon Autonomous Vassal"
   cancel_autonomous_vassal_tooltip:0 "Abandon the autonomous vassal, making them independant."
@@ -34,17 +56,13 @@
   ask_to_become_protectorate_desc:0 "Do you wish to ask to become a protectorate of [From.GetName]?"
   ask_to_become_protectorate_dialog:0 "[This.GetName] wishes to become your protectorate!"
 
-  ask_to_become_autonomous_vassal_tooltip:0 "Ask that you become their Autonomous Vassal."
-  ask_to_become_autonomous_vassal_title:0 "Ask to become Autonomous Vassal"
-  ask_to_become_autonomous_vassal_desc:0 "Do you wish to ask to become a Autonomous Vassal of [From.GetName]?"
-  ask_to_become_autonomous_vassal_dialog:0 "[This.GetName] wishes to become your Autonomous Vassal!"
-
   demand_protectorate_title:0 "Demand Protecterate"
   demand_protectorate_desc:0 "Do you wish to demand that [From.GetName] becomes your protectorate? If they accept, they will become your subject."
   demand_protectorate_tooltip:0 "Demand that they become your protectorate."
   demand_protectorate_dialog:0 "[This.GetName] demands that you become their protecterate!"
   demand_protectorate_alert_tooltip:0 "Offer to become protectorate from [This.GetName]."
   Married:0 "We have a royal marriage"
+  Alliance:0 "We have an Alliance"
   Is_Emperor:0 "We are HRE emperor"
   Is_Elector:0 "They are electors of the HRE"
   Relative_Armies:0 "The relative state of our armies"
@@ -55,7 +73,11 @@
   Impressed_by_your_generals:0 "They are impressed by our generals"
   Development:0 "Their development"
   Bankruptcy:0 "We are bankrupt"
-  Has_Prots_It_Would_Abandon:0 "[From.GetName] has protectorates they would abandon"
+  Has_Prots_It_Would_Abandon:0 "[From.GetName] has protectorates they would abandon by doing this"
+  Has_AVs_It_Would_Abandon:0 "[From.GetName] has autonomous vassals they would abandon by doing this"
+  Has_PU_It_Would_Abandon:0 "[From.GetName] has personnal unions they would abandon by doing this"
+  Has_vassals_It_Would_Abandon:0 "[From.GetName] has vassals they would abandon by doing this"
+
   abandon_protectorate_vassal_title:0 "Abandon Protectorate"
   abandon_protectorate_vassal_tooltip:0 "Abandon the protectorate, making them independant."
 
