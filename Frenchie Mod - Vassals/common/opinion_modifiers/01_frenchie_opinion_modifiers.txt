@@ -57,3 +57,8 @@ frenchie_overlord_lowered_autonomy = {
 	opinion = 10
 	yearly_decay = 0.5
 }
+
+leon_subject_raised_autonomy = {
+	opinion = -15
+	yearly decay = 1
+}
