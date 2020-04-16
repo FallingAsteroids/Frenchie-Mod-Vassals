@@ -56,287 +56,288 @@ country_decisions = {
 
 
     #DEBUG - REMOVE
-    form_yourself = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          change_tag = ROOT
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    form_france = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          change_tag = FRA
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    form_rebels = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          change_tag = REB
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    form_pirates = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          change_tag = PIR
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    form_natives = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          change_tag = NAT
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    rebel_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          REB = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    pirate_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          PIR = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    native_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          NAT = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    france_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          FRA = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    brittany_nation_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          BRI = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    navarra_nation_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          NAV = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    munster_nation_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          MCM = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    england_nation_color_and_free = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          ENG = {
-            create_subject = {
-              subject_type = color
-              subject = ROOT
-            }
-          }
-          grant_independence = yes
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    france_estate_you = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          FRA = {
-            create_subject = {
-              subject_type = estate
-              subject = ROOT
-            }
-          }
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-    castile_estate_you = { #this will make you go "up" a rank
-        major = no
-        potential = {
-          always = yes
-        }
-        allow = {
-          always = yes
-        }
-        effect = {
-          CAS = {
-            create_subject = {
-              subject_type = estate
-              subject = ROOT
-            }
-          }
-        }
-        ai_will_do = {
-            factor = 0
-        }
-    }
-}
+#    form_yourself = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          change_tag = ROOT
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    form_france = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          change_tag = FRA
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    form_rebels = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          change_tag = REB
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    form_pirates = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          change_tag = PIR
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    form_natives = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          change_tag = NAT
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    rebel_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          REB = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    pirate_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          PIR = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    native_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          NAT = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    france_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          FRA = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    brittany_nation_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          BRI = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    navarra_nation_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          NAV = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    munster_nation_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          MCM = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    england_nation_color_and_free = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          ENG = {
+#            create_subject = {
+#              subject_type = color
+#              subject = ROOT
+#            }
+#          }
+#          grant_independence = yes
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    france_estate_you = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          FRA = {
+#            create_subject = {
+#              subject_type = estate
+#              subject = ROOT
+#            }
+#          }
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#    castile_estate_you = { #this will make you go "up" a rank
+#        major = no
+#        potential = {
+#          always = yes
+#        }
+#        allow = {
+#          always = yes
+#        }
+#        effect = {
+#          CAS = {
+#            create_subject = {
+#              subject_type = estate
+#              subject = ROOT
+#            }
+#          }
+#        }
+#        ai_will_do = {
+#            factor = 0
+#        }
+#    }
+#}
+#
