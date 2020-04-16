@@ -3650,26 +3650,31 @@ raise_autonomy = {
 	is_visible = { #gotta be a vassal, and gotta do it to overlord, and gotta have not done it recently
 		is_subject_of = FROM
 		is_subject_of_type = vassal
-		NOT = {
-			has_opinion_modifier = {
-				who = ROOT
-				modifier = leon_subject_raised_autonomy
-			}
-		}
-		NOT = {
-			has_opinion_modifier = {
-				who = FROM
-				modifier = leon_subject_raised_autonomy
-			}
-		}
+#		NOT = {
+#			has_opinion_modifier = {
+#				who = FROM
+#				modifier = leon_subject_raised_autonomy
+#			}
+#		}
   }
 
 	is_allowed = { #no truce with overlord, and gotta have a cooldown, and gotta have 50 liberty desire
 		is_at_war = no
 		liberty_desire = 50
 		NOT = {
-			has_truce = FROM
+			has_opinion_modifier = {
+				who = FROM
+				modifier = leon_subject_raised_autonomy
+			}
 		}
+#		FROM = {
+#			NOT = {
+#				has_opinion_modifier = {
+#					who = ROOT
+#					modifier = leon_subject_raised_autonomy
+#				}
+#			}
+#		}
 	}
 
 	on_accept = {
@@ -3680,7 +3685,7 @@ raise_autonomy = {
 		#		}
 		create_subject = {
 			subject_type = autonomous_vassal
-			subject = ROOT
+			subject = FROM
 		}
 		add_opinion = {
 			who = FROM
