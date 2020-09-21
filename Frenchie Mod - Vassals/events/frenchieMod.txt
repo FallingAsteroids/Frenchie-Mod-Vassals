@@ -207,6 +207,7 @@ country_event = { #autorelease conquered countries as estates
   is_triggered_only = yes
 
   immediate = {
+    log = "FRENCHIE MOD 3 HAS HAPPENED"
     country_event = {
       id = frenchie_mod.4
       days = 1
@@ -227,6 +228,7 @@ country_event = { #autorelease conquered countries as estates
   is_triggered_only = yes
 
   immediate = {
+    log = "FRENCHIE MOD 4 HAS HAPPENED"
     release = FROM
     create_subject = {
       subject_type = color
