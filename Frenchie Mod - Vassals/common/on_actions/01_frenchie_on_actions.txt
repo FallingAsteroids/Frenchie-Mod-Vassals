@@ -25,11 +25,7 @@ on_startup = {
 }
 
 on_annexed = {
-	release = FROM
-	create_subject = {
-		subject_type = estate
-		subject = FROM
-	}
+	create_vassal = FROM
 	FROM = {
 		every_owned_province = {
 			limit = {
