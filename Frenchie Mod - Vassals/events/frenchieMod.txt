@@ -252,6 +252,6 @@ country_event = { #autorelease conquered countries as estates
     }
   }
   option = {
-    name = "frenchie_mod_3.a"
+    name = "frenchie_mod_4.a"
   }
 }

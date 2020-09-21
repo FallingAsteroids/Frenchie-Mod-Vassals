@@ -25,8 +25,31 @@ on_startup = {
 }
 
 on_annexed = {
-	country_event = {
-		id = frenchie_mod.3
-		days = 1
+#	country_event = {
+#		id = frenchie_mod.3
+#		days = 1
+#	}
+	release = FROM
+	create_subject = {
+		subject_type = color
+		subject = FROM
+	}
+	create_subject = {
+		subject_type = estate
+		subject = FROM
+	}
+	FROM = {
+		every_owned_province = {
+			limit = {
+				nationalism = 1
+				NOT = {
+					any_province_in_state = {
+						is_capital_of = FROM
+					}
+				}
+			}
+			add_core = ROOT
+			cede_province = ROOT
+		}
 	}
 }
