@@ -1,3 +1,4 @@
+version="1.30.4"
 name="Frenchie Mod - Vassals"
 path="mod/Frenchie Mod - Vassals"
 tags={
