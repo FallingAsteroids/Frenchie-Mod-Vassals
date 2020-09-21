@@ -23,3 +23,10 @@ on_startup = {
 		value = 0
 	}
 }
+
+on_annexed = {
+	country_event = {
+		id = frenchie_mod.3
+		days = 1
+	}
+}
