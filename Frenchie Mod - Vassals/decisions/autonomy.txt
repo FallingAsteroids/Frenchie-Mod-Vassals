@@ -299,26 +299,26 @@ country_decisions = {
 #            factor = 0
 #        }
 #    }
-#    france_estate_you = { #this will make you go "up" a rank
-#        major = no
-#        potential = {
-#          always = yes
-#        }
-#        allow = {
-#          always = yes
-#        }
-#        effect = {
-#          FRA = {
-#            create_subject = {
-#              subject_type = estate
-#              subject = ROOT
-#            }
-#          }
-#        }
-#        ai_will_do = {
-#            factor = 0
-#        }
-#    }
+    france_estate_you = { #this will make you go "up" a rank
+        major = no
+        potential = {
+          always = yes
+        }
+        allow = {
+          always = yes
+        }
+        effect = {
+          FRA = {
+            create_subject = {
+              subject_type = estate
+              subject = ROOT
+            }
+          }
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
 #    castile_estate_you = { #this will make you go "up" a rank
 #        major = no
 #        potential = {
