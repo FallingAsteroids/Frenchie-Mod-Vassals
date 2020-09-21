@@ -907,6 +907,7 @@ demand_vassal = {
 				is_subject_of_type = estate
 				is_subject_of_type = vassal
 				is_subject_of_type = march
+				is_subject_of_type = personal_union
 				is_emperor = yes
 				is_great_power = yes
 				is_rival = ROOT
@@ -1823,6 +1824,16 @@ stop_being_autonomous_vassal = {
 			ROOT = { is_subject_of_type = autonomous_vassal }
 			ROOT = { is_subject_of = FROM }
 			#FROM = { ai = yes }
+			NOT = {
+				has_opinion_modifier = {
+					who = FROM
+					modifier = formed_protectorate_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = formed_avassal_relationship
+				}
+			}
 		}
 	}
 	on_accept = {
@@ -1906,14 +1917,16 @@ ask_to_become_autonomous_vassal = {
 
   is_visible = {
     ROOT = {
-		OR = {
-			NOT = {
-				is_subject_of = FROM
-				AND = {
-					is_subject = yes
-					NOT = {
-						is_subject_of_type = autonomous_vassal
-						is_subject_of_type = protectorate
+		AND = {
+			OR = {
+				NOT = {
+					is_subject_of = FROM
+					AND = {
+						is_subject = yes
+						NOT = {
+							is_subject_of_type = autonomous_vassal
+							is_subject_of_type = protectorate
+						}
 					}
 				}
 			}
@@ -1951,6 +1964,16 @@ ask_to_become_autonomous_vassal = {
 				has_reform = free_city
 				has_reform = trading_city
 				is_in_trade_league = yes
+			}
+			NOT = {
+				has_opinion_modifier = {
+					who = FROM
+					modifier = broke_protectorate_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = broke_avassal_relationship
+				}
 			}
 		}
 		FROM = {
@@ -3087,6 +3110,16 @@ stop_being_protectorate = {
 			ROOT = { is_subject_of_type = protectorate }
 			ROOT = { is_subject_of = FROM }
 			#FROM = { ai = yes }
+			NOT = {
+				has_opinion_modifier = {
+					who = FROM
+					modifier = formed_protectorate_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = formed_avassal_relationship
+				}
+			}
 		}
 	}
 	on_accept = {
@@ -3171,6 +3204,7 @@ ask_to_become_protectorate = {
 				is_subject_of = FROM
 				is_subject_of_type = estate
 				is_subject_of_type = vassal
+				is_subject_of_type = personal_union
 			}
 	}
 	FROM = {
@@ -3189,6 +3223,14 @@ ask_to_become_protectorate = {
 				has_reform = free_city
 				has_reform = trading_city
 				is_in_trade_league = yes
+				has_opinion_modifier = {
+					who = FROM
+					modifier = broke_protectorate_relationship
+				}
+				has_opinion_modifier = {
+					who = FROM
+					modifier = broke_avassal_relationship
+				}
 			}
 		}
 		FROM = {
