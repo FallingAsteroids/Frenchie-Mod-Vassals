@@ -169,6 +169,7 @@ frenchie_seize_power = {
 						}
 					}
 				}
+				add_core = ROOT
 				cede_province = ROOT
 			}
 		}

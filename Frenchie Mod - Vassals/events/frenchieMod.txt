@@ -232,8 +232,13 @@ country_event = {
             FROM = {
                 create_subject = {
                     subject = ROOT
+                    subject_type = color
+                }
+                create_subject = {
+                    subject = ROOT
                     subject_type = estate
                 }
+                set_country_flag = estate
             }
         }
     }
