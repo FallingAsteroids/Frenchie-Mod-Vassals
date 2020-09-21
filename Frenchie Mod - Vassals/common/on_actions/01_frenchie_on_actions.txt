@@ -42,6 +42,6 @@ on_annexed = {
 		}
 	}
 	ROOT = {
-		country_event = { id = frenchie_mod_4 }
+		country_event = { id = frenchie_mod.4 }
 	}
 }

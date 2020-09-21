@@ -228,11 +228,9 @@ country_event = { #autorelease conquered countries as estates
   is_triggered_only = yes
 
   immediate = {
-    if {
+    any_known_country {
       limit = {
-        any_known_country = {
-          has_country_flag = estatetoannex@ROOT
-        }
+        has_country_flag = estatetoannex@ROOT
       }
       log = "FRENCHIE MOD 4 HAS HAPPENED"
       ROOT = {
