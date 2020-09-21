@@ -25,6 +25,13 @@ on_startup = {
 }
 
 on_annexed = {
+	ROOT = {
+		release = FROM
+		create_subject = {
+			subject_type = estate
+			who = FROM
+		}
+	}
 	FROM = {
 		every_owned_province = {
 			limit = {
