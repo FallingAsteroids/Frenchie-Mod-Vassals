@@ -25,7 +25,6 @@ on_startup = {
 }
 
 on_annexed = {
-	create_vassal = FROM
 	FROM = {
 		every_owned_province = {
 			limit = {
