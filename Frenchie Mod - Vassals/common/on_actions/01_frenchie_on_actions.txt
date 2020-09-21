@@ -25,26 +25,18 @@ on_startup = {
 }
 
 on_annexed = {
-	ROOT = {
-		release = FROM
-	}
+	release = FROM
 	FROM = {
-		set_country_flag = estatetoannex@ROOT
-		every_owned_province = {
-			limit = {
-				NOT = {
-					any_province_in_state = {
-						is_capital_of = FROM
+			every_owned_province = {
+					limit = {
+							NOT = {
+									any_province_in_state = {
+											is_capital_of = FROM
+									}
+							}
 					}
-				}
+					cede_province = ROOT
 			}
-			cede_province = ROOT
-		}
-	}
-	ROOT = {
-		country_event = {
-			id = frenchie_mod.4
-			days = 5
-		}
+			country_event = { id = frenchie_mod.4 days = 1 }
 	}
 }
