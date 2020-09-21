@@ -241,7 +241,6 @@ country_event = { #autorelease conquered countries as estates
     FROM = {
       every_owned_province = {
         limit = {
-          nationalism = 1
           NOT = {
             any_province_in_state = {
               is_capital_of = FROM
