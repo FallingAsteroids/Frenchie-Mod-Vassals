@@ -228,27 +228,23 @@ country_event = { #autorelease conquered countries as estates
   is_triggered_only = yes
 
   immediate = {
-    log = "FRENCHIE MOD 4 HAS HAPPENED"
-    release = FROM
-    create_subject = {
-      subject_type = color
-      subject = FROM
-    }
-    create_subject = {
-      subject_type = estate
-      subject = FROM
-    }
-    FROM = {
-      every_owned_province = {
-        limit = {
-          NOT = {
-            any_province_in_state = {
-              is_capital_of = FROM
-            }
-          }
+    if {
+      limit = {
+        any_known_country = {
+          has_country_flag = estatetoannex@ROOT
         }
-        add_core = ROOT
-        cede_province = ROOT
+      }
+      log = "FRENCHIE MOD 4 HAS HAPPENED"
+      ROOT = {
+        create_subject = {
+          subject_type = color
+          subject = PREV
+        }
+        create_subject = {
+          subject_type = estate
+          subject = PREV
+        }
+        clr_country_flag = estatetoannex@ROOT
       }
     }
   }

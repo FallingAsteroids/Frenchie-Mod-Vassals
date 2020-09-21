@@ -27,12 +27,9 @@ on_startup = {
 on_annexed = {
 	ROOT = {
 		release = FROM
-		create_subject = {
-			subject_type = estate
-			who = FROM
-		}
 	}
 	FROM = {
+		set_country_flag = estatetoannex@ROOT
 		every_owned_province = {
 			limit = {
 				NOT = {
@@ -43,5 +40,8 @@ on_annexed = {
 			}
 			cede_province = ROOT
 		}
+	}
+	ROOT = {
+		country_event = { id = frenchie_mod_4 }
 	}
 }
