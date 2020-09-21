@@ -882,6 +882,252 @@ lower_autonomy = {
 	}
 }
 
+lower_autonomy_debug = {
+	category = french
+
+	alert_index = 40
+	alert_tooltip = demand_dummy_alert_tooltip
+
+	require_acceptance = yes # Whether the recipient gets an option to decline
+
+	is_visible = {
+		always = yes
+	}
+	is_allowed = {
+		always = yes
+	}
+	on_accept = {
+		log = "[Root.GetName] has lowered the autonomy of [From.GetName]"
+		FROM = {
+			add_opinon = {
+				who = ROOT
+				modifier = frenchie_lowered_autonomy
+			}
+		}
+		add_opinion = {
+			who = FROM
+			modifier = frenchie_overlord_lowered_autonomy
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						is_subject_of_type = vassal
+						is_subject_of_type = march
+					}
+				}
+			}
+			FROM = { # Steals your subjects
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = tributary
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = tributary
+						}
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = protectorate
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = protectorate
+						}
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = autonomous_vassal
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = autonomous_vassal
+						}
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = vassal
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = vassal
+						}
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = march
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = march
+						}
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = estate
+					}
+					ROOT = {
+						create_subject = {
+							subject_type = color
+							subject = PREV
+						}
+						create_subject = {
+							subject = PREV
+							subject_type = estate
+						}
+					}
+			 }
+			}
+			FROM = { grant_independence = yes }
+			FROM = { set_country_flag = estate }
+			create_subject = {
+				subject_type = color
+				subject = FROM
+			}
+			create_subject = {
+				subject_type = estate
+				subject = FROM
+			}
+			FROM = {
+				every_owned_province = {
+					limit = {
+						NOT = {
+							any_province_in_state = {
+								is_capital_of = FROM
+							}
+						}
+					}
+					add_core = ROOT
+					cede_province = ROOT
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						is_subject_of_type = autonomous_vassal
+						is_subject_of_type = personal_union
+					}
+				}
+			}
+			FROM = {
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = tributary
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = tributary
+						}
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = protectorate
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = protectorate
+						}
+					}
+			 }
+			 every_subject_country = {
+					limit = {
+						is_subject_of_type = autonomous_vassal
+					}
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = autonomous_vassal
+						}
+					}
+			 }
+			}
+			FROM = { grant_independence = yes }
+			create_subject = {
+				subject_type = vassal
+				subject = FROM
+			}
+		}
+	}
+	on_decline = { ### Add a CB to have the overlord force it
+		add_opinion = {
+			who = FROM
+			modifier = declined_autonomy_lowering
+		}
+		log = "[From.GetName] refused to become less autonomous under [Root.GetName]"
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						is_subject_of_type = vassal
+						is_subject_of_type = march
+					}
+				}
+			}
+			add_casus_belli	= {
+				target = FROM
+				type = cb_lower_autonomy_estate
+				months = 12
+			}
+			declare_war_with_cb = {
+				who = FROM
+				casus_belli = cb_lower_autonomy_estate
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						is_subject_of_type = autonomous_vassal
+						is_subject_of_type = personal_union
+					}
+				}
+			}
+			add_casus_belli	= {
+				target = FROM
+				type = cb_lower_autonomy_vassal
+				months = 12
+			}
+			declare_war_with_cb = {
+				who = FROM
+				casus_belli = cb_lower_autonomy_vassal
+			}
+		}
+
+	}
+	ai_acceptance = {
+		add_entry = { name = Base
+			export_to_variable = {
+				variable_name = ai_value
+				value = 25
+				who = FROM
+				with = THIS
+			}
+		}
+
+	}
+
+	ai_will_do = { # this is a trigger
+		always = no
+	}
+}
+
 ########@
 
 demand_vassal = {
