@@ -1,49 +1,41 @@
 define_estate_scripted_effect = {
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate1
   }
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate2
   }
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate3
   }
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate4
   }
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate5
   }
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate6
   }
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate7
   }
   random_subject_country = {
-    limit = { is_subject_of_type = estate }
-    limit = { NOT = { has_country_flag = estate_@ROOT }}
+    limit = { AND = {is_subject_of_type = estate has_country_flag = estate_@ROOT } }
     set_country_flag = estate_@ROOT
     save_event_target_as = estate8
   }
