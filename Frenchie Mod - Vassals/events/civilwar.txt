@@ -1,0 +1,103 @@
+namespace = civil_war
+
+country_event = {
+    id = civil_war.1
+    title = "civil_war_1.t"
+    desc = "civil_war_1.d"
+    picture = DIPLOMACY_eventPicture
+
+    hidden = no
+    is_triggered_only = yes
+
+    immediate = {
+      set_country_flag = plotting_for_civil_war
+  }
+    option = {
+        name = civil_war.1.a # Does an event to ask for support from possible targets (other estates and vassals)
+    }
+    option = {
+        name = civil_war.1.b # Bide your time
+    }
+    option = {
+        name = civil_war.1.c # Start the war
+        overlord = {
+          save_event_target_as = big_guy
+        }
+        declare_war_with_cb = {
+          who = event_target:big_guy
+          casus_belli = cb_frenchie_seize_power
+        }
+    }
+}
+
+ country_event = {
+  id = civil_war.2
+  title = "civil_war_2.t"
+  desc = "civil_war_2.d"
+  picture = DIPLOMACY_eventpicture
+
+  hidden = no
+  is_triggered_only = yes
+
+  immediate = {
+    define_estate_scripted_effect = yes
+  }
+
+  option = {
+      name = civil_war.1.a # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate1 = { exists = yes } }
+      event_target:ally1 = {
+        #something
+      }
+  }
+  option = {
+      name = civil_war.1.b # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate2 = { exists = yes } }
+      event_target:estate2 = {
+        #something
+      }
+  }
+  option = {
+      name = civil_war.1.c # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate3 = { exists = yes } }
+      event_target:estate3 = {
+        #something
+      }
+  }
+  option = {
+      name = civil_war.1.d # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate4 = { exists = yes } }
+      event_target:estate4 = {
+        #something
+      }
+  }
+  option = {
+      name = civil_war.1.e # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate5 = { exists = yes } }
+      event_target:estate5 = {
+        #something
+      }
+  }
+  option = {
+      name = civil_war.1.f # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate6 = { exists = yes } }
+      event_target:estate6 = {
+        #something
+      }
+  }
+  option = {
+      name = civil_war.1.g # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate7 = { exists = yes } }
+      event_target:estate7 = {
+        #something
+      }
+  }
+  option = {
+      name = civil_war.1.h # Does an event to ask for support from possible targets (other estates and vassals)
+      trigger = { event_target:estate8 = { exists = yes } }
+      event_target:estate8 = {
+        #something
+      }
+  }
+  }
+ }
