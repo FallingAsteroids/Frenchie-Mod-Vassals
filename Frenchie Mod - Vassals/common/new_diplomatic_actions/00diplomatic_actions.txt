@@ -216,6 +216,12 @@ assume_color = {
 		FROM = {
 			is_at_war = no
 		}
+		is_subject = no
+		FROM = {
+			NOT = {
+				is_subject_of = ROOT
+			}
+		}
 	}
 	on_accept = {
 		FROM = {
@@ -263,7 +269,7 @@ demand_estate = {
 		always = no
 	}
 	is_allowed = {
-		always = yes
+		always = no
 	}
 	on_accept = {
 		add_trust = {
@@ -359,6 +365,22 @@ lower_autonomy = {
 		}
 	}
 	is_allowed = {
+		ROOT = {
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_subject_of = FROM
+			}
+
+		}
+		FROM = {
+			is_subject_of = ROOT
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = protectorate
+				is_subject_of_type = tributary_state
+			}
+		}
 		frenchie_recent_autonomy_lowering = yes
 		FROM = {
 			OR = {
@@ -1163,6 +1185,26 @@ demand_vassal = {
 	is_allowed = {
 		ROOT = {
 			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_rival = FROM
+				is_subject_of = FROM
+			}
+
+		}
+		FROM = {
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_subject_of_type = march
+				is_subject_of_type = personal_union
+				is_emperor = yes
+				is_great_power = yes
+				is_rival = ROOT
+			}
+		}
+		ROOT = {
+			NOT = {
 				is_at_war = yes
 			}
 
@@ -1614,6 +1656,28 @@ demand_autonomous_vassal = {
 			is_subject_of = FROM
 			is_rival = FROM
 			FROM = {
+				NOT = {
+					is_subject = yes
+				}
+				is_subject_of = ROOT
+				is_rival = ROOT
+				is_great_power = yes
+				is_emperor = yes
+			}
+			FROM = { is_subject_of_type = autonomous_vassal }
+			FROM = { is_subject_of_type = personal_union }
+			FROM = { is_subject_of_type = vassal }
+			FROM = { is_subject_of_type = march }
+			FROM = { is_subject_of_type = estate }
+		}
+		OR = {
+			is_subject = no
+			is_subject_of_type = protectorate
+		}
+		NOT = {
+			is_subject_of = FROM
+			is_rival = FROM
+			FROM = {
 				AND = {
 					is_subject = yes
 					NOT = {
@@ -2030,6 +2094,10 @@ cancel_autonomous_vassal =  {
 		}
 	}
 	is_allowed = {
+		overlord_of = FROM
+		FROM = {
+			is_subject_of_type = autonomous_vassal
+		}
 		NOT = {
 			is_at_war = yes
 		}
@@ -2190,6 +2258,32 @@ ask_to_become_autonomous_vassal = {
 	}
   }
   is_allowed = {
+		ROOT = {
+		AND = {
+			OR = {
+				NOT = {
+					is_subject_of = FROM
+					AND = {
+						is_subject = yes
+						NOT = {
+							is_subject_of_type = autonomous_vassal
+							is_subject_of_type = protectorate
+						}
+					}
+				}
+			}
+		}
+	}
+	FROM = {
+		NOT = {
+			AND = {
+				is_subject = yes
+				NOT = {
+					is_subject_of_type = protectorate
+				}
+			}
+		}
+	}
 		ROOT = {
 			NOT = {
 				AND = {
@@ -2637,6 +2731,10 @@ demand_protectorate = {
 		}
 	}
 	is_allowed = {
+		NOT = {
+			is_subject = yes
+			FROM = { is_subject_of = ROOT }
+		}
 		NOT = {
 			is_subject = yes
 			is_at_war = yes
@@ -3461,6 +3559,17 @@ ask_to_become_protectorate = {
 		ROOT = {
 			NOT = {
 				is_subject_of = FROM
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_subject_of_type = personal_union
+			}
+	}
+	FROM = {
+		is_subject = no
+	}
+		ROOT = {
+			NOT = {
+				is_subject_of = FROM
 				is_at_war = yes
 				is_rival = FROM
 				is_emperor = yes
@@ -3941,6 +4050,8 @@ raise_autonomy = {
   }
 
 	is_allowed = { #no truce with overlord, and gotta have a cooldown, and gotta have 50 liberty desire
+		is_subject_of = FROM
+		is_subject_of_type = vassal
 		is_at_war = no
 		liberty_desire = 50
 		NOT = {
