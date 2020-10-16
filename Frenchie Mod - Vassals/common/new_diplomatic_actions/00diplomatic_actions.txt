@@ -68,6 +68,7 @@ demand_dummy = {
 		}
 	}
 	is_allowed = {
+		always = no
 		variable_arithmetic_trigger = {
 			custom_tooltip = HAS_OLDER_RULER_THAN_THEIR_HEIR
 			export_to_variable = { # All export to variable will happen first. Then the other effects and triggers will be executed/evaluated in order
@@ -169,12 +170,14 @@ cancel_dummy =  {
 	category = french
 	require_acceptance = no
 	is_visible = {
+		always = no
 		overlord_of = FROM
 		FROM = {
 			is_subject_of_type = dummy
 		}
 	}
 	is_allowed = {
+		always = no
 		reverse_has_opinion_modifier = {
 			modifier = insulted
 			who = FROM
@@ -204,6 +207,7 @@ assume_color = {
 	require_acceptance = no # Whether the recipient gets an option to decline
 
 	is_visible = {
+		ai = no
 		is_subject = no
 		FROM = {
 			NOT = {
@@ -347,14 +351,6 @@ lower_autonomy = {
 	require_acceptance = yes # Whether the recipient gets an option to decline
 
 	is_visible = {
-		ROOT = {
-			NOT = {
-				is_subject_of_type = estate
-				is_subject_of_type = vassal
-				is_subject_of = FROM
-			}
-
-		}
 		FROM = {
 			is_subject_of = ROOT
 			NOT = {
@@ -363,8 +359,6 @@ lower_autonomy = {
 				is_subject_of_type = tributary_state
 			}
 		}
-	}
-	is_allowed = {
 		ROOT = {
 			NOT = {
 				is_subject_of_type = estate
@@ -373,6 +367,8 @@ lower_autonomy = {
 			}
 
 		}
+	}
+	is_allowed = {
 		FROM = {
 			is_subject_of = ROOT
 			NOT = {
@@ -393,6 +389,14 @@ lower_autonomy = {
 					}
 				}
 			}
+		}
+		ROOT = {
+			NOT = {
+				is_subject_of_type = estate
+				is_subject_of_type = vassal
+				is_subject_of = FROM
+			}
+
 		}
 	}
 	on_accept = {
@@ -1185,6 +1189,17 @@ demand_vassal = {
 	is_allowed = {
 		ROOT = {
 			NOT = {
+				is_at_war = yes
+			}
+
+		}
+		FROM = {
+			NOT = {
+				is_at_war = yes
+			}
+		}
+		ROOT = {
+			NOT = {
 				is_subject_of_type = estate
 				is_subject_of_type = vassal
 				is_rival = FROM
@@ -1201,17 +1216,6 @@ demand_vassal = {
 				is_emperor = yes
 				is_great_power = yes
 				is_rival = ROOT
-			}
-		}
-		ROOT = {
-			NOT = {
-				is_at_war = yes
-			}
-
-		}
-		FROM = {
-			NOT = {
-				is_at_war = yes
 			}
 		}
 	}
@@ -1648,6 +1652,8 @@ demand_autonomous_vassal = {
 		}
 	}
 	is_allowed = {
+		is_at_war = no
+		FROM = { is_at_war = no }
 		OR = {
 			is_subject = no
 			is_subject_of_type = protectorate
@@ -1669,31 +1675,6 @@ demand_autonomous_vassal = {
 			FROM = { is_subject_of_type = vassal }
 			FROM = { is_subject_of_type = march }
 			FROM = { is_subject_of_type = estate }
-		}
-		OR = {
-			is_subject = no
-			is_subject_of_type = protectorate
-		}
-		NOT = {
-			is_subject_of = FROM
-			is_rival = FROM
-			FROM = {
-				AND = {
-					is_subject = yes
-					NOT = {
-						is_subject_of_type = protectorate
-						is_subject_of_type = autonomous_vassal
-					}
-				}
-				is_subject_of = ROOT
-				is_rival = ROOT
-				is_great_power = yes
-				is_emperor = yes
-			}
-			AND = {
-				is_at_war = yes
-				FROM = { is_at_war = yes }
-			}
 		}
 	}
 	on_accept = {
@@ -2258,6 +2239,14 @@ ask_to_become_autonomous_vassal = {
 	}
   }
   is_allowed = {
+	FROM = {
+		is_subject = no
+		is_at_war = no
+	}
+	ROOT = {
+		is_subject = no
+		is_at_war = no
+	}	
 		ROOT = {
 		AND = {
 			OR = {
@@ -2318,8 +2307,6 @@ ask_to_become_autonomous_vassal = {
 		}
 		FROM = {
 			NOT = {
-				is_subject = yes
-				is_at_war = yes
 				is_rival = ROOT
 			}
 		}
@@ -2731,14 +2718,14 @@ demand_protectorate = {
 		}
 	}
 	is_allowed = {
+		is_at_war = no
+		is_subject = no
 		NOT = {
-			is_subject = yes
-			FROM = { is_subject_of = ROOT }
+			is_rival = FROM
 		}
 		NOT = {
 			is_subject = yes
-			is_at_war = yes
-			is_rival = FROM
+			FROM = { is_subject_of = ROOT }
 		}
 		FROM = {
 			NOT = {
